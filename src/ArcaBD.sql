@@ -1,3 +1,5 @@
+-- CREATE DATABASE arca;
+
 -- CARGAR MODULO DE ENCRIPTACION
 -- CREATE EXTENSION pgcrypto;
 
@@ -51,7 +53,7 @@ CREATE TABLE alumnos (
 DROP TABLE IF EXISTS profesores;
 CREATE TABLE profesores (
     profesor_id SERIAL,
-    fecha_ingreso DATE NOT NULL CURRENT_DATE,
+    fecha_ingreso DATE NOT NULL DEFAULT CURRENT_DATE,
     grado_estudios grado_estudios,
     estatus_profesor estado_profesor,
     area_especialidad VARCHAR(200) NOT NULL
@@ -186,8 +188,7 @@ ALTER TABLE alumnos
     ADD CONSTRAINT fk_alumno_carrera FOREIGN KEY(clave_carrera) REFERENCES carreras(clave_carrera),
     ADD CONSTRAINT fk_alumno_proyecto FOREIGN KEY(proyecto_id) REFERENCES proyectos(proyecto_id),
     ADD CONSTRAINT fk_alumno_empresa FOREIGN KEY(empresa_id) REFERENCES empresas(empresa_id),
-    ADD CONSTRAINT fk_alumno_asesor_externo FOREIGN KEY(asesor_externo_id) REFERENCES asesores_externos(asesor_externo_id),
-    ADD CONSTRAINT fk_alumno_asesor_interno FOREIGN KEY(asesor_interno_id) REFERENCES asesores_internos(asesor_interno_id);
+    ADD CONSTRAINT fk_alumno_asesor_externo FOREIGN KEY(asesor_externo_id) REFERENCES asesores_externos(asesor_externo_id);
 
 ALTER TABLE expedientes
     ADD CONSTRAINT fk_expediente_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control);
