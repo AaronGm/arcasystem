@@ -25,12 +25,14 @@ public class MenuApp extends JMenuBar {
     private JMenu consultar;
     private JMenu estadisticas;
     
+    private JMenuItem regProfesor;
     private JMenuItem regEmpresa;
     private JMenuItem regResidente;
     private JMenuItem regProyecto;
     private JMenuItem regAsesorInterno;
     private JMenuItem regAsesorExterno;
     
+    private JMenuItem cnsProfesor;
     private JMenuItem cnsEmpresa;
     private JMenuItem cnsResidente;
     private JMenuItem cnsProyecto;
@@ -58,12 +60,14 @@ public class MenuApp extends JMenuBar {
         consultar = new JMenu("Consultar");
         estadisticas = new JMenu("Estadisticas");
         
-        regEmpresa = new JMenuItem("Empresas");
+        regProfesor = new JMenuItem("Profesor");
+        regEmpresa = new JMenuItem("Empresa");
         regResidente = new JMenuItem("Residente");
         regProyecto = new JMenuItem("Proyecto");
         regAsesorInterno = new JMenuItem("Asesor Interno");
         regAsesorExterno = new JMenuItem("Asesor Externo");
         
+        cnsProfesor = new JMenuItem("Profesores");
         cnsEmpresa = new JMenuItem("Empresas");
         cnsProyecto = new JMenuItem("Proyectos");
         cnsResidente = new JMenuItem("Residentes");
@@ -82,6 +86,7 @@ public class MenuApp extends JMenuBar {
         };
         
         JComponent itemsConsulta[] = {
+            cnsProfesor,
             cnsProyecto,
             cnsEmpresa,
             cnsAsesorExterno,
@@ -90,6 +95,7 @@ public class MenuApp extends JMenuBar {
         };
         
         JComponent itemsRegistro[] = { 
+            regProfesor,
             regProyecto, 
             regEmpresa, 
             regAsesorExterno, 

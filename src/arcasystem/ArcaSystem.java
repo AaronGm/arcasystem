@@ -7,17 +7,7 @@ package arcasystem;
 
 import controllers.LoginController;
 import java.awt.EventQueue;
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import views.RegistrarProyecto;
-import views.LoginView;
-import views.RegistrarEmpresa;
-import views.RegistrarExpediente;
-import views.RegistrarResidente;
+import views.*;
 
 /**
  *
@@ -45,10 +35,14 @@ public class ArcaSystem {
 //            }
 //            LoginController loginController = new LoginController(new LoginView());
 //            loginController.login().setVisible(true);
+//            new PanelControl().setVisible(true);
 //            new RegistrarEmpresa().setVisible(true);
 //            new RegistrarProyecto().setVisible(true);
 //            new RegistrarResidente().setVisible(true);
-            new RegistrarExpediente().setVisible(true);
+//            new RegistrarExpediente().setVisible(true);
+//            new InicioUsuario().setVisible(true);
+            new RegistrarProfesor().setVisible(true);
+            
         };
         EventQueue.invokeLater(run);
     }

@@ -41,19 +41,17 @@ DROP TABLE IF EXISTS alumnos;
 CREATE TABLE alumnos (
     no_control VARCHAR(10) NOT NULL,
     semestre SMALLINT NOT NULL,
-    periodo VARCHAR(160) NOT NULL,
     clave_carrera VARCHAR(3) NOT NULL,
     proyecto_id INT NOT NULL,
     empresa_id INT NOT NULL,
     asesor_externo_id INT NOT NULL
-    asesor_interno_id INT NOT NULL
 ) INHERITS(personas);
 
 
 DROP TABLE IF EXISTS profesores;
 CREATE TABLE profesores (
     profesor_id SERIAL,
-    fecha_ingreso DATE NOT NULL,
+    fecha_ingreso DATE NOT NULL CURRENT_DATE,
     grado_estudios grado_estudios,
     estatus_profesor estado_profesor,
     area_especialidad VARCHAR(200) NOT NULL
@@ -78,26 +76,27 @@ CREATE TABLE expedientes (
 DROP TABLE IF EXISTS proyectos;
 CREATE TABLE proyectos (
     proyecto_id SERIAL,
-    nombre VARCHAR(250) NOT NULL DEFAULT '',
-    semanas_proyecto INT NOT NULL DEFAULT 16,
+    nombre VARCHAR(250) NOT NULL,
+    semanas_proyecto INT NOT NULL,
+    periodo VARCHAR(160) NOT NULL,
     fecha_inicio DATE NOT NULL DEFAULT CURRENT_DATE,
     fecha_termino DATE NOT NULL DEFAULT CAST(CURRENT_DATE + interval '4  month' AS DATE),
-    estatus estado_proyecto DEFAULT '----'
+    estatus estado_proyecto
 );
 
 DROP TABLE IF EXISTS empresas CASCADE;
 CREATE TABLE empresas (
     empresa_id SERIAL,
-    nombre VARCHAR(200) NOT NULL DEFAULT '',
-    encargado VARCHAR(255) NOT NULL DEFAULT '',
-    domicilio VARCHAR(255) NOT NULL DEFAULT '',
-    pagina_web VARCHAR(250) NOT NULL DEFAULT ''
+    nombre VARCHAR(200) NOT NULL,
+    encargado VARCHAR(255) NOT NULL,
+    domicilio VARCHAR(255) NOT NULL,
+    pagina_web VARCHAR(250) NOT NULL
 );
 
 DROP TABLE IF EXISTS asesores_externos;
 CREATE TABLE asesores_externos (
     asesor_externo_id SERIAL,
-    cargo VARCHAR(180) NOT NULL DEFAULT '',
+    cargo VARCHAR(180) NOT NULL,
     empresa_id INT NOT NULL
 ) INHERITS(personas);
 
@@ -105,6 +104,13 @@ DROP TABLE IF EXISTS asesores_internos;
 CREATE TABLE asesores_internos (
     asesor_interno_id SERIAL,
     profesor_id INT NOT NULL
+);
+
+DROP TABLE IF EXISTS alumnos_asesores_internos;
+CREATE TABLE alumnos_asesores_internos(
+    asignacion_alumno_asesor_id SERIAL,
+    no_control VARCHAR(10) NOT NULL,
+    asesor_interno_id INT NOT NULL
 );
 
 DROP TABLE IF EXISTS revisores;

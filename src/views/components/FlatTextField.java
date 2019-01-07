@@ -6,6 +6,7 @@
 package views.components;
 
 import helpers.Colors;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
@@ -47,10 +48,12 @@ public class FlatTextField extends JTextField {
         setPreferredSize(new Dimension(330, 30));
         setFont(helpers.Typography.addFont("Open Sans", "pr"));
         setForeground(Colors.BLACK);
+        setSelectionColor(Colors.BLUE_LIGHT);
+        setSelectedTextColor(Color.white);
         setBorder(
             new CompoundBorder(
                 new MatteBorder(1, 1, 1, 1, Colors.BLACK_MEDIUM), 
-                new EmptyBorder(4, 8, 4, 8)
+                helpers.Helpers.padding(4, 8)
             )
         );
     }

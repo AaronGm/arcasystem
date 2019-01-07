@@ -8,12 +8,10 @@ package views;
 import helpers.Helpers;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
-import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -79,6 +77,7 @@ public class RegistrarEmpresa extends JFrame {
         
         scrollPane = new JScrollPane(pnlForm);
         scrollPane.setBorder(null);
+        scrollPane.getHorizontalScrollBar().setValue(20);
         
         
         cmbGiro = new FlatComboBox(new String[] { "Industrial", "Servicios", "Otro", "Público", "Privado" });
@@ -145,10 +144,12 @@ public class RegistrarEmpresa extends JFrame {
         pnlForm.add(new FlatLabel("Misión de la empresa"), c);
         
         c.gridy = 9;
+        c.anchor = GridBagConstraints.NORTH;
         pnlForm.add(txfTelCelular, c);
         pnlForm.add(txaMisionEmpresa, c);
         
         c.gridy = 10;
+        c.anchor = GridBagConstraints.WEST;
         pnlForm.add(new FlatLabel("Nombre del titular de la empresa"), c);
         pnlForm.add(new FlatLabel("Puesto del titular"), c);
         

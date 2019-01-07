@@ -48,5 +48,13 @@ public class Profesor extends Persona {
     public void setAreaEspecialidad( String areaEspecialidad ) {
         this.areaEspecialidad = areaEspecialidad;
     }
+
+    public String[] getGradoEstudio() {
+        return gradoEstudio;
+    }
+
+    public String[] getEstatusProfesor() {
+        return estatusProfesor;
+    }
     
 }

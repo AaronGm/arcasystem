@@ -5,6 +5,8 @@
  */
 package views.components;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.util.Vector;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
@@ -14,7 +16,7 @@ import javax.swing.JComboBox;
  * @author aarongmx
  */
 public class FlatComboBox extends JComboBox<Object> {
-
+    
     public FlatComboBox(ComboBoxModel<Object> aModel) {
         super(aModel);
         initComponent();
@@ -36,6 +38,8 @@ public class FlatComboBox extends JComboBox<Object> {
 
     private void initComponent() {
         setFont(helpers.Typography.componentsFont());
+        setPreferredSize(new Dimension(180, 30));
+        setBackground(Color.white);
     }
     
     

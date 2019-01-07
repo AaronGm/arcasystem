@@ -5,9 +5,14 @@
  */
 package views.components;
 
+import helpers.Colors;
+import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.MatteBorder;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
@@ -43,7 +48,12 @@ public class FlatButton extends JButton {
 
     private void initComponent() {
         IconFontSwing.register(FontAwesome.getIconFont());
-        setContentAreaFilled(false);
+        setBackground(Colors.BLUE_LIGHT);
+        setForeground(Color.white);
+        setBorder(
+            new CompoundBorder(new MatteBorder(1, 1, 1, 1, Colors.BLUE_LIGHT),
+            helpers.Helpers.padding(8, 16))
+        );
         setFocusPainted(false);
     }
     
