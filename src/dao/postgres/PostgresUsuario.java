@@ -22,17 +22,23 @@ import models.Usuario;
  * @author aarongmx
  */
 public class PostgresUsuario implements UsuarioDAO {
-    private String sql;
     private Connection conexion;
     private PreparedStatement sentencia;
     private ResultSet resultados;
     
+    private final String LOGIN = "SELECT usuario, passwd, is_admin FROM usuarios WHERE usuario = ? AND passwd = crypt(?, passwd);";
+    private final String INSERTAR = "INSERT INTO usuarios(usuario, passwd, is_admin) VALUES (?, crypt(?, gen_salt('xdes')), ?);";
+    private final String ELIMINAR = "DELETE FROM usuarios WHERE usuario_id = ?;";
+    private final String ACTUALIZAR = "UPDATE usuarios SET usuario = ?, passwd = ?, is_admin = ? WHERE usuario_id = ?;";
+    private final String ID = "SELECT usuario_id, usuario, passwd, is_admin FROM usuarios WHERE usuario_id = ?;";
+    private final String LISTAR = "SELECT usuario_id, usuario, passwd, is_admin FROM usuarios;";
+    
+    @Override
     public Usuario login( String usuario, String password ) {
         Usuario retUsuario = null;
-        sql = "SELECT usuario, passwd, is_admin FROM usuarios WHERE usuario = ? AND passwd = crypt(?, passwd)";
         conexion = new ConnectionDB().getConnection();
         try {
-            sentencia = conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            sentencia = conexion.prepareStatement(LOGIN, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             sentencia.setString(1, usuario);
             sentencia.setString(2, password);
             resultados = sentencia.executeQuery();
@@ -53,10 +59,9 @@ public class PostgresUsuario implements UsuarioDAO {
     
     @Override
     public void insertar( Usuario usuario ) throws ExcepcionGeneral {
-        sql = "INSERT INTO usuarios(usuario, passwd, is_admin) VALUES (?, crypt(?, gen_salt('xdes')), ?)";
         conexion = new ConnectionDB().getConnection();
         try {
-            sentencia = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            sentencia = conexion.prepareStatement(INSERTAR, Statement.RETURN_GENERATED_KEYS);
             sentencia.setString(1, usuario.getUsuario());
             sentencia.setString(2, usuario.getPasswd());
             sentencia.setBoolean(3, usuario.isAdmin());
@@ -77,10 +82,9 @@ public class PostgresUsuario implements UsuarioDAO {
 
     @Override
     public void modificar( Usuario usuario ) {
-        sql = "UPDATE usuarios SET usuario = ?, passwd = ?, is_admin = ? WHERE usuario_id = ?;";
         conexion = new ConnectionDB().getConnection();
         try {
-            sentencia = conexion.prepareStatement(sql);
+            sentencia = conexion.prepareStatement(ACTUALIZAR);
             sentencia.setString(1, usuario.getUsuario());
             sentencia.setString(2, usuario.getPasswd());
             sentencia.setBoolean(3, usuario.isAdmin());
@@ -94,10 +98,9 @@ public class PostgresUsuario implements UsuarioDAO {
 
     @Override
     public void eliminar( Usuario usuario ) {
-        sql = "DELETE FROM usuarios WHERE usuario_id = ?;";
         conexion = new ConnectionDB().getConnection();
         try {
-            sentencia = conexion.prepareStatement(sql);
+            sentencia = conexion.prepareStatement(ELIMINAR);
             sentencia.setInt(1, usuario.getUsuarioId());
             if (sentencia.executeUpdate() == 0) {
                 throw new ExcepcionGeneral("No se eliminó ningun registro!");
@@ -112,10 +115,9 @@ public class PostgresUsuario implements UsuarioDAO {
     @Override
     public Usuario obtenerPorId( Integer key ) {
         Usuario usuario = null;
-        sql = "SELECT usuario_id, usuario, passwd, is_admin FROM usuarios WHERE usuario_id = ?";
         conexion = new ConnectionDB().getConnection();
         try {
-            sentencia = conexion.prepareStatement(sql);
+            sentencia = conexion.prepareStatement(ID);
             sentencia.setInt(1, key);
             resultados = sentencia.executeQuery();
             if ( resultados.first() ) {
@@ -135,11 +137,10 @@ public class PostgresUsuario implements UsuarioDAO {
 
     @Override
     public List<Usuario> listar() {
-        sql = "SELECT usuario_id, usuario, passwd, is_admin FROM usuarios";
         List<Usuario> lista = new ArrayList<>();
         try {
             conexion = new ConnectionDB().getConnection();
-            sentencia = conexion.prepareStatement(sql);
+            sentencia = conexion.prepareStatement(LISTAR);
             resultados = sentencia.executeQuery();
             while ( resultados.next() ) {
                 lista.add(
