@@ -4,9 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/helpers/Helpers.java</file>
+            <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/models/Profesor.java</file>
             <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/views/RegistrarEmpresa.java</file>
             <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/views/RegistrarProfesor.java</file>
+            <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/views/components/FlatRadioButton.java</file>
             <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/arcasystem/ArcaSystem.java</file>
+            <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/views/RegistrarExpediente.java</file>
+            <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/views/components/FlatLabel.java</file>
             <file>file:/home/aarongmx/NetBeansProjects/ArcaSystem/src/views/InicioUsuario.java</file>
         </group>
     </open-files>
