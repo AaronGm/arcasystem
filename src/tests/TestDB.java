@@ -5,7 +5,7 @@
  */
 package tests;
 
-import dao.postgres.PostgresUsuario;
+import dao.postgres.ImplUsuario;
 import java.awt.EventQueue;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,22 +21,22 @@ import views.admin.Admin;
 public class TestDB {
     public static void main( String[] args ) {
 //        Usuario user = new Usuario("aarons", "azar", true);
-//        PostgresUsuario postUser = new PostgresUsuario();
-//        try {
+        ImplUsuario postUser = new ImplUsuario();
+        try {
 //            postUser.insertar(user);
-//            for ( Usuario usuario : postUser.listar()) {
-//                System.out.println(usuario.toString());
-//            }
-//        } catch ( Exception e ) {
-//        }
-//        Runnable run = () -> {
-//            new Admin().setVisible(true);
-//        };
-//        EventQueue.invokeLater(run);
-//        DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy");
-//        Calendar calendar = Calendar.getInstance();
-//        System.out.println(dateF.format(calendar.getTime()));
-//        System.out.println(calendar.getTime().getMonth());
+            for ( Usuario usuario : postUser.listar()) {
+                System.out.println(usuario.toString());
+            }
+        } catch ( Exception e ) {
+        }
+        Runnable run = () -> {
+            new Admin().setVisible(true);
+        };
+        EventQueue.invokeLater(run);
+        DateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        System.out.println(dateF.format(calendar.getTime()));
+        System.out.println(calendar.getTime().getMonth());
         helpers.Helpers.getPeriodo();
     }
 }

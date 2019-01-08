@@ -53,6 +53,7 @@ CREATE TABLE alumnos (
 DROP TABLE IF EXISTS profesores;
 CREATE TABLE profesores (
     profesor_id SERIAL,
+    no_trabajador VARCHAR(5) NOT NULL,
     fecha_ingreso DATE NOT NULL DEFAULT CURRENT_DATE,
     grado_estudios grado_estudios,
     estatus_profesor estado_profesor,
@@ -238,8 +239,8 @@ VALUES
 ('IND', 'Ingeniería Industrial', 'IIND-2010-227'),
 ('IGE', 'Ingenireía en Gestión Empresarial', 'IGEM-2009-201');
 
-SELECT * FROM usuarios;
-SELECT usuario_id, usuario, passwd, is_admin FROM usuarios;
+-- SELECT * FROM usuarios;
+-- SELECT usuario_id, usuario, passwd, is_admin FROM usuarios;
 
 /*
     Secuencia de pasos para usar la BD

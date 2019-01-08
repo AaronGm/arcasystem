@@ -48,9 +48,9 @@ public class Helpers {
     /**
      * Dimension mínima para las vistas
      */
-    public final static Dimension MINIMO_PANTALLA = new Dimension(PANTALLA.width - 400, PANTALLA.height - 100);
+    public final static Dimension MINIMO_PANTALLA = new Dimension(PANTALLA.width - 260, PANTALLA.height - 80);
     
-        
+    
     /**
      * Función para hacer un margen interno en los componentes
      * @param padding
@@ -146,6 +146,8 @@ public class Helpers {
     }
     
     public static void minScreenSize(JFrame frame) {
+        ImageIcon icon = new ImageIcon(IMAGES_PATH + "logo-itiz16.png");
+        frame.setIconImage(icon.getImage());
         frame.setMinimumSize(MINIMO_PANTALLA);
     }
     

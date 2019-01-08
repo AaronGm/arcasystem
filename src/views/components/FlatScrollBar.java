@@ -1,0 +1,41 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package views.components;
+
+import helpers.Colors;
+import java.awt.Dimension;
+import javax.swing.JScrollBar;
+import javax.swing.border.EmptyBorder;
+
+/**
+ *
+ * @author aarongmx
+ */
+public class FlatScrollBar extends JScrollBar {
+
+    public FlatScrollBar(int orientation, int value, int extent, int min, int max) {
+        super(orientation, value, extent, min, max);
+        initComponent();
+    }
+
+    public FlatScrollBar(int orientation) {
+        super(orientation);
+        initComponent();
+    }
+
+    public FlatScrollBar() {
+        initComponent();
+    }
+    
+    private void initComponent() {
+        setOpaque(false);
+        setPreferredSize(new Dimension(12, 120));
+        setBorder(new EmptyBorder(0, 0, 0, 0));
+        setBackground(Colors.GHOST);
+    }
+    
+    
+}

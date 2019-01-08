@@ -14,6 +14,15 @@ public class Persona {
     private String apellidoPaterno;
     private String apellidoMaterno;
     
+    /**
+     * Columnas en la base de datos
+     */
+    public static final String NOMBRES = "nombres";
+    public static final String APELLIDO_PATERNO = "apellido_paterno";
+    public static final String APELLIDO_MATERNO = "apellido_materno";
+    
+    
+    
     public Persona( String nombres, String apellidoPaterno, String apellidoMaterno ) {
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;

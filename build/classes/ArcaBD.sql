@@ -1,3 +1,5 @@
+-- CREATE DATABASE arca;
+
 -- CARGAR MODULO DE ENCRIPTACION
 -- CREATE EXTENSION pgcrypto;
 
@@ -51,7 +53,8 @@ CREATE TABLE alumnos (
 DROP TABLE IF EXISTS profesores;
 CREATE TABLE profesores (
     profesor_id SERIAL,
-    fecha_ingreso DATE NOT NULL CURRENT_DATE,
+    no_trabajador VARCHAR(5) NOT NULL,
+    fecha_ingreso DATE NOT NULL DEFAULT CURRENT_DATE,
     grado_estudios grado_estudios,
     estatus_profesor estado_profesor,
     area_especialidad VARCHAR(200) NOT NULL
@@ -100,14 +103,14 @@ CREATE TABLE asesores_externos (
     empresa_id INT NOT NULL
 ) INHERITS(personas);
 
-DROP TABLE IF EXISTS asesores_internos;
+DROP TABLE IF EXISTS asesores_internos CASCADE;
 CREATE TABLE asesores_internos (
     asesor_interno_id SERIAL,
     profesor_id INT NOT NULL
 );
 
-DROP TABLE IF EXISTS alumnos_asesores_internos;
-CREATE TABLE alumnos_asesores_internos(
+DROP TABLE IF EXISTS alumnos_asesores_internos CASCADE;
+CREATE TABLE alumnos_asesores_internos (
     asignacion_alumno_asesor_id SERIAL,
     no_control VARCHAR(10) NOT NULL,
     asesor_interno_id INT NOT NULL
@@ -180,14 +183,14 @@ ALTER TABLE empresas ADD CONSTRAINT pk_empresa PRIMARY KEY(empresa_id);
 ALTER TABLE asesores_externos ADD CONSTRAINT pk_asesor_externo PRIMARY KEY(asesor_externo_id);
 ALTER TABLE asesores_internos ADD CONSTRAINT pk_asesor_interno PRIMARY KEY(asesor_interno_id); 
 ALTER TABLE revisores ADD CONSTRAINT pk_revisor PRIMARY KEY(revisor_id); 
+ALTER TABLE alumnos_asesores_internos ADD CONSTRAINT pk_alumno_asesor_interno PRIMARY KEY(asignacion_alumno_asesor_id);
 
 -- Relaciones entre tablas
 ALTER TABLE alumnos
     ADD CONSTRAINT fk_alumno_carrera FOREIGN KEY(clave_carrera) REFERENCES carreras(clave_carrera),
     ADD CONSTRAINT fk_alumno_proyecto FOREIGN KEY(proyecto_id) REFERENCES proyectos(proyecto_id),
     ADD CONSTRAINT fk_alumno_empresa FOREIGN KEY(empresa_id) REFERENCES empresas(empresa_id),
-    ADD CONSTRAINT fk_alumno_asesor_externo FOREIGN KEY(asesor_externo_id) REFERENCES asesores_externos(asesor_externo_id),
-    ADD CONSTRAINT fk_alumno_asesor_interno FOREIGN KEY(asesor_interno_id) REFERENCES asesores_internos(asesor_interno_id);
+    ADD CONSTRAINT fk_alumno_asesor_externo FOREIGN KEY(asesor_externo_id) REFERENCES asesores_externos(asesor_externo_id);
 
 ALTER TABLE expedientes
     ADD CONSTRAINT fk_expediente_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control);
@@ -197,6 +200,11 @@ ALTER TABLE asesores_externos
 
 ALTER TABLE asesores_internos
     ADD CONSTRAINT fk_asesor_interno_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id);
+
+ALTER TABLE alumnos_asesores_internos
+    ADD CONSTRAINT fk_alumno_asesor_interno_asesor FOREIGN KEY(asesor_interno_id) REFERENCES asesores_internos(asesor_interno_id),
+    ADD CONSTRAINT fk_alumno_asesor_interno_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control);
+    
 
 ALTER TABLE revisores
     ADD CONSTRAINT fk_revisor_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id),
@@ -231,8 +239,8 @@ VALUES
 ('IND', 'Ingeniería Industrial', 'IIND-2010-227'),
 ('IGE', 'Ingenireía en Gestión Empresarial', 'IGEM-2009-201');
 
-SELECT * FROM usuarios;
-SELECT usuario_id, usuario, passwd, is_admin FROM usuarios;
+-- SELECT * FROM usuarios;
+-- SELECT usuario_id, usuario, passwd, is_admin FROM usuarios;
 
 /*
     Secuencia de pasos para usar la BD

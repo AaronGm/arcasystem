@@ -6,7 +6,11 @@
 package arcasystem;
 
 import controllers.LoginController;
+import controllers.RegistrarProfesorController;
 import java.awt.EventQueue;
+import java.time.LocalDate;
+import java.util.Date;
+import models.Profesor;
 import views.*;
 
 /**
@@ -41,7 +45,13 @@ public class ArcaSystem {
 //            new RegistrarResidente().setVisible(true);
 //            new RegistrarExpediente().setVisible(true);
 //            new InicioUsuario().setVisible(true);
-            new RegistrarProfesor().setVisible(true);
+//            RegistrarProfesorController regProfController = new RegistrarProfesorController(new RegistrarProfesor());
+//            regProfController.registrarProfesor().setVisible(true);
+            Date d = new Date();
+
+            Profesor prof = new Profesor(1, "090", d,"Ingeniería", "Clave 20", "#web", "Juan", "Torres", "Quintero");
+//            new EditarProfesor(prof).setVisible(true);
+            new ConsultarProfesor().setVisible(true);
             
         };
         EventQueue.invokeLater(run);

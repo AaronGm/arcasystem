@@ -13,6 +13,7 @@ import javax.swing.JComponent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -44,7 +45,7 @@ public class MenuApp extends JMenuBar {
     }
 
     private void initView() {
-        setBackground(Colors.BLUE_MEDIUM);
+        setBackground(Colors.BLACK_LIGHT);
         setBorderPainted(false);
         setPreferredSize(new Dimension(0, 32));
         initComponents();
@@ -58,7 +59,7 @@ public class MenuApp extends JMenuBar {
         inicio = new JMenu("Inicio");
         registrar = new JMenu("Registrar");
         consultar = new JMenu("Consultar");
-        estadisticas = new JMenu("Estadisticas");
+        estadisticas = new JMenu("Estadísticas");
         
         regProfesor = new JMenuItem("Profesor");
         regEmpresa = new JMenuItem("Empresa");
@@ -105,6 +106,7 @@ public class MenuApp extends JMenuBar {
         
         Arrays.asList(menus).forEach(el -> {
             el.setForeground(Color.white);
+            el.setBorder(new EmptyBorder(0, 0, 0, 0));
             el.setFont(helpers.Typography.componentsFont());
         });
         

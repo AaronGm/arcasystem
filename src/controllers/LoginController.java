@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import dao.postgres.PostgresUsuario;
+import dao.postgres.ImplUsuario;
 import excepciones.ExcepcionGeneral;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
@@ -26,6 +26,7 @@ public class LoginController {
     private final LoginView view;
     
     public LoginController(LoginView view) {
+        IconFontSwing.register(FontAwesome.getIconFont());
         this.view = view;
     }
 
@@ -35,11 +36,10 @@ public class LoginController {
      * @return  
      */
     public JFrame login() {
-        IconFontSwing.register(FontAwesome.getIconFont());
-        PostgresUsuario postgresUsuario = new PostgresUsuario();
+        ImplUsuario implUsuario = new ImplUsuario();
         try {
             view.getBtnSend().addActionListener(( ActionEvent e ) -> {
-                Usuario usuario = postgresUsuario.login(
+                Usuario usuario = implUsuario.login(
                     view.getUserField().getText(),
                     String.valueOf(view.getPasswdField().getPassword())
                 );

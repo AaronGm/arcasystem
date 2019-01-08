@@ -8,42 +8,46 @@ package views.components;
 import helpers.Colors;
 import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.JTextField;
+import java.text.Format;
+import javax.swing.JFormattedTextField;
 import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
-import javax.swing.text.Document;
 
 /**
  *
  * @author aarongmx
  */
-public class FlatTextField extends JTextField {
+public class FlatTextField extends JFormattedTextField {
 
     public FlatTextField() {
         initComponent();
     }
 
-    public FlatTextField(String text) {
-        super(text);
+    public FlatTextField(Object value) {
+        super(value);
         initComponent();
     }
 
-    public FlatTextField(int columns) {
-        super(columns);
+    public FlatTextField(Format format) {
+        super(format);
         initComponent();
     }
 
-    public FlatTextField(String text, int columns) {
-        super(text, columns);
+    public FlatTextField(AbstractFormatter formatter) {
+        super(formatter);
         initComponent();
     }
 
-    public FlatTextField(Document doc, String text, int columns) {
-        super(doc, text, columns);
+    public FlatTextField(AbstractFormatterFactory factory) {
+        super(factory);
         initComponent();
     }
 
+    public FlatTextField(AbstractFormatterFactory factory, Object currentValue) {
+        super(factory, currentValue);
+        initComponent();
+    }
+    
     private void initComponent() {
         setPreferredSize(new Dimension(330, 30));
         setFont(helpers.Typography.addFont("Open Sans", "pr"));
@@ -52,12 +56,10 @@ public class FlatTextField extends JTextField {
         setSelectedTextColor(Color.white);
         setBorder(
             new CompoundBorder(
-                new MatteBorder(1, 1, 1, 1, Colors.BLACK_MEDIUM), 
-                helpers.Helpers.padding(4, 8)
+                new MatteBorder(1, 1, 1, 1, Colors.GHOST_MEDIUM), 
+                helpers.Helpers.padding(0, 8)
             )
         );
     }
-    
-    
     
 }

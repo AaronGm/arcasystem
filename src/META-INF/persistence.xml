@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ArcaSystemPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>uno.CorreosAsesorExterno</class>
+    <class>uno.TelefonosAsesorExterno</class>
+    <class>uno.Empresas</class>
+    <class>uno.Profesores</class>
+    <class>uno.Usuarios</class>
+    <class>uno.Expedientes</class>
+    <class>uno.TelefonosEmpresa</class>
+    <class>uno.CorreosProfesor</class>
+    <class>uno.AlumnosAsesoresInternos</class>
+    <class>uno.Alumnos</class>
+    <class>uno.TelefonosProfesor</class>
+    <class>uno.Carreras</class>
+    <class>uno.CorreosEmpresa</class>
+    <class>uno.Proyectos</class>
+    <class>uno.AsesoresInternos</class>
+    <class>uno.Revisores</class>
+    <class>uno.AsesoresExternos</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/arca"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="dbadmin"/>
+    </properties>
+  </persistence-unit>
+</persistence>

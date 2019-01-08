@@ -7,12 +7,11 @@ package views.components;
 
 import helpers.Colors;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.border.CompoundBorder;
-import javax.swing.border.MatteBorder;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
@@ -40,9 +39,21 @@ public class FlatButton extends JButton {
         super(a);
         initComponent();
     }
+    
+    public FlatButton(Icon icon, ActionListener action) {
+        super(icon);
+        super.addActionListener(action);
+        initComponent();
+    }
 
     public FlatButton(String text, Icon icon) {
         super(text.toUpperCase(), icon);
+        initComponent();
+    }
+    
+    public FlatButton(String text, Icon icon, Action action) {
+        super(text, icon);
+        super.setAction(action);
         initComponent();
     }
 
@@ -51,11 +62,10 @@ public class FlatButton extends JButton {
         setBackground(Colors.BLUE_LIGHT);
         setForeground(Color.white);
         setBorder(
-            new CompoundBorder(new MatteBorder(1, 1, 1, 1, Colors.BLUE_LIGHT),
+            new CompoundBorder(helpers.Helpers.padding(0),
             helpers.Helpers.padding(8, 16))
         );
         setFocusPainted(false);
     }
-    
     
 }
