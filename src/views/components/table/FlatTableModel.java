@@ -30,6 +30,9 @@ public class FlatTableModel extends DefaultTableModel {
 
     @Override
     public boolean isCellEditable(int row, int column) {
+        if (column == getColumnCount() - 1 && column == getColumnCount() - 2) {
+            return true;
+        }
         return false;
     }
     

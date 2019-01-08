@@ -7,6 +7,8 @@ package views.components;
 
 import helpers.Colors;
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumnModel;
@@ -60,4 +62,24 @@ public class FlatTable extends JTable {
         setSelectionBackground(Color.lightGray);
     }
     
+    public static void clickButtons(JTable table, MouseEvent e) {
+        int column = table.getColumnModel().getColumnIndexAtX(e.getX());
+        int row = e.getY() / table.getRowHeight();
+        
+        if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
+            Object value = table.getValueAt(row, column);
+            if (value instanceof JButton) {
+                ((JButton) value).doClick();
+                JButton btn = (JButton) value;
+                if (btn.getName() == "update") {
+                    System.out.println("Actuualizar");
+                    System.out.println(table.getModel().getValueAt(row, 0));
+                }
+                
+                if (btn.getName() == "delete") {
+                    System.out.println("Eliminar");
+                }
+            }
+        }
+    }
 }

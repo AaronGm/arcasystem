@@ -13,8 +13,12 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.beans.PropertyChangeListener;
 import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -124,13 +128,11 @@ public class ConsultarProfesor extends JFrame {
         
         ImplProfesor implProf = new ImplProfesor();
         
-        ActionListener actualizarAction = (e) -> {
-            System.out.println("Actualizar");
-        };
-        ActionListener eliminarAction = (e) -> {
-            System.out.println("Eliminar");
-        };
-        
+        FlatButton btnEditar = new FlatButton(IconFontSwing.buildIcon(FontAwesome.PENCIL_SQUARE, 16, Color.white));
+        btnEditar.setName("update");
+        FlatButton btnEliminar = new FlatButton(IconFontSwing.buildIcon(FontAwesome.TRASH, 16, Color.white));
+        btnEliminar.setName("delete");
+        btnEliminar.setBackground(Colors.RED);
         
         implProf.listar().forEach(el -> {
             model.addRow(new Object[] {
@@ -142,8 +144,9 @@ public class ConsultarProfesor extends JFrame {
                 el.getGradoEstudio(),
                 el.getEstatusProfesor(),
                 el.getAreaEspecialidad(),
-                new FlatButton(IconFontSwing.buildIcon(FontAwesome.PENCIL_SQUARE, 18, Color.white), actualizarAction),
-                new FlatButton(IconFontSwing.buildIcon(FontAwesome.TRASH_O, 18, Color.white), eliminarAction)
+                btnEditar,
+                btnEliminar,
+                el.getProfesorId()
             });
         });
         scroll.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -151,6 +154,13 @@ public class ConsultarProfesor extends JFrame {
         tabla.setModel(model);
         tabla.getColumnModel().getColumn(8).setPreferredWidth(10);
         tabla.getColumnModel().getColumn(9).setPreferredWidth(10);
+        
+        tabla.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FlatTable.clickButtons(tabla, evt);
+            }
+        });
         pnlTabla.add(BorderLayout.CENTER, scroll);
     }
 
