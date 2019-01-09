@@ -44,6 +44,7 @@ public class RegistrarProfesor extends JFrame {
     private String headerTitle;
         
     public RegistrarProfesor() {
+        this.headerTitle = "Registrar Profesor";
         initView();
     }
     
@@ -72,7 +73,7 @@ public class RegistrarProfesor extends JFrame {
         
         jdtcFechaIngreso = new JDateChooser();
         
-        cmbGradoEstudio = new FlatComboBox(new String[]{"Licenciatura", "Ingeniería", "Maestria", "Doctorado"});
+        cmbGradoEstudio = new FlatComboBox(new String[]{"Licenciatura", "Ingeniería", "Maestría", "Doctorado"});
         cmbEstatusProfesor = new FlatComboBox(new String[]{"Tiempo Completo", "Clave 10", "Clave 20", "Clave 95", "Por Horario", "Por Asignatura"});
         
         btnRegistrar = new FlatButton("Registrar");

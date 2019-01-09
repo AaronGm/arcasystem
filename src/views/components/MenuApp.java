@@ -5,26 +5,41 @@
  */
 package views.components;
 
+import controllers.RegistrarProfesorController;
 import helpers.Colors;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
+import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
+import views.ConsultarProfesor;
+import views.InicioUsuario;
+import views.PanelControl;
+import views.RegistrarProfesor;
 
 /**
  *
  * @author aarongmx
  */
-public class MenuApp extends JMenuBar {
-    
+public class MenuApp extends JMenuBar implements ActionListener {
+        
     private JMenu inicio;
     private JMenu registrar;
     private JMenu consultar;
     private JMenu estadisticas;
+    
+    private JMenu cuenta;
     
     private JMenuItem regProfesor;
     private JMenuItem regEmpresa;
@@ -39,27 +54,32 @@ public class MenuApp extends JMenuBar {
     private JMenuItem cnsProyecto;
     private JMenuItem cnsAsesorInterno;
     private JMenuItem cnsAsesorExterno;
-
+    
     public MenuApp() {
         initView();
     }
-
+    
     private void initView() {
         setBackground(Colors.BLACK_LIGHT);
         setBorderPainted(false);
-        setPreferredSize(new Dimension(0, 32));
+        setPreferredSize(new Dimension(0, 36));
         initComponents();
         add(inicio);
         add(registrar);
         add(consultar);
         add(estadisticas);
+        add(Box.createVerticalStrut(36));
+        add(cuenta);
     }
 
     private void initComponents() {
+        IconFontSwing.register(FontAwesome.getIconFont());
         inicio = new JMenu("Inicio");
         registrar = new JMenu("Registrar");
         consultar = new JMenu("Consultar");
         estadisticas = new JMenu("Estadísticas");
+        
+        cuenta = new JMenu("Cuenta");
         
         regProfesor = new JMenuItem("Profesor");
         regEmpresa = new JMenuItem("Empresa");
@@ -86,7 +106,7 @@ public class MenuApp extends JMenuBar {
             estadisticas
         };
         
-        JComponent itemsConsulta[] = {
+        JMenuItem itemsConsulta[] = {
             cnsProfesor,
             cnsProyecto,
             cnsEmpresa,
@@ -95,7 +115,7 @@ public class MenuApp extends JMenuBar {
             cnsAsesorInterno
         };
         
-        JComponent itemsRegistro[] = { 
+        JMenuItem itemsRegistro[] = { 
             regProfesor,
             regProyecto, 
             regEmpresa, 
@@ -112,13 +132,53 @@ public class MenuApp extends JMenuBar {
         
         Arrays.asList(itemsRegistro).forEach(el -> {
             el.setFont(helpers.Typography.componentsFont());
+            el.addActionListener(this);
             registrar.add(el);
         });
         
         Arrays.asList(itemsConsulta).forEach(el -> {
             el.setFont(helpers.Typography.componentsFont());
+            el.addActionListener(this);
             consultar.add(el);
         });
+        
+        cuenta.setFont(helpers.Typography.componentsFont());
+        cuenta.setForeground(Color.white);
+        cuenta.setIcon(IconFontSwing.buildIcon(FontAwesome.WRENCH, 16, Color.white));
+        cuenta.addMenuListener(new MenuListener() {
+            @Override
+            public void menuSelected(MenuEvent e) {
+                JFrame jFrame = (JFrame) getTopLevelAncestor();
+                new PanelControl().setVisible(true);
+                jFrame.dispose();
+            }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {}
+
+            @Override
+            public void menuCanceled(MenuEvent e) {}
+        });
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JMenuItem item = (JMenuItem)e.getSource();
+        JFrame jFrame = (JFrame) getTopLevelAncestor();
+        
+        if (item == null) {
+            return;
+        }
+                
+        if (item == regProfesor) {
+            RegistrarProfesorController rc = new RegistrarProfesorController(new RegistrarProfesor());
+            rc.registrarProfesor().setVisible(true);
+            jFrame.dispose();
+        } else if (item == cnsProfesor) {
+            new ConsultarProfesor().setVisible(true);
+            jFrame.dispose();
+        }
+        
     }
     
 }

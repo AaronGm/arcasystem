@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import models.Usuario;
-import views.RegistrarProyecto;
 import views.LoginView;
+import views.PanelControl;
 import views.admin.Admin;
 
 /**
@@ -54,7 +54,7 @@ public class LoginController {
                         new Admin().setVisible(true);
                     } else {
                         view.dispose();
-                        new RegistrarProyecto().setVisible(true);
+                        new PanelControl().setVisible(true);
                     }
                 }
             });

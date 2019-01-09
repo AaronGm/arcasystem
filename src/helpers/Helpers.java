@@ -50,6 +50,10 @@ public class Helpers {
      */
     public final static Dimension MINIMO_PANTALLA = new Dimension(PANTALLA.width - 260, PANTALLA.height - 80);
     
+    /**
+     * Dimension para las vistas
+     */
+    public final static Dimension SIZE_PANTALLA = new Dimension(PANTALLA.width - 20, PANTALLA.height);
     
     /**
      * Función para hacer un margen interno en los componentes
@@ -149,6 +153,7 @@ public class Helpers {
         ImageIcon icon = new ImageIcon(IMAGES_PATH + "logo-itiz16.png");
         frame.setIconImage(icon.getImage());
         frame.setMinimumSize(MINIMO_PANTALLA);
+        frame.setSize(PANTALLA);
     }
     
     public static void centerCloseScreen(JFrame frame) {

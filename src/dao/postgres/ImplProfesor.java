@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import models.Persona;
 import models.Profesor;
 
@@ -53,6 +54,8 @@ public class ImplProfesor implements ProfesorDAO {
                 if (resultados.next()) {
                     profesor.setProfesorId(resultados.getInt(Profesor.PROFESOR_ID));
                 }
+            } else {
+                JOptionPane.showConfirmDialog(null, "Error");
             }
         } catch (SQLException e) {
             throw new ExcepcionGeneral(e.getMessage());

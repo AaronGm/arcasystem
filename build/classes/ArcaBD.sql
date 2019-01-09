@@ -12,7 +12,7 @@ DROP TYPE estado_proyecto CASCADE;
 CREATE TYPE estado_proyecto AS ENUM('----', 'Aceptado', 'Rechazado');
 
 DROP TYPE estado_profesor CASCADE;
-CREATE TYPE estado_profesor AS ENUM('Tiempo Completo', 'Clave 10', 'Clave 20', 'Clave 95', 'Por Horario', 'Por asignaturas');
+CREATE TYPE estado_profesor AS ENUM('Tiempo Completo', 'Clave 10', 'Clave 20', 'Clave 95', 'Por Horario', 'Por Asignatura');
 
 
 DROP TABLE IF EXISTS usuarios;

@@ -12,6 +12,9 @@ import java.awt.Color;
  * @author aarongmx
  */
 public interface Colors {
+    Color WORD = new Color(0x3a00a3);
+    Color EXCEL = new Color(0x008934);
+    Color POWER_POINT = new Color(0xe93c00);
     Color BLUE = new Color(0x233d7b);
     Color BLUE_MEDIUM = new Color(0x2f53a7);
     Color BLUE_LIGHT = new Color(0x3f6bd5);

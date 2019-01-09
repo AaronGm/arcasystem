@@ -6,7 +6,6 @@
 package views;
 
 import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JDateChooser;
 import helpers.Colors;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -17,8 +16,6 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.util.Arrays;
-import java.util.Date;
 import org.knowm.xchart.XYChart;
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
@@ -31,7 +28,9 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
+import views.components.FlatButton;
 import views.components.FlatLabel;
+import views.components.MenuApp;
 
 /**
  *
@@ -62,8 +61,9 @@ public class PanelControl extends JFrame {
     }
 
     private void initView() {
-        setMinimumSize(helpers.Helpers.MINIMO_PANTALLA);
+        helpers.Helpers.minScreenSize(this);
         getContentPane().setBackground(Color.white);
+        setJMenuBar(new MenuApp());
         initComponents();
         getContentPane().add(BorderLayout.CENTER, pnlMain);
         getContentPane().add(BorderLayout.WEST, pnlMenu);
@@ -109,6 +109,15 @@ public class PanelControl extends JFrame {
         pnlCenter.add(pnlCalendar, CALENDAR);
         pnlCenter.add(pnlEstadistics, ESTADISTICS);
         pnlCenter.add(pnlForm);
+        
+        FlatButton lbWord = new FlatButton("Asignación de asesor", IconFontSwing.buildIcon(FontAwesome.FILE_WORD_O, 24, Colors.WORD));
+        lbWord.styleGhost();
+        
+        FlatButton lbExcel = new FlatButton("Publicación de anteproyectos", IconFontSwing.buildIcon(FontAwesome.FILE_EXCEL_O, 24, Colors.EXCEL));
+        lbExcel.styleGhost();
+        
+        pnlEstadistics.add(lbWord);
+        pnlEstadistics.add(lbExcel);
         
         pnlMain.add(BorderLayout.CENTER, pnlCenter);
         helpers.Helpers.setWhite(pnlCalendar, pnlEstadistics, pnlForm);

@@ -9,16 +9,8 @@ import dao.postgres.ImplProfesor;
 import helpers.Colors;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.beans.PropertyChangeListener;
-import javax.swing.Action;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -121,16 +113,17 @@ public class ConsultarProfesor extends JFrame {
             "Especialidad", 
             "",
             ""
-        }, 20);
+        }, 0);
         
         JScrollPane scroll = new JScrollPane(tabla);
         scroll.setVerticalScrollBar(new FlatScrollBar());
         
         ImplProfesor implProf = new ImplProfesor();
         
-        FlatButton btnEditar = new FlatButton(IconFontSwing.buildIcon(FontAwesome.PENCIL_SQUARE, 16, Color.white));
+        btnEditar = new FlatButton(IconFontSwing.buildIcon(FontAwesome.PENCIL_SQUARE, 16, Color.white));
         btnEditar.setName("update");
-        FlatButton btnEliminar = new FlatButton(IconFontSwing.buildIcon(FontAwesome.TRASH, 16, Color.white));
+        
+        btnEliminar = new FlatButton(IconFontSwing.buildIcon(FontAwesome.TRASH, 16, Color.white));
         btnEliminar.setName("delete");
         btnEliminar.setBackground(Colors.RED);
         

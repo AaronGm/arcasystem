@@ -8,8 +8,14 @@ package arcasystem;
 import controllers.LoginController;
 import controllers.RegistrarProfesorController;
 import java.awt.EventQueue;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Profesor;
 import views.*;
 
@@ -27,18 +33,18 @@ public class ArcaSystem {
         run = () -> {
             System.setProperty("awt.useSystemAAFontSettings","on");
             System.setProperty("swing.aatext", "true");
-//            boolean isAlive = false;
-//            SocketAddress address = new InetSocketAddress("localhost", 5432);
-//            Socket socket = new Socket();
-//            try {
-//                socket.connect(address, 2000);
-//                socket.close();
-//                isAlive = true;
-//            } catch (IOException ex) {
-//                Logger.getLogger(ArcaSystem.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            LoginController loginController = new LoginController(new LoginView());
-//            loginController.login().setVisible(true);
+            boolean isAlive = false;
+            SocketAddress address = new InetSocketAddress("localhost", 5432);
+            Socket socket = new Socket();
+            try {
+                socket.connect(address, 2000);
+                socket.close();
+                isAlive = true;
+                LoginController loginController = new LoginController(new LoginView());
+                loginController.login().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(ArcaSystem.class.getName()).log(Level.SEVERE, null, ex);
+            }
 //            new PanelControl().setVisible(true);
 //            new RegistrarEmpresa().setVisible(true);
 //            new RegistrarProyecto().setVisible(true);
@@ -47,11 +53,11 @@ public class ArcaSystem {
 //            new InicioUsuario().setVisible(true);
 //            RegistrarProfesorController regProfController = new RegistrarProfesorController(new RegistrarProfesor());
 //            regProfController.registrarProfesor().setVisible(true);
-            Date d = new Date();
-
-            Profesor prof = new Profesor(1, "090", d,"Ingeniería", "Clave 20", "#web", "Juan", "Torres", "Quintero");
-//            new EditarProfesor(prof).setVisible(true);
-            new ConsultarProfesor().setVisible(true);
+//            Date d = new Date();
+//
+//            Profesor prof = new Profesor(1, "090", d,"Ingeniería", "Clave 20", "#web", "Juan", "Torres", "Quintero");
+////            new EditarProfesor(prof).setVisible(true);
+//            new ConsultarProfesor().setVisible(true);
             
         };
         EventQueue.invokeLater(run);

@@ -61,11 +61,17 @@ public class FlatButton extends JButton {
         IconFontSwing.register(FontAwesome.getIconFont());
         setBackground(Colors.BLUE_LIGHT);
         setForeground(Color.white);
+        setFont(helpers.Typography.componentsFont());
         setBorder(
             new CompoundBorder(helpers.Helpers.padding(0),
             helpers.Helpers.padding(8, 16))
         );
         setFocusPainted(false);
+    }
+    
+    public void styleGhost() {
+        setBackground(Color.white);
+        setForeground(Colors.BLACK_MEDIUM);
     }
     
 }

@@ -34,7 +34,7 @@ public class RegistrarProfesorController {
             String gradoEstudios = view.getCmbGradoEstudio().getSelectedItem().toString();
             String areaEspecialidad = view.getTxfEspecialidad().getText();
             Profesor profesor = new Profesor(noContrato, fechaIngreso, gradoEstudios, estatusProfesor, areaEspecialidad, nombre, apellidoPaterno, apellidoMaterno);
-            System.out.println(profesor.toString());
+            
             implProfesor.insertar(profesor);
         });
         
