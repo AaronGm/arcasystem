@@ -40,8 +40,9 @@ public class ArcaSystem {
                 socket.connect(address, 2000);
                 socket.close();
                 isAlive = true;
-                LoginController loginController = new LoginController(new LoginView());
-                loginController.login().setVisible(true);
+//                LoginController loginController = new LoginController(new LoginView());
+//                loginController.login().setVisible(true);
+                new SplashScreen().setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(ArcaSystem.class.getName()).log(Level.SEVERE, null, ex);
             }

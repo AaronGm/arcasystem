@@ -93,6 +93,8 @@ public class ImplUsuario implements UsuarioDAO {
             }
         } catch ( SQLException ex ) {
             throw new ExcepcionGeneral(ex.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(conexion, sentencia, resultados);
         }
     }
 
@@ -130,6 +132,8 @@ public class ImplUsuario implements UsuarioDAO {
             }
         } catch ( SQLException ex ) {
             throw new ExcepcionGeneral(ex.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(conexion, sentencia, resultados);
         }
         
         return usuario;

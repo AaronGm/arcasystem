@@ -7,6 +7,8 @@ package views.components;
 
 import helpers.Colors;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Graphics;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -20,6 +22,8 @@ import jiconfont.swing.IconFontSwing;
  * @author aarongmx
  */
 public class FlatButton extends JButton {
+    
+    private Color pressedColor;
 
     public FlatButton() {
         initComponent();
@@ -48,6 +52,7 @@ public class FlatButton extends JButton {
 
     public FlatButton(String text, Icon icon) {
         super(text.toUpperCase(), icon);
+        super.setContentAreaFilled(false);
         initComponent();
     }
     
@@ -67,11 +72,37 @@ public class FlatButton extends JButton {
             helpers.Helpers.padding(8, 16))
         );
         setFocusPainted(false);
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
     
     public void styleGhost() {
         setBackground(Color.white);
         setForeground(Colors.BLACK_MEDIUM);
+        setPressedColor(Colors.GHOST);
+    }
+
+    public Color getPressedColor() {
+        return pressedColor;
+    }
+
+    public void setPressedColor(Color pressedColor) {
+        this.pressedColor = pressedColor;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        if (getModel().isPressed()) {
+            g.setColor(getPressedColor());
+        } else {
+            g.setColor(getBackground());
+        }
+                
+        g.fillRect(0, 0, getWidth(), getHeight());
+        super.paintComponent(g);
+    }
+
+    @Override
+    public void setContentAreaFilled(boolean b) {
     }
     
 }
