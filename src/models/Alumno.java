@@ -13,18 +13,20 @@ public class Alumno extends Persona {
     private String noControl;
     private int semestre;
     private String periodo;
-    private String clave_carrera;
+    private String claveCarrera;
     private int proyectoId;
     private int empresaId;
     private int asesorExternoId;
     private int asesorInternoId;
 
-    public Alumno( String noControl, int semestre, String periodo, String clave_carrera, int proyectoId, int empresaId, int asesorExternoId, int asesorInternoId, String nombres, String apellidoPaterno, String apellidoMaterno ) {
+    private AsesorInterno asesorInterno;
+
+    public Alumno(String noControl, int semestre, String periodo, String claveCarrera, int proyectoId, int empresaId, int asesorExternoId, int asesorInternoId, String nombres, String apellidoPaterno, String apellidoMaterno ) {
         super(nombres, apellidoPaterno, apellidoMaterno);
         this.noControl = noControl;
         this.semestre = semestre;
         this.periodo = periodo;
-        this.clave_carrera = clave_carrera;
+        this.claveCarrera = claveCarrera;
         this.proyectoId = proyectoId;
         this.empresaId = empresaId;
         this.asesorExternoId = asesorExternoId;
@@ -55,12 +57,12 @@ public class Alumno extends Persona {
         this.periodo = periodo;
     }
 
-    public String getClave_carrera() {
-        return clave_carrera;
+    public String getClaveCarrera() {
+        return claveCarrera;
     }
 
-    public void setClave_carrera( String clave_carrera ) {
-        this.clave_carrera = clave_carrera;
+    public void setClaveCarrera(String claveCarrera) {
+        this.claveCarrera = claveCarrera;
     }
 
     public int getProyectoId() {
@@ -94,5 +96,14 @@ public class Alumno extends Persona {
     public void setAsesorInternoId( int asesorInternoId ) {
         this.asesorInternoId = asesorInternoId;
     }
-        
+
+    public AsesorInterno getAsesorInterno() {
+        return asesorInterno;
+    }
+
+    public void setAsesorInterno(AsesorInterno asesorInterno) {
+        this.asesorInterno = asesorInterno;
+    }
+
+
 }

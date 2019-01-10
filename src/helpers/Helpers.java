@@ -5,20 +5,22 @@
  */
 package helpers;
 
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -54,14 +56,32 @@ public class Helpers {
      * Dimension para las vistas
      */
     public final static Dimension SIZE_PANTALLA = new Dimension(PANTALLA.width - 20, PANTALLA.height);
-    
+
+    /**
+     * Retorna un nuevo inset
+     * @param padding
+     * @return
+     */
+    public static Insets paddingInset(int padding) {
+        return new Insets(padding, padding, padding, padding);
+    }
+
+    public static Insets paddingInset(int top, int right, int bottom, int left) {
+        return new Insets(top, left, bottom, right);
+    }
+
+    public static Insets paddingInset(int topBottom, int leftRight) {
+        return new Insets(topBottom, leftRight, topBottom, leftRight);
+    }
+
+
     /**
      * Función para hacer un margen interno en los componentes
      * @param padding
      * @return 
      */
     public static Border padding(int padding) {
-        return new EmptyBorder(padding, padding, padding, padding);
+        return new EmptyBorder(paddingInset(padding));
     }
     
     /**
@@ -73,7 +93,7 @@ public class Helpers {
      * @return 
      */
     public static Border padding(int top, int right, int bottom, int left) {
-        return new EmptyBorder(top, left, bottom, right);
+        return new EmptyBorder(paddingInset(top, right, bottom, left));
     }
     
     /**
@@ -83,7 +103,7 @@ public class Helpers {
      * @return 
      */
     public static Border padding(int topBottom, int leftRight) {
-        return new EmptyBorder(topBottom, leftRight, topBottom, leftRight);
+        return new EmptyBorder(paddingInset(topBottom, leftRight));
     }
     
     /**
@@ -150,7 +170,7 @@ public class Helpers {
     }
     
     public static void minScreenSize(JFrame frame) {
-        ImageIcon icon = new ImageIcon(IMAGES_PATH + "logo-itiz16.png");
+        ImageIcon icon = new ImageIcon(IMAGES_PATH + "logo-itiz64.png");
         frame.setIconImage(icon.getImage());
         frame.setMinimumSize(MINIMO_PANTALLA);
         frame.setSize(PANTALLA);
@@ -175,6 +195,12 @@ public class Helpers {
             }
         }
         return periodos;
+    }
+
+    public static void cleanFields(JTextField... fields) {
+        Arrays.asList(fields).forEach(field -> {
+            field.setText("");
+        });
     }
     
     /**

@@ -7,16 +7,6 @@ package views;
 
 import dao.postgres.ImplProfesor;
 import helpers.Colors;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.HeadlessException;
-import java.awt.event.MouseAdapter;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import views.components.FlatButton;
@@ -27,6 +17,20 @@ import views.components.FlatTextField;
 import views.components.HeaderApp;
 import views.components.MenuApp;
 import views.components.table.FlatTableModel;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
 
 /**
  *
@@ -103,6 +107,7 @@ public class ConsultarProfesor extends JFrame {
         pnlTabla.setLayout(new BorderLayout());
         pnlTabla.setBorder(helpers.Helpers.padding(32, 16));
         model = new FlatTableModel(new String[] {
+            "",
             "No. Trabajador", 
             "Nombre", 
             "Apellido Paterno", 
@@ -128,7 +133,8 @@ public class ConsultarProfesor extends JFrame {
         btnEliminar.setBackground(Colors.RED);
         
         implProf.listar().forEach(el -> {
-            model.addRow(new Object[] {
+            model.addRow(new Object[]{
+                el.getProfesorId(),
                 el.getNoContrato(),
                 el.getNombres(),
                 el.getApellidoPaterno(),
@@ -139,12 +145,13 @@ public class ConsultarProfesor extends JFrame {
                 el.getAreaEspecialidad(),
                 btnEditar,
                 btnEliminar,
-                el.getProfesorId()
             });
         });
         scroll.setBorder(new EmptyBorder(0, 0, 0, 0));
-        
         tabla.setModel(model);
+        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tabla.hiddeId();
+        
         tabla.getColumnModel().getColumn(8).setPreferredWidth(10);
         tabla.getColumnModel().getColumn(9).setPreferredWidth(10);
         
@@ -154,7 +161,29 @@ public class ConsultarProfesor extends JFrame {
                 FlatTable.clickButtons(tabla, evt);
             }
         });
+        
+        TableRowSorter sorter = new TableRowSorter<>(tabla.getModel());
+        tabla.setRowSorter(sorter);
+        
+        btnBuscar.addActionListener((ActionEvent l) -> {
+            String text = txfBuscar.getText();
+            if (text.trim().length() == 0) {
+                sorter.setRowFilter(null);
+            } else {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+            }
+        });
+       
         pnlTabla.add(BorderLayout.CENTER, scroll);
     }
-
+    
+    private void filter() {
+        String text = txfBuscar.getText();
+        if (text.trim().length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+        }
+    }
+    
 }

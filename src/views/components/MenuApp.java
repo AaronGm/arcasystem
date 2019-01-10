@@ -5,13 +5,19 @@
  */
 package views.components;
 
-import controllers.RegistrarProfesorController;
+import controllers.ProfesorController;
 import helpers.Colors;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
+import helpers.Helpers;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
+import views.ConsultarProfesor;
+import views.PanelControl;
+import views.RegistrarEmpresa;
+import views.RegistrarExpediente;
+import views.RegistrarProfesor;
+import views.RegistrarProyecto;
+import views.RegistrarResidente;
+
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -21,12 +27,11 @@ import javax.swing.JMenuItem;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
-import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
-import views.ConsultarProfesor;
-import views.InicioUsuario;
-import views.PanelControl;
-import views.RegistrarProfesor;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 /**
  *
@@ -47,6 +52,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
     private JMenuItem regProyecto;
     private JMenuItem regAsesorInterno;
     private JMenuItem regAsesorExterno;
+    private JMenuItem regExpediente;
     
     private JMenuItem cnsProfesor;
     private JMenuItem cnsEmpresa;
@@ -54,6 +60,10 @@ public class MenuApp extends JMenuBar implements ActionListener {
     private JMenuItem cnsProyecto;
     private JMenuItem cnsAsesorInterno;
     private JMenuItem cnsAsesorExterno;
+    private JMenuItem cnsExpediente;
+
+    JMenuItem itemsConsulta[];
+    JMenuItem itemsRegistro[];
     
     public MenuApp() {
         initView();
@@ -87,6 +97,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
         regProyecto = new JMenuItem("Proyecto");
         regAsesorInterno = new JMenuItem("Asesor Interno");
         regAsesorExterno = new JMenuItem("Asesor Externo");
+        regExpediente = new JMenuItem("Expediente");
         
         cnsProfesor = new JMenuItem("Profesores");
         cnsEmpresa = new JMenuItem("Empresas");
@@ -94,6 +105,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
         cnsResidente = new JMenuItem("Residentes");
         cnsAsesorInterno = new JMenuItem("Asesores Internos");
         cnsAsesorExterno = new JMenuItem("Asesores Externos");
+        cnsExpediente = new JMenuItem("Expediente");
         
         initRegistrar();
     }
@@ -106,27 +118,29 @@ public class MenuApp extends JMenuBar implements ActionListener {
             estadisticas
         };
         
-        JMenuItem itemsConsulta[] = {
+         itemsConsulta = new JMenuItem[]{
             cnsProfesor,
             cnsProyecto,
             cnsEmpresa,
             cnsAsesorExterno,
             cnsResidente,
-            cnsAsesorInterno
+            cnsAsesorInterno,
+            cnsExpediente
         };
         
-        JMenuItem itemsRegistro[] = { 
+        itemsRegistro = new JMenuItem[] {
             regProfesor,
             regProyecto, 
             regEmpresa, 
             regAsesorExterno, 
             regResidente, 
-            regAsesorInterno 
+            regAsesorInterno,
+            regExpediente
         };
         
         Arrays.asList(menus).forEach(el -> {
             el.setForeground(Color.white);
-            el.setBorder(new EmptyBorder(0, 0, 0, 0));
+            el.setBorder(new EmptyBorder(Helpers.paddingInset(0)));
             el.setFont(helpers.Typography.componentsFont());
         });
         
@@ -149,8 +163,10 @@ public class MenuApp extends JMenuBar implements ActionListener {
             @Override
             public void menuSelected(MenuEvent e) {
                 JFrame jFrame = (JFrame) getTopLevelAncestor();
-                new PanelControl().setVisible(true);
-                jFrame.dispose();
+                if (!(jFrame instanceof PanelControl)) {
+                    new PanelControl().setVisible(true);
+                    jFrame.dispose();
+                }
             }
 
             @Override
@@ -169,16 +185,46 @@ public class MenuApp extends JMenuBar implements ActionListener {
         if (item == null) {
             return;
         }
+
+
                 
         if (item == regProfesor) {
-            RegistrarProfesorController rc = new RegistrarProfesorController(new RegistrarProfesor());
-            rc.registrarProfesor().setVisible(true);
-            jFrame.dispose();
-        } else if (item == cnsProfesor) {
-            new ConsultarProfesor().setVisible(true);
-            jFrame.dispose();
+            if (!(jFrame instanceof RegistrarProfesor)) {
+                ProfesorController rc = new ProfesorController(new RegistrarProfesor());
+                rc.registrarProfesor().setVisible(true);
+                jFrame.dispose();
+            }
+        } else if (item == regProyecto) {
+            if (!(jFrame instanceof RegistrarProyecto)) {
+                new RegistrarProyecto().setVisible(true);
+                jFrame.dispose();
+            }
+        } else if (item == regEmpresa) {
+            if (!(jFrame instanceof RegistrarEmpresa)) {
+                new RegistrarEmpresa().setVisible(true);
+                jFrame.dispose();
+            }
+        } else if (item == regResidente) {
+            if (!(jFrame instanceof RegistrarResidente)) {
+                new RegistrarResidente().setVisible(true);
+                jFrame.dispose();
+            }
+        } else if (item == regExpediente) {
+            if (!(jFrame instanceof RegistrarExpediente)) {
+                new RegistrarExpediente().setVisible(true);
+                jFrame.dispose();
+            }
+        }
+        
+        if (item == cnsProfesor) {
+            if (!(jFrame instanceof ConsultarProfesor)) {
+                ConsultarProfesor cp = new ConsultarProfesor();
+                cp.setVisible(true);
+                jFrame.dispose();
+            }
         }
         
     }
+
     
 }

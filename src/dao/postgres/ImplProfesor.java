@@ -16,7 +16,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import models.Persona;
 import models.Profesor;
 
@@ -32,9 +31,10 @@ public class ImplProfesor implements ProfesorDAO {
     
     private final String INSERTAR = "INSERT INTO profesores(no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad) VALUES (?, ?, ?, ?, ?, ?::grado_estudios, ?::estado_profesor, ?);";
     private final String LISTAR = "SELECT profesor_id, no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad FROM profesores;";
+    private final String PORID = "SELECT profesor_id, no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad FROM profesores WHERE profesor_id = ?;";
 
     @Override
-    public void insertar(Profesor profesor) {
+    public void insertar(Profesor profesor) throws ExcepcionGeneral {
         conexion = new ConnectionDB().getConnection();
         try {
             sentencia = conexion.prepareStatement(INSERTAR, Statement.RETURN_GENERATED_KEYS);
@@ -54,8 +54,6 @@ public class ImplProfesor implements ProfesorDAO {
                 if (resultados.next()) {
                     profesor.setProfesorId(resultados.getInt(Profesor.PROFESOR_ID));
                 }
-            } else {
-                JOptionPane.showConfirmDialog(null, "Error");
             }
         } catch (SQLException e) {
             throw new ExcepcionGeneral(e.getMessage());
@@ -76,7 +74,32 @@ public class ImplProfesor implements ProfesorDAO {
 
     @Override
     public Profesor obtenerPorId(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        conexion = new ConnectionDB().getConnection();
+        Profesor profesor = null;
+        try {
+            sentencia = conexion.prepareStatement(PORID);
+            sentencia.setInt(1, key);
+            resultados = sentencia.executeQuery();
+            if (resultados.first()) {
+                
+                profesor = new Profesor(
+                    resultados.getInt(Profesor.PROFESOR_ID),
+                    resultados.getString(Profesor.NO_TRABAJADOR),
+                    resultados.getDate(Profesor.FECHA_INGRESO),
+                    resultados.getString(Profesor.GRADO_ESTUDIOS),
+                    resultados.getString(Profesor.ESTATUS_PROFESOR),
+                    resultados.getString(Profesor.AREA_ESPECIALIDAD),
+                    resultados.getString(Persona.NOMBRES),
+                    resultados.getString(Persona.APELLIDO_PATERNO),
+                    resultados.getString(Persona.APELLIDO_MATERNO)
+                );
+            }
+        } catch (SQLException e) {
+            throw new ExcepcionGeneral(e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(conexion, sentencia, resultados);
+        }
+        return profesor;
     }
 
     @Override

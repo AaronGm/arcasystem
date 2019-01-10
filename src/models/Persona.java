@@ -52,5 +52,9 @@ public class Persona {
     public void setApellidoMaterno( String apellidoMaterno ) {
         this.apellidoMaterno = apellidoMaterno;
     }
+
+    public String getNombreCompleto() {
+        return this.nombres + " " + this.apellidoPaterno + " " + this.apellidoMaterno;
+    }
         
 }

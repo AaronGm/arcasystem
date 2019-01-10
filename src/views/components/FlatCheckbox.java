@@ -6,6 +6,7 @@
 package views.components;
 
 import helpers.Colors;
+import java.awt.Color;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
@@ -59,6 +60,7 @@ public class FlatCheckbox extends JCheckBox {
 
     private void initComponent() {
         IconFontSwing.register(FontAwesome.getIconFont());
+        setBackground(Color.white);
         setFont(helpers.Typography.componentsFont());
         setBorderPainted(false);
         setIcon(IconFontSwing.buildIcon(FontAwesome.SQUARE, 18, Colors.GHOST_MEDIUM));

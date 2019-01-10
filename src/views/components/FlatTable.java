@@ -7,6 +7,7 @@ package views.components;
 
 import helpers.Colors;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -56,6 +57,9 @@ public class FlatTable extends JTable {
         setGridColor(Colors.BLACK_LIGHT);
         setRowHeight(24);
         setShowGrid(false);
+        setShowHorizontalLines(false);
+        setShowVerticalLines(false);
+        setIntercellSpacing(new Dimension(0,0));
         setDefaultRenderer(Object.class, new FlatButtonRenderTable());
         getTableHeader().setDefaultRenderer(new HeaderRenderFlatTable());
         setFillsViewportHeight(true);
@@ -71,15 +75,25 @@ public class FlatTable extends JTable {
             if (value instanceof JButton) {
                 ((JButton) value).doClick();
                 JButton btn = (JButton) value;
-                if (btn.getName() == "update") {
-                    System.out.println("Actuualizar");
+                if ("update".equals(btn.getName())) {
+                    System.out.println("Actualizar");
                     System.out.println(table.getModel().getValueAt(row, 0));
                 }
                 
-                if (btn.getName() == "delete") {
+                if ("delete".equals(btn.getName())) {
                     System.out.println("Eliminar");
+                    System.out.println(table.getModel().getValueAt(row, 0));
                 }
             }
         }
     }
+    
+    public void hiddeId() {
+        removeColumn(getColumnModel().getColumn(0));
+    }
+    
+    public void hiddeId(int column) {
+        removeColumn(getColumnModel().getColumn(column));
+    }
+    
 }

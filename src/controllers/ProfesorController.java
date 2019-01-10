@@ -8,6 +8,10 @@ package controllers;
 import dao.postgres.ImplProfesor;
 import java.util.Date;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import excepciones.ExcepcionGeneral;
+import helpers.Helpers;
 import models.Profesor;
 import views.RegistrarProfesor;
 
@@ -15,10 +19,10 @@ import views.RegistrarProfesor;
  *
  * @author aarongmx
  */
-public class RegistrarProfesorController {
+public class ProfesorController {
     private final RegistrarProfesor view;
 
-    public RegistrarProfesorController(RegistrarProfesor view) {
+    public ProfesorController(RegistrarProfesor view) {
         this.view = view;
     }
 
@@ -34,8 +38,16 @@ public class RegistrarProfesorController {
             String gradoEstudios = view.getCmbGradoEstudio().getSelectedItem().toString();
             String areaEspecialidad = view.getTxfEspecialidad().getText();
             Profesor profesor = new Profesor(noContrato, fechaIngreso, gradoEstudios, estatusProfesor, areaEspecialidad, nombre, apellidoPaterno, apellidoMaterno);
-            
-            implProfesor.insertar(profesor);
+
+            try {
+                implProfesor.insertar(profesor);
+                Helpers.cleanFields(view.getTxfNombre(), view.getTxfNoContrato(), view.getTxfApellidoPaterno(),
+                        view.getTxfApellidoMaterno(), view.getTxfEspecialidad());
+                JOptionPane.showConfirmDialog(null, "Profesor registrado correctamente!", "Profesor Registrado", 0,
+                        JOptionPane.INFORMATION_MESSAGE);
+            } catch (ExcepcionGeneral e) {
+                System.out.println(e.getCause());
+            }
         });
         
         return view;

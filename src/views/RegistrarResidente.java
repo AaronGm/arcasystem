@@ -5,20 +5,26 @@
  */
 package views;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.HeadlessException;
-import javax.swing.JFrame;
+
+import views.components.FlatButton;
 import views.components.FlatComboBox;
 import views.components.FlatTextField;
 import views.components.HeaderApp;
 import views.components.MenuApp;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.HeadlessException;
+
 
 /**
  *
  * @author aarongmx
  */
 public class RegistrarResidente extends JFrame {
+
+    private JPanel pnlForm;
     
     private FlatTextField nombre;
     private FlatTextField noControl;
@@ -29,6 +35,8 @@ public class RegistrarResidente extends JFrame {
     private FlatTextField telefono;
     
     private FlatComboBox carrera;
+    
+    private FlatButton btnRegistrar;
 
     public RegistrarResidente() throws HeadlessException {
         super("Registrar Residente | " + config.Configuration.APP_NAME);
@@ -36,13 +44,11 @@ public class RegistrarResidente extends JFrame {
     }
 
     private void initView() {
-        setJMenuBar(new MenuApp());
-        setMinimumSize(helpers.Helpers.MINIMO_PANTALLA);
+        helpers.Helpers.minScreenSize(this);
         initComponents();
-        getContentPane().setBackground(Color.white);
+        setJMenuBar(new MenuApp());
         getContentPane().add(BorderLayout.NORTH, new HeaderApp("Registrar Residente"));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        helpers.Helpers.centerCloseScreen(this);
     }
     
     private void initComponents() {
@@ -55,6 +61,8 @@ public class RegistrarResidente extends JFrame {
         telefono = new FlatTextField();
         
         carrera = new FlatComboBox();
+        
+        btnRegistrar = new FlatButton("Registrar");
     }
     
     private void initForm() {

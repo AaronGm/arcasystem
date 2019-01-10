@@ -6,12 +6,17 @@
 package views.components;
 
 import helpers.Colors;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.text.Format;
+import helpers.Helpers;
+
 import javax.swing.JFormattedTextField;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.text.Format;
 
 /**
  *
@@ -49,17 +54,29 @@ public class FlatTextField extends JFormattedTextField {
     }
     
     private void initComponent() {
+        Border defaultBorder = new CompoundBorder(
+                new MatteBorder(Helpers.paddingInset(1), Colors.GHOST_MEDIUM),
+                helpers.Helpers.padding(0, 8)
+        );
         setPreferredSize(new Dimension(330, 30));
         setFont(helpers.Typography.addFont("Open Sans", "pr"));
         setForeground(Colors.BLACK);
         setSelectionColor(Colors.BLUE_LIGHT);
         setSelectedTextColor(Color.white);
-        setBorder(
-            new CompoundBorder(
-                new MatteBorder(1, 1, 1, 1, Colors.GHOST_MEDIUM), 
-                helpers.Helpers.padding(0, 8)
-            )
-        );
+        setBorder(defaultBorder);
+        addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                setBorder(new CompoundBorder(
+                        new MatteBorder(Helpers.paddingInset(2), Colors.BLUE_LIGHT),
+                        helpers.Helpers.padding(0, 8)
+                ));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                setBorder(defaultBorder);
+            }
+        });
     }
-    
 }

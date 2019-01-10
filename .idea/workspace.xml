@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="73f74095-2550-46fe-82ff-9c45eb11b823" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/build/classes/arcasystem/ArcaSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/arcasystem/ArcaSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/RegistrarProfesorController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dao/postgres/ImplProfesor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dao/postgres/ImplProfesor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/helpers/Helpers.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/helpers/Helpers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/ConsultarProfesor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/ConsultarProfesor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/RegistrarEmpresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/RegistrarEmpresa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/RegistrarExpediente.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/RegistrarExpediente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/RegistrarProyecto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/RegistrarProyecto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/RegistrarResidente.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/RegistrarResidente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/SplashScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/SplashScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/components/FlatButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/components/FlatButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/components/FlatCheckbox.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/components/FlatCheckbox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/components/FlatTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/components/FlatTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/views/components/MenuApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/views/components/MenuApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ArcaBD.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArcaBD.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arcasystem/ArcaSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arcasystem/ArcaSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/RegistrarProfesorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ProfesorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/postgres/ImplProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/postgres/ImplProfesor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/Helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Alumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Alumno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/ConsultarProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ConsultarProfesor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RegistrarEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RegistrarEmpresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RegistrarExpediente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RegistrarExpediente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RegistrarProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RegistrarProyecto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RegistrarResidente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RegistrarResidente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/SplashScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/FlatButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/FlatButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/FlatCheckbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/FlatCheckbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/FlatTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/FlatTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/FlatTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/FlatTextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/MenuApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/MenuApp.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/arcasystem/ArcaSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/RegistrarExpediente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="123" column="12" selection-start-line="118" selection-start-column="8" selection-end-line="123" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/Alumno.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="98" selection-start-line="98" selection-end-line="98" />
+              <folding>
+                <element signature="e#2678#2679#0" expanded="true" />
+                <element signature="e#2714#2715#0" expanded="true" />
+                <element signature="e#2779#2780#0" expanded="true" />
+                <element signature="e#2829#2830#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helpers/Helpers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="201" column="27" selection-start-line="201" selection-start-column="27" selection-end-line="201" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>groupLayout</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/views/ConsultarProfesor.java" />
+        <option value="$PROJECT_DIR$/src/views/RegistrarResidente.java" />
+        <option value="$PROJECT_DIR$/src/views/RegistrarProyecto.java" />
+        <option value="$PROJECT_DIR$/src/views/components/FlatTextField.java" />
+        <option value="$PROJECT_DIR$/src/views/components/MenuApp.java" />
+        <option value="$PROJECT_DIR$/src/models/Persona.java" />
+        <option value="$PROJECT_DIR$/src/ArcaBD.sql" />
+        <option value="$PROJECT_DIR$/src/models/Alumno.java" />
+        <option value="$PROJECT_DIR$/src/dao/postgres/ImplProfesor.java" />
+        <option value="$PROJECT_DIR$/src/helpers/Helpers.java" />
+        <option value="$PROJECT_DIR$/src/controllers/ProfesorController.java" />
+        <option value="$PROJECT_DIR$/src/views/RegistrarExpediente.java" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="45" />
+    <option name="width" value="1346" />
+    <option name="height" value="703" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547145323487" />
+    <property name="last_opened_file_path" value="/usr/lib/postgresql/11/bin/psql" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="ArcaSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="arcasystem.ArcaSystem" />
+      <module name="ArcaSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="arcasystem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ArcaSystem" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="73f74095-2550-46fe-82ff-9c45eb11b823" name="Default Changelist" comment="" />
+      <created>1547091820283</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547091820283</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="28" width="1366" height="740" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25378788" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="DB Browser" order="7" weight="0.19090909" />
+      <window_info id="Project Explorer" order="8" weight="0.32954547" />
+      <window_info id="Job Explorer" order="9" weight="0.32954547" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" />
+      <window_info anchor="bottom" id="Terminal" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32733223" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32840723" />
+      <window_info anchor="bottom" id="DB Execution Console" order="10" weight="0.32840723" />
+      <window_info anchor="bottom" id="Console" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.15151516" />
+    </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml" />
+    <entry file="file://$PROJECT_DIR$/src/views/RegistrarResidente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="70" column="4" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/ConsultarProfesor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/RegistrarProyecto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/components/FlatTextField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="70" column="62" selection-start-line="70" selection-start-column="62" selection-end-line="70" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://76b8fe93-51b2-4e98-aa5f-7be2eef04123/objects/schemas/public/tables/alumnos" />
+    <entry file="db://76b8fe93-51b2-4e98-aa5f-7be2eef04123/objects/schemas/public/tables/carreras" />
+    <entry file="db://76b8fe93-51b2-4e98-aa5f-7be2eef04123/objects/schemas/public/tables/profesores" />
+    <entry file="file://$PROJECT_DIR$/src/models/Persona.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="56" column="86" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
+          <folding>
+            <element signature="e#1430#1431#0" expanded="true" />
+            <element signature="e#1522#1523#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArcaBD.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/RegistrarProfesor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2520">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/components/MenuApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2408">
+          <caret line="213" column="16" selection-start-line="213" selection-start-column="16" selection-end-line="213" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Alumno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+          <folding>
+            <element signature="e#2678#2679#0" expanded="true" />
+            <element signature="e#2714#2715#0" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2829#2830#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/Helpers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="201" column="27" selection-start-line="201" selection-start-column="27" selection-end-line="201" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/ProfesorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/postgres/ImplProfesor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/arcasystem/ArcaSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/RegistrarExpediente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="123" column="12" selection-start-line="118" selection-start-column="8" selection-end-line="123" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

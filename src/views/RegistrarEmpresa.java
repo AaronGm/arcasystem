@@ -21,6 +21,7 @@ import views.components.FlatComboBox;
 import views.components.FlatLabel;
 import views.components.FlatTextField;
 import views.components.HeaderApp;
+import views.components.MenuApp;
 
 /**
  *
@@ -59,14 +60,13 @@ public class RegistrarEmpresa extends JFrame {
     }
 
     private void initView() {
-        setMinimumSize(Helpers.MINIMO_PANTALLA);
-        getContentPane().setBackground(Color.white);
+        helpers.Helpers.minScreenSize(this);
         initComponents();
         initForm();
+        setJMenuBar(new MenuApp());
         getContentPane().add(BorderLayout.NORTH, new HeaderApp("Registrar Empresa"));
         getContentPane().add(BorderLayout.CENTER, scrollPane);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        helpers.Helpers.centerCloseScreen(this);
     }
     
     private void initComponents() {

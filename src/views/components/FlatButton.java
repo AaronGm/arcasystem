@@ -10,10 +10,13 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.border.CompoundBorder;
+import javax.swing.border.MatteBorder;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
@@ -68,11 +71,31 @@ public class FlatButton extends JButton {
         setForeground(Color.white);
         setFont(helpers.Typography.componentsFont());
         setBorder(
-            new CompoundBorder(helpers.Helpers.padding(0),
+            new CompoundBorder(helpers.Helpers.padding(2),
             helpers.Helpers.padding(8, 16))
         );
         setFocusPainted(false);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                setBorder(
+                    new CompoundBorder(
+                        new MatteBorder(2, 2, 2, 2, getBackground().brighter()),
+                        helpers.Helpers.padding(8, 16)
+                    )
+                );
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                setBorder(
+                    new CompoundBorder(helpers.Helpers.padding(2),
+                    helpers.Helpers.padding(8, 16))
+                );
+            }
+        });
     }
     
     public void styleGhost() {
@@ -82,7 +105,7 @@ public class FlatButton extends JButton {
     }
 
     public Color getPressedColor() {
-        return pressedColor;
+        return (pressedColor == null) ? getBackground().brighter() : pressedColor;
     }
 
     public void setPressedColor(Color pressedColor) {
@@ -104,5 +127,8 @@ public class FlatButton extends JButton {
     @Override
     public void setContentAreaFilled(boolean b) {
     }
+
+    
+    
     
 }

@@ -5,19 +5,15 @@
  */
 package arcasystem;
 
-import controllers.LoginController;
-import controllers.RegistrarProfesorController;
+import views.ConsultarProfesor;
+
 import java.awt.EventQueue;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.Profesor;
-import views.*;
 
 /**
  *
@@ -40,9 +36,10 @@ public class ArcaSystem {
                 socket.connect(address, 2000);
                 socket.close();
                 isAlive = true;
+                new ConsultarProfesor().setVisible(true);
 //                LoginController loginController = new LoginController(new LoginView());
 //                loginController.login().setVisible(true);
-                new SplashScreen().setVisible(true);
+//                new SplashScreen().setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(ArcaSystem.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -52,7 +49,7 @@ public class ArcaSystem {
 //            new RegistrarResidente().setVisible(true);
 //            new RegistrarExpediente().setVisible(true);
 //            new InicioUsuario().setVisible(true);
-//            RegistrarProfesorController regProfController = new RegistrarProfesorController(new RegistrarProfesor());
+//            ProfesorController regProfController = new ProfesorController(new RegistrarProfesor());
 //            regProfController.registrarProfesor().setVisible(true);
 //            Date d = new Date();
 //

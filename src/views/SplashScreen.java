@@ -68,7 +68,7 @@ public class SplashScreen extends JFrame {
         pnlCenter.setBorder(helpers.Helpers.padding(72, 16));
         pnlCenter.add(new FlatLabel("Instituto Tecnológico de Iztapalapa", "Raleway", "h1"));
         pnlCenter.add(helpers.Helpers.logoItiz(200));
-        pnlCenter.add(new FlatLabel("\"Por la ciencia, tecnología y educación en beneficio de la juventud.\"", "Raleway", "h3"));
+        pnlCenter.add(new FlatLabel("\"Por la ciencia, tecnológia y educación en beneficio de la juventud.\"", "Raleway", "h3"));
     }
     
     private void initBar() {
