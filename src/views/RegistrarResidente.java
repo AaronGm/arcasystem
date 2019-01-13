@@ -9,12 +9,8 @@ package views;
 import views.components.FlatButton;
 import views.components.FlatComboBox;
 import views.components.FlatTextField;
-import views.components.HeaderApp;
-import views.components.MenuApp;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 
 
@@ -22,7 +18,7 @@ import java.awt.HeadlessException;
  *
  * @author aarongmx
  */
-public class RegistrarResidente extends JFrame {
+public class RegistrarResidente extends View {
 
     private JPanel pnlForm;
     
@@ -40,18 +36,10 @@ public class RegistrarResidente extends JFrame {
 
     public RegistrarResidente() throws HeadlessException {
         super("Registrar Residente | " + config.Configuration.APP_NAME);
-        initView();
     }
 
-    private void initView() {
-        helpers.Helpers.minScreenSize(this);
-        initComponents();
-        setJMenuBar(new MenuApp());
-        getContentPane().add(BorderLayout.NORTH, new HeaderApp("Registrar Residente"));
-        helpers.Helpers.centerCloseScreen(this);
-    }
-    
-    private void initComponents() {
+    @Override
+    protected void initComponents() {
         nombre = new FlatTextField();
         noControl = new FlatTextField();
         domicilio = new FlatTextField();
@@ -63,10 +51,17 @@ public class RegistrarResidente extends JFrame {
         carrera = new FlatComboBox();
         
         btnRegistrar = new FlatButton("Registrar");
+
+        initForm();
     }
-    
+
+    @Override
+    protected void setComponents() {
+
+    }
+
     private void initForm() {
-        
+
     }
     
 }

@@ -5,13 +5,17 @@
  */
 package arcasystem;
 
+import models.Profesor;
 import views.ConsultarProfesor;
+import views.EditarProfesor;
+import views.PanelControl;
 
 import java.awt.EventQueue;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,7 +40,9 @@ public class ArcaSystem {
                 socket.connect(address, 2000);
                 socket.close();
                 isAlive = true;
-                new ConsultarProfesor().setVisible(true);
+
+                new PanelControl().setVisible(true);
+
 //                LoginController loginController = new LoginController(new LoginView());
 //                loginController.login().setVisible(true);
 //                new SplashScreen().setVisible(true);

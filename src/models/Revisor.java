@@ -14,6 +14,10 @@ public class Revisor {
     private int profesorId;
     private String noControl;
 
+    public static final String REVISOR_ID = "revisor_id";
+    public static final String FK_PROFESOR_ID = "profesor_id";
+    public static final String FK_NO_CONTROL = "no_control";
+
     public Revisor( int revisorId, int profesorId, String noControl ) {
         this.revisorId = revisorId;
         this.profesorId = profesorId;

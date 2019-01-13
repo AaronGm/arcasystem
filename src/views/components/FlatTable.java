@@ -1,21 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views.components;
 
 import helpers.Colors;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.MouseEvent;
-import javax.swing.JButton;
+import helpers.Typography;
+import views.components.table.FlatButtonRenderTable;
+import views.components.table.HeaderRenderFlatTable;
+
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
-import views.components.table.FlatButtonRenderTable;
-import views.components.table.HeaderRenderFlatTable;
+import java.awt.Color;
+import java.awt.Dimension;
 
 /**
  *
@@ -53,7 +48,7 @@ public class FlatTable extends JTable {
     }
     
     private void initView() {
-        setFont(helpers.Typography.addFont("Open Sans", "pr"));
+        setFont(Typography.paragraphFont());
         setGridColor(Colors.BLACK_LIGHT);
         setRowHeight(24);
         setShowGrid(false);
@@ -64,30 +59,9 @@ public class FlatTable extends JTable {
         getTableHeader().setDefaultRenderer(new HeaderRenderFlatTable());
         setFillsViewportHeight(true);
         setSelectionBackground(Color.lightGray);
+        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-    
-    public static void clickButtons(JTable table, MouseEvent e) {
-        int column = table.getColumnModel().getColumnIndexAtX(e.getX());
-        int row = e.getY() / table.getRowHeight();
-        
-        if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
-            Object value = table.getValueAt(row, column);
-            if (value instanceof JButton) {
-                ((JButton) value).doClick();
-                JButton btn = (JButton) value;
-                if ("update".equals(btn.getName())) {
-                    System.out.println("Actualizar");
-                    System.out.println(table.getModel().getValueAt(row, 0));
-                }
-                
-                if ("delete".equals(btn.getName())) {
-                    System.out.println("Eliminar");
-                    System.out.println(table.getModel().getValueAt(row, 0));
-                }
-            }
-        }
-    }
-    
+
     public void hiddeId() {
         removeColumn(getColumnModel().getColumn(0));
     }

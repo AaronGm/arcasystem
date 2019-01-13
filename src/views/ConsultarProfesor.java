@@ -7,6 +7,7 @@ package views;
 
 import dao.postgres.ImplProfesor;
 import helpers.Colors;
+import helpers.Helpers;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import views.components.FlatButton;
@@ -14,29 +15,24 @@ import views.components.FlatLabel;
 import views.components.FlatScrollBar;
 import views.components.FlatTable;
 import views.components.FlatTextField;
-import views.components.HeaderApp;
-import views.components.MenuApp;
 import views.components.table.FlatTableModel;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
 
 /**
  *
  * @author aarongmx
  */
-public class ConsultarProfesor extends JFrame {
+public class ConsultarProfesor extends View {
 
     private JPanel pnlBuscar;
     private JPanel pnlTabla;
@@ -47,8 +43,6 @@ public class ConsultarProfesor extends JFrame {
     
     private FlatTable tabla;
     private FlatTableModel model;
-    private TableRowSorter<DefaultTableModel> sorter; 
-    
  
     private FlatButton btnBuscar;
     private FlatButton btnEditar;
@@ -56,20 +50,11 @@ public class ConsultarProfesor extends JFrame {
 
     
     public ConsultarProfesor() throws HeadlessException {
-        super("Consultar Profesor  | " + config.Configuration.APP_NAME);
-        initView();
+        super("Consultar Profesor  | " + config.Configuration.APP_NAME, "Consultar Profesor");
     }
 
-    private void initView() {
-        helpers.Helpers.minScreenSize(this);
-        setJMenuBar(new MenuApp());
-        initComponents();
-        getContentPane().add(BorderLayout.NORTH, new HeaderApp("Consultar Profesores"));
-        getContentPane().add(BorderLayout.CENTER, pnlCenter);
-        helpers.Helpers.centerCloseScreen(this);
-    }
-    
-    private void initComponents() {
+    @Override
+    protected void initComponents() {
         IconFontSwing.register(FontAwesome.getIconFont());
         pnlCenter = new JPanel(new BorderLayout());
         pnlBuscar = new JPanel();
@@ -79,8 +64,7 @@ public class ConsultarProfesor extends JFrame {
         txfBuscar = new FlatTextField();
         
         tabla = new FlatTable();
-        sorter = new TableRowSorter();
-        
+
         btnBuscar = new FlatButton("Buscar", IconFontSwing.buildIcon(FontAwesome.SEARCH, 18, Color.white));
         
         btnEditar = new FlatButton("Actualizar", IconFontSwing.buildIcon(FontAwesome.PENCIL, 14, Color.white));
@@ -91,12 +75,19 @@ public class ConsultarProfesor extends JFrame {
         
         initBarraBuscar();
         initTabla();
+        initBotones();
         
         helpers.Helpers.setWhite(pnlBuscar, pnlTabla, pnlBotones);
         pnlCenter.add(BorderLayout.NORTH, pnlBuscar);
         pnlCenter.add(BorderLayout.CENTER, pnlTabla);
+        pnlCenter.add(BorderLayout.SOUTH, pnlBotones);
     }
-    
+
+    @Override
+    protected void setComponents() {
+        getContentPane().add(BorderLayout.CENTER, pnlCenter);
+    }
+
     private void initBarraBuscar() {
         pnlBuscar.add(new FlatLabel("Buscar profesor: "));
         pnlBuscar.add(txfBuscar);
@@ -115,53 +106,22 @@ public class ConsultarProfesor extends JFrame {
             "Fecha Ingreso", 
             "Grado de estudios", 
             "Estatus Contrato", 
-            "Especialidad", 
-            "",
-            ""
+            "Especialidad"
         }, 0);
-        
+
         JScrollPane scroll = new JScrollPane(tabla);
         scroll.setVerticalScrollBar(new FlatScrollBar());
-        
-        ImplProfesor implProf = new ImplProfesor();
-        
-        btnEditar = new FlatButton(IconFontSwing.buildIcon(FontAwesome.PENCIL_SQUARE, 16, Color.white));
-        btnEditar.setName("update");
-        
-        btnEliminar = new FlatButton(IconFontSwing.buildIcon(FontAwesome.TRASH, 16, Color.white));
-        btnEliminar.setName("delete");
-        btnEliminar.setBackground(Colors.RED);
-        
-        implProf.listar().forEach(el -> {
-            model.addRow(new Object[]{
-                el.getProfesorId(),
-                el.getNoContrato(),
-                el.getNombres(),
-                el.getApellidoPaterno(),
-                el.getApellidoMaterno(),
-                el.getFechaIngreso(),
-                el.getGradoEstudio(),
-                el.getEstatusProfesor(),
-                el.getAreaEspecialidad(),
-                btnEditar,
-                btnEliminar,
-            });
-        });
         scroll.setBorder(new EmptyBorder(0, 0, 0, 0));
-        tabla.setModel(model);
-        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        btnEditar = new FlatButton("Actualizar", IconFontSwing.buildIcon(FontAwesome.PENCIL_SQUARE, 16, Color.white));
+
+        btnEliminar = new FlatButton("Eliminar", IconFontSwing.buildIcon(FontAwesome.TRASH, 16, Color.white));
+        btnEliminar.setBackground(Colors.RED);
+
+        loadData();
+
         tabla.hiddeId();
-        
-        tabla.getColumnModel().getColumn(8).setPreferredWidth(10);
-        tabla.getColumnModel().getColumn(9).setPreferredWidth(10);
-        
-        tabla.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FlatTable.clickButtons(tabla, evt);
-            }
-        });
-        
+
         TableRowSorter sorter = new TableRowSorter<>(tabla.getModel());
         tabla.setRowSorter(sorter);
         
@@ -176,14 +136,62 @@ public class ConsultarProfesor extends JFrame {
        
         pnlTabla.add(BorderLayout.CENTER, scroll);
     }
-    
-    private void filter() {
-        String text = txfBuscar.getText();
-        if (text.trim().length() == 0) {
-            sorter.setRowFilter(null);
-        } else {
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-        }
+
+    private void initBotones() {
+        pnlBotones.setBorder(Helpers.padding(32, 16));
+        pnlBotones.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        pnlBotones.add(btnEditar);
+        pnlBotones.add(btnEliminar);
     }
-    
+
+    public void loadData() {
+        model.setRowCount(0);
+
+        new ImplProfesor().list().forEach(el -> {
+            model.addRow(new Object[]{
+                el.getProfesorId(),
+                el.getNoTrabajador(),
+                el.getNombres(),
+                el.getApellidoPaterno(),
+                el.getApellidoMaterno(),
+                el.getFechaIngreso(),
+                el.getGradoEstudio(),
+                el.getEstatusProfesor(),
+                el.getAreaEspecialidad(),
+            });
+        });
+        tabla.setModel(model);
+    }
+
+    public FlatButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(FlatButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
+
+    public FlatButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(FlatButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public FlatTable getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(FlatTable tabla) {
+        this.tabla = tabla;
+    }
+
+    public FlatTableModel getModel() {
+        return model;
+    }
+
+    public void setModel(FlatTableModel model) {
+        this.model = model;
+    }
 }

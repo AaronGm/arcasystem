@@ -14,6 +14,10 @@ public class AsesorExterno extends Persona {
     private String cargo;
     private int empresaId;
 
+    public static final String ASESOR_EXTERNO_ID = "asesor_externo_id";
+    public static final String CARGO = "cargo";
+    public static final String FK_EMPRESA_ID = "empresa_id";
+
     public AsesorExterno( int asesorExternoId, String cargo, int empresaId, String nombres, String apellidoPaterno, String apellidoMaterno ) {
         super(nombres, apellidoPaterno, apellidoMaterno);
         this.asesorExternoId = asesorExternoId;

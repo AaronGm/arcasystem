@@ -8,6 +8,7 @@ package views.components;
 import helpers.Colors;
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import java.awt.Color;
 
 /**
  *
@@ -19,11 +20,36 @@ public class FlatLabel extends JLabel {
         super(text, icon, horizontalAlignment);
         initComponent();
     }
+
+    public FlatLabel(String text,String fontFamily, String fontSize, Color fontColor) {
+        super(text);
+        initComponent();
+        setForeground(fontColor);
+        setFont(helpers.Typography.addFont(fontFamily, fontSize));
+    }
     
     public FlatLabel(String text,String fontFamily, String fontSize) {
         super(text);
         initComponent();
         setFont(helpers.Typography.addFont(fontFamily, fontSize));
+    }
+
+    public FlatLabel(String text, String fontSize, Color fontColor) {
+        super(text);
+        initComponent();
+        setForeground(fontColor);
+        switch(fontSize) {
+            case "h1":
+            case "h2":
+            case "h3":
+                setFont(helpers.Typography.addFont("Raleway", fontSize));
+                break;
+            case "pr":
+            case "sm":
+            case "sl":
+                setFont(helpers.Typography.addFont("Open Sans", fontSize));
+                break;
+        }
     }
     
     public FlatLabel(String text, String fontSize) {
@@ -71,15 +97,5 @@ public class FlatLabel extends JLabel {
         setFont(helpers.Typography.componentsFont());
         setForeground(Colors.BLACK_MEDIUM);
     }
-    
-    public void setParagraph() {
-        setFont(helpers.Typography.addFont("Open Sans", "pr"));
-    }
-    
-    public void setTitle(String fontSize) {
-        setFont(helpers.Typography.addFont("Raleway", fontSize));
-    }
-    
-    
     
 }

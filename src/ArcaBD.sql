@@ -39,11 +39,12 @@ CREATE TABLE carreras (
     plan_estudios VARCHAR NOT NULL
 );
 
- DROP TABLE IF EXISTS alumnos;
+DROP TABLE IF EXISTS alumnos;
 CREATE TABLE alumnos (
     no_control VARCHAR(10) NOT NULL,
     semestre SMALLINT NOT NULL,
-    clave_carrera VARCHAR(3) NOT NULL
+    clave_carrera VARCHAR(3) NOT NULL,
+    periodo VARCHAR(120) NOT NULL
 ) INHERITS(personas);
 
 
@@ -87,9 +88,13 @@ CREATE TABLE proyectos (
 DROP TABLE IF EXISTS empresas CASCADE;
 CREATE TABLE empresas (
     empresa_id SERIAL,
+    rfc VARCHAR(15) NOT NULL UNIQUE,
     nombre VARCHAR(200) NOT NULL,
     encargado VARCHAR(255) NOT NULL,
     domicilio VARCHAR(255) NOT NULL,
+    colonia VARCHAR(200) NOT NULL,
+    codigo_postal CHAR(5) NOT NULL,
+    alcaldia_municipio VARCHAR(200) NOT NULL,
     pagina_web VARCHAR(250) NOT NULL
 );
 
@@ -195,48 +200,48 @@ ALTER TABLE alumnos_asesores_internos ADD CONSTRAINT pk_alumno_asesor_interno PR
 
 -- Relaciones entre tablas
 ALTER TABLE alumnos
-    ADD CONSTRAINT fk_alumno_carrera FOREIGN KEY(clave_carrera) REFERENCES carreras(clave_carrera);
+    ADD CONSTRAINT fk_alumno_carrera FOREIGN KEY(clave_carrera) REFERENCES carreras(clave_carrera) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE expedientes
-    ADD CONSTRAINT fk_expediente_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control);
+    ADD CONSTRAINT fk_expediente_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE asesores_externos
-    ADD CONSTRAINT fk_asesor_externo_empresa FOREIGN KEY(empresa_id) REFERENCES empresas(empresa_id);
+    ADD CONSTRAINT fk_asesor_externo_empresa FOREIGN KEY(empresa_id) REFERENCES empresas(empresa_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE asesores_internos
-    ADD CONSTRAINT fk_asesor_interno_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id);
+    ADD CONSTRAINT fk_asesor_interno_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE alumnos_asesores_internos
-    ADD CONSTRAINT fk_alumno_asesor_interno_asesor FOREIGN KEY(asesor_interno_id) REFERENCES asesores_internos(asesor_interno_id),
-    ADD CONSTRAINT fk_alumno_asesor_interno_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control);
+    ADD CONSTRAINT fk_alumno_asesor_interno_asesor FOREIGN KEY(asesor_interno_id) REFERENCES asesores_internos(asesor_interno_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE,
+    ADD CONSTRAINT fk_alumno_asesor_interno_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE revisores
-    ADD CONSTRAINT fk_revisor_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id),
-    ADD CONSTRAINT fk_revisor_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control);
+    ADD CONSTRAINT fk_revisor_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE,
+    ADD CONSTRAINT fk_revisor_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE historial_residentes
-    ADD CONSTRAINT fk_historial_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control),
-   	add constraint fk_historial_empresa foreign key(empresa_id) references empresas(empresa_id),
-  	add constraint fk_historial_proyecto foreign key(proyecto_id) references proyectos(proyecto_id),
-  	add constraint fk_historial_asesor_externo foreign key(asesor_externo_id) references asesores_externos(asesor_externo_id);
+    ADD CONSTRAINT fk_historial_alumno FOREIGN KEY(no_control) REFERENCES alumnos(no_control) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE,
+   	add constraint fk_historial_empresa foreign key(empresa_id) references empresas(empresa_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE,
+  	add constraint fk_historial_proyecto foreign key(proyecto_id) references proyectos(proyecto_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE,
+  	add constraint fk_historial_asesor_externo foreign key(asesor_externo_id) references asesores_externos(asesor_externo_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE correos_profesor
-    ADD CONSTRAINT fk_correo_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id);
+    ADD CONSTRAINT fk_correo_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE telefonos_profesor
-    ADD CONSTRAINT fk_telefono_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id);
+    ADD CONSTRAINT fk_telefono_profesor FOREIGN KEY(profesor_id) REFERENCES profesores(profesor_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE correos_empresa
-    ADD CONSTRAINT fk_correo_empresa FOREIGN KEY(empresa_id) REFERENCES empresas(empresa_id);
+    ADD CONSTRAINT fk_correo_empresa FOREIGN KEY(empresa_id) REFERENCES empresas(empresa_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE telefonos_empresa
-    ADD CONSTRAINT fk_telefono_empresa FOREIGN KEY(empresa_id) REFERENCES empresas(empresa_id);
+    ADD CONSTRAINT fk_telefono_empresa FOREIGN KEY(empresa_id) REFERENCES empresas(empresa_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE correos_asesor_externo
-    ADD CONSTRAINT fk_correo_asesor_externo FOREIGN KEY(asesor_externo_id) REFERENCES asesores_externos(asesor_externo_id);
+    ADD CONSTRAINT fk_correo_asesor_externo FOREIGN KEY(asesor_externo_id) REFERENCES asesores_externos(asesor_externo_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE telefonos_asesor_externo
-    ADD CONSTRAINT fk_telefono_asesor_extenro FOREIGN KEY(asesor_externo_id) REFERENCES asesores_externos(asesor_externo_id);
+    ADD CONSTRAINT fk_telefono_asesor_extenro FOREIGN KEY(asesor_externo_id) REFERENCES asesores_externos(asesor_externo_id) MATCH FULL ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- Crear un usuario
 INSERT INTO usuarios(usuario, passwd) VALUES ('aarongm', crypt('aagmx', gen_salt('xdes')));

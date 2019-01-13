@@ -7,6 +7,22 @@ package views;
 
 import com.toedter.calendar.JCalendar;
 import helpers.Colors;
+import helpers.Helpers;
+import helpers.Typography;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
+import org.knowm.xchart.XYChart;
+import views.components.FlatButton;
+import views.components.FlatLabel;
+
+import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.MatteBorder;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -16,27 +32,12 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import org.knowm.xchart.XYChart;
-import javax.swing.ButtonGroup;
-import javax.swing.Icon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.MatteBorder;
-import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
-import views.components.FlatButton;
-import views.components.FlatLabel;
-import views.components.MenuApp;
 
 /**
  *
  * @author aarongmx
  */
-public class PanelControl extends JFrame {
+public class PanelControl extends View {
     
     private JPanel pnlMain;
     private JPanel pnlMenu;
@@ -57,21 +58,10 @@ public class PanelControl extends JFrame {
     
     public PanelControl() throws HeadlessException {
         super("Panel de Control | " + config.Configuration.APP_NAME);
-        initView();
     }
 
-    private void initView() {
-        helpers.Helpers.minScreenSize(this);
-        getContentPane().setBackground(Color.white);
-        setJMenuBar(new MenuApp());
-        initComponents();
-        getContentPane().add(BorderLayout.CENTER, pnlMain);
-        getContentPane().add(BorderLayout.WEST, pnlMenu);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-    }
-    
-    private void initComponents() {
+    @Override
+    protected void initComponents() {
         IconFontSwing.register(FontAwesome.getIconFont());
         pnlMain = new JPanel();
         pnlMenu = new JPanel();
@@ -83,28 +73,32 @@ public class PanelControl extends JFrame {
         pnlCalendar = new JPanel();
         pnlEstadistics = new JPanel();
         pnlForm = new JPanel();
-        
-        grafica = new XYChart(200, 200);
-        
-        initMain();
+
         initMenu();
+        initMain();
     }
-    
+
+    @Override
+    protected void setComponents() {
+        getContentPane().add(BorderLayout.WEST, pnlMenu);
+        getContentPane().add(BorderLayout.CENTER, pnlCenter);
+    }
+
     private void initMain() {
-        pnlMain.setBorder(helpers.Helpers.padding(16));
+        pnlMain.setBorder(Helpers.padding(16));
         pnlMain.setBackground(Color.white);
         pnlMain.setLayout(new BorderLayout());
         pnlMain.add(BorderLayout.NORTH, new FlatLabel("Panel de Control" ,"h1"));
         
-        calendar.setFont(helpers.Typography.addFont("Open Sans", "pr"));
+        calendar.setFont(Typography.paragraphFont());
         calendar.setTodayButtonVisible(true);
         calendar.setSundayForeground(Colors.RED);
         
         pnlCalendar.setLayout(new BorderLayout());
-        pnlCalendar.setBorder(helpers.Helpers.padding(16, 0));
+        pnlCalendar.setBorder(Helpers.padding(16, 0));
         pnlCalendar.add(BorderLayout.CENTER, calendar);
         
-        pnlForm.add(helpers.Helpers.makeImage("icon.png", new Dimension(80, 80)));
+        pnlForm.add(Helpers.makeImage("icon.png", new Dimension(80, 80)));
         
         pnlCenter.add(pnlCalendar, CALENDAR);
         pnlCenter.add(pnlEstadistics, ESTADISTICS);
@@ -120,13 +114,13 @@ public class PanelControl extends JFrame {
         pnlEstadistics.add(lbExcel);
         
         pnlMain.add(BorderLayout.CENTER, pnlCenter);
-        helpers.Helpers.setWhite(pnlCalendar, pnlEstadistics, pnlForm);
+        Helpers.setWhite(pnlCalendar, pnlEstadistics, pnlForm);
     }
     
     private void initMenu() {
         pnlMenu.setBackground(Colors.GHOST_LIGHT);
         pnlMenu.setPreferredSize(new Dimension(220, HEIGHT));
-        pnlMenu.setBorder(helpers.Helpers.padding(32, 16));
+        pnlMenu.setBorder(Helpers.padding(32, 16));
         pnlMenu.setLayout(new FlowLayout());
         
         ButtonGroup group = new ButtonGroup();
@@ -153,7 +147,7 @@ public class PanelControl extends JFrame {
         
         FlatLabel lab = new FlatLabel("Aarón Gómez Méndez");
         
-        pnlMenu.add(helpers.Helpers.logoItiz(100));
+        pnlMenu.add(Helpers.logoItiz(100));
         pnlMenu.add(lab);
         pnlMenu.add(tbtnCalendario);
         pnlMenu.add(tbtnEstadisticas);
@@ -164,15 +158,16 @@ public class PanelControl extends JFrame {
         tbtn.setHorizontalAlignment(SwingConstants.LEFT);
         tbtn.setPreferredSize(new Dimension(180, 30));
         tbtn.setBackground(null);
-        tbtn.setFont(helpers.Typography.componentsFont());
+        tbtn.setFont(Typography.componentsFont());
         tbtn.setForeground(Colors.BLACK_MEDIUM);
-        Border defaultBorder = new CompoundBorder(null, helpers.Helpers.padding(4, 8));
+        Border defaultBorder = new CompoundBorder(null, Helpers.padding(4, 8));
         tbtn.setBorder(defaultBorder);
         tbtn.setFocusPainted(false);
+
         
         tbtn.addItemListener(((ItemEvent e) -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                tbtn.setBorder(new CompoundBorder(new MatteBorder(0, 3, 0, 0, Colors.BLUE_LIGHT), helpers.Helpers.padding(8, 16)));
+                tbtn.setBorder(new CompoundBorder(new MatteBorder(0, 3, 0, 0, Colors.BLUE_LIGHT), Helpers.padding(8, 16)));
             } else {
                 tbtn.setBorder(defaultBorder);
             }

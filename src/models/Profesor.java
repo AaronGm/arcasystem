@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Profesor extends Persona {
     private int profesorId;
-    private String noContrato;
+    private String noTrabajador;
     private Date fechaIngreso;
     private String gradoEstudio;
     private String estatusProfesor;
@@ -28,11 +28,14 @@ public class Profesor extends Persona {
     public static final String GRADO_ESTUDIOS = "grado_estudios";
     public static final String ESTATUS_PROFESOR = "estatus_profesor";
     public static final String AREA_ESPECIALIDAD = "area_especialidad";
-    
-    
-    public Profesor(String noContrato, Date fechaIngreso, String gradoEstudio, String estatusProfesor, String areaEspecialidad, String nombres, String apellidoPaterno, String apellidoMaterno) {
+
+    public static final String TYPE_GRADOS_ESTUDIO[] = {"Licenciatura", "Ingeniería", "Maestría", "Doctorado"};
+
+    public static final String TYPE_ESTATUS_PROFESOR[] = {"Tiempo Completo", "Clave 10", "Clave 20", "Clave 95", "Por Horario", "Por Asignatura"};
+
+    public Profesor(String noTrabajador, Date fechaIngreso, String gradoEstudio, String estatusProfesor, String areaEspecialidad, String nombres, String apellidoPaterno, String apellidoMaterno) {
         super(nombres, apellidoPaterno, apellidoMaterno);
-        this.noContrato = noContrato;
+        this.noTrabajador = noTrabajador;
         this.fechaIngreso = fechaIngreso;
         this.gradoEstudio = gradoEstudio;
         this.estatusProfesor = estatusProfesor;
@@ -41,10 +44,10 @@ public class Profesor extends Persona {
     
     
     
-    public Profesor(int profesorId, String noContrato, Date fechaIngreso, String gradoEstudio, String estatusProfesor, String areaEspecialidad, String nombres, String apellidoPaterno, String apellidoMaterno) {
+    public Profesor(int profesorId, String noTrabajador, Date fechaIngreso, String gradoEstudio, String estatusProfesor, String areaEspecialidad, String nombres, String apellidoPaterno, String apellidoMaterno) {
         super(nombres, apellidoPaterno, apellidoMaterno);
         this.profesorId = profesorId;
-        this.noContrato = noContrato;
+        this.noTrabajador = noTrabajador;
         this.fechaIngreso = fechaIngreso;
         this.gradoEstudio = gradoEstudio;
         this.estatusProfesor = estatusProfesor;
@@ -59,12 +62,12 @@ public class Profesor extends Persona {
         this.profesorId = profesorId;
     }
 
-    public String getNoContrato() {
-        return noContrato;
+    public String getNoTrabajador() {
+        return noTrabajador;
     }
 
-    public void setNoContrato(String noContrato) {
-        this.noContrato = noContrato;
+    public void setNoTrabajador(String noTrabajador) {
+        this.noTrabajador = noTrabajador;
     }
 
     public Date getFechaIngreso() {
@@ -101,7 +104,7 @@ public class Profesor extends Persona {
 
     @Override
     public String toString() {
-        return "Nombres: " + this.getNombres() + "\nApellido Paterno: " + this.getApellidoPaterno() + "\nApellido Materno: " + this.getApellidoMaterno() + "\nID: " + this.profesorId + "\nNo. Contrato: " + this.noContrato + "\nFecha Ingreso: " + this.getFechaIngreso() + "\nEstatus Profesor: " + this.estatusProfesor + "\nGrado Estudios: " + this.gradoEstudio + "\nArea de Especialidad: "+ this.areaEspecialidad; 
+        return "Nombres: " + this.getNombres() + "\nApellido Paterno: " + this.getApellidoPaterno() + "\nApellido Materno: " + this.getApellidoMaterno() + "\nID: " + this.profesorId + "\nNo. Contrato: " + this.noTrabajador + "\nFecha Ingreso: " + this.getFechaIngreso() + "\nEstatus Profesor: " + this.estatusProfesor + "\nGrado Estudios: " + this.gradoEstudio + "\nArea de Especialidad: "+ this.areaEspecialidad;
     }
     
     

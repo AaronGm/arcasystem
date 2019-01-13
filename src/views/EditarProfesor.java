@@ -14,7 +14,11 @@ import models.Profesor;
 public class EditarProfesor extends RegistrarProfesor {
 
     private Profesor profesor;
-    
+
+    public EditarProfesor() {
+        super("Actualizar Profesor");
+    }
+
     public EditarProfesor(Profesor profesor) {
         super("Actualizar Profesor");
         this.profesor = profesor;
@@ -22,7 +26,7 @@ public class EditarProfesor extends RegistrarProfesor {
     }
     
     private void initView() {
-        getTxfNoContrato().setText(profesor.getNoContrato());
+        getTxfNoContrato().setText(profesor.getNoTrabajador());
         getTxfNombre().setText(profesor.getNombres());
         getTxfApellidoPaterno().setText(profesor.getApellidoPaterno());
         getTxfApellidoMaterno().setText(profesor.getApellidoMaterno());
@@ -32,7 +36,7 @@ public class EditarProfesor extends RegistrarProfesor {
         
         getJdtcFechaIngreso().setDate(profesor.getFechaIngreso());
         
-        getBtnRegistrar().setText("Actualizar");
+        getButton().setText("Actualizar");
     }
 
     public Profesor getProfesor() {
@@ -41,5 +45,6 @@ public class EditarProfesor extends RegistrarProfesor {
 
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
+        initView();
     }
 }

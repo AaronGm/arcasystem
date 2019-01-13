@@ -79,6 +79,16 @@ public class Typography {
         initFontSizes();
         return fontSizes.get(font);
     }
+
+    public static Font paragraphFont() {
+        Font font = addFont("Open Sans", "pr");
+        return font;
+    }
+
+    public static Font titleFont(String fontSize) {
+        Font font = addFont("Raleway", fontSize);
+        return font;
+    }
     
     public static Font componentsFont() {
         Font font = addFont("Roboto Medium", "sm");

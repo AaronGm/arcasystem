@@ -1,30 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import com.toedter.calendar.JDateChooser;
+import helpers.Colors;
+import helpers.Helpers;
+import models.Profesor;
+import views.components.FlatButton;
+import views.components.FlatComboBox;
+import views.components.FlatLabel;
+import views.components.FlatTextField;
+
+import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import views.components.FlatButton;
-import views.components.FlatComboBox;
-import views.components.FlatLabel;
-import views.components.FlatTextField;
-import views.components.HeaderApp;
-import views.components.MenuApp;
 
 /**
  *
  * @author aarongmx
  */
-public class RegistrarProfesor extends JFrame {
+public class RegistrarProfesor extends View {
     
     private JPanel pnlForm;
     
@@ -33,36 +29,32 @@ public class RegistrarProfesor extends JFrame {
     private FlatTextField txfApellidoPaterno;
     private FlatTextField txfApellidoMaterno;
     private FlatTextField txfEspecialidad;
+
+    private FlatLabel labelError;
     
     private JDateChooser jdtcFechaIngreso;
     
     private FlatComboBox cmbGradoEstudio;
     private FlatComboBox cmbEstatusProfesor;
     
-    private FlatButton btnRegistrar;
+    private FlatButton button;
     
     private String headerTitle;
-        
+
     public RegistrarProfesor() {
-        this.headerTitle = "Registrar Profesor";
-        initView();
-    }
-    
-    public RegistrarProfesor(String headerTitle) {
-        this.headerTitle = headerTitle;
-        initView();
+        super("Registrar Profesor");
     }
 
-    private void initView() {
-        helpers.Helpers.minScreenSize(this);
-        initComponents();
-        setJMenuBar(new MenuApp());
-        getContentPane().add(BorderLayout.NORTH, new HeaderApp(headerTitle));
-        getContentPane().add(BorderLayout.CENTER, pnlForm);
-        helpers.Helpers.centerCloseScreen(this);
+    public RegistrarProfesor(String title) {
+        super(title);
     }
-    
-    private void initComponents() {
+
+    public RegistrarProfesor(String title, String titleBar) {
+        super(title, titleBar);
+    }
+
+    @Override
+    protected void initComponents() {
         pnlForm = new JPanel(new GridBagLayout());
                 
         txfNoContrato = new FlatTextField();
@@ -70,26 +62,33 @@ public class RegistrarProfesor extends JFrame {
         txfApellidoMaterno = new FlatTextField();
         txfApellidoPaterno = new FlatTextField();
         txfEspecialidad = new FlatTextField();
+
+        labelError = new FlatLabel(" ", "Roboto Medium", "sm", Colors.RED);
         
         jdtcFechaIngreso = new JDateChooser();
         
-        cmbGradoEstudio = new FlatComboBox(new String[]{"Licenciatura", "Ingeniería", "Maestría", "Doctorado"});
-        cmbEstatusProfesor = new FlatComboBox(new String[]{"Tiempo Completo", "Clave 10", "Clave 20", "Clave 95", "Por Horario", "Por Asignatura"});
+        cmbGradoEstudio = new FlatComboBox(Profesor.TYPE_GRADOS_ESTUDIO);
+        cmbEstatusProfesor = new FlatComboBox(Profesor.TYPE_ESTATUS_PROFESOR);
         
-        btnRegistrar = new FlatButton("Registrar");
+        button = new FlatButton("Registrar");
         
         helpers.Helpers.setWhite(pnlForm);
         
         initForm();
     }
-    
+
+    @Override
+    protected void setComponents() {
+        getContentPane().add(BorderLayout.CENTER, pnlForm);
+    }
+
     private void initForm() {
         GridBagConstraints c = new GridBagConstraints();
         Insets mt = new Insets(16, 8, 0, 0);
-        
+
         jdtcFechaIngreso.setPreferredSize(new Dimension(180, 28));
-        jdtcFechaIngreso.setFont(helpers.Typography.addFont("Open Sans", "pr"));
-        txfEspecialidad.setFont(helpers.Typography.addFont("Open Sans", "pr"));
+        jdtcFechaIngreso.setFont(helpers.Typography.paragraphFont());
+        txfEspecialidad.setFont(helpers.Typography.paragraphFont());
                 
         c.insets = mt;
         c.anchor = GridBagConstraints.WEST;
@@ -99,45 +98,48 @@ public class RegistrarProfesor extends JFrame {
         pnlForm.add(new FlatLabel("Número de trabajador"), c);
         c.gridx = 1;
         pnlForm.add(txfNoContrato, c);
-
-
         c.gridy = 1;
+        c.insets = Helpers.paddingInset(0, 8, 16, 8);
+        pnlForm.add(labelError, c);
+
+
+        c.gridy = 2;
         c.gridx = 0;
         pnlForm.add(new FlatLabel("Estatus de Contrato"), c);
         c.gridx = GridBagConstraints.RELATIVE;
         pnlForm.add(cmbEstatusProfesor, c);
         
-        c.gridy = 2;
+        c.gridy = 3;
         c.gridx = 0;
         pnlForm.add(new FlatLabel("Nombres"), c);
         c.gridx = GridBagConstraints.RELATIVE;
         pnlForm.add(txfNombre, c);
         
-        c.gridy = 3;
+        c.gridy = 4;
         c.gridx = 0;
         pnlForm.add(new FlatLabel("Apellido Paterno"), c);
         c.gridx = GridBagConstraints.RELATIVE;
         pnlForm.add(txfApellidoPaterno, c);
         
-        c.gridy = 4;
+        c.gridy = 5;
         c.gridx = 0;
         pnlForm.add(new FlatLabel("Apellido Materno"), c);
         c.gridx = GridBagConstraints.RELATIVE;
         pnlForm.add(txfApellidoMaterno, c);
         
-        c.gridy = 5;
+        c.gridy = 6;
         c.gridx = 0;
         pnlForm.add(new FlatLabel("Fecha de Ingreso"), c);
         c.gridx = GridBagConstraints.RELATIVE;
         pnlForm.add(jdtcFechaIngreso, c);
         
-        c.gridy = 6;
+        c.gridy = 7;
         c.gridx = 0;
         pnlForm.add(new FlatLabel("Grado de estudios"), c);
         c.gridx = GridBagConstraints.RELATIVE;
         pnlForm.add(cmbGradoEstudio, c);
         
-        c.gridy = 7;
+        c.gridy = 8;
         c.gridx = 0;
         pnlForm.add(new FlatLabel("Áreas de especialidad"), c);
         c.gridx = GridBagConstraints.RELATIVE;
@@ -147,7 +149,7 @@ public class RegistrarProfesor extends JFrame {
         c.gridy = GridBagConstraints.RELATIVE;
         c.gridwidth = 2;
         c.gridx = 1;
-        pnlForm.add(btnRegistrar, c);
+        pnlForm.add(button, c);
     }
 
     public String getHeaderTitle() {
@@ -222,11 +224,11 @@ public class RegistrarProfesor extends JFrame {
         this.cmbEstatusProfesor = cmbEstatusProfesor;
     }
 
-    public FlatButton getBtnRegistrar() {
-        return btnRegistrar;
+    public FlatButton getButton() {
+        return button;
     }
 
-    public void setBtnRegistrar(FlatButton btnRegistrar) {
-        this.btnRegistrar = btnRegistrar;
+    public void setButton(FlatButton button) {
+        this.button = button;
     }    
 }

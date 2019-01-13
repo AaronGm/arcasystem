@@ -7,20 +7,27 @@ package helpers;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.JTextComponent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -220,5 +227,47 @@ public class Helpers {
             el.setBackground(Color.white);
         });
     }
-    
+
+    public static String fechaDocumentos() {
+        String fecha = FECHA.format(DateTimeFormatter.ofPattern("dd/MMMM/YYYY"));
+        String mes = FECHA.getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
+        return fecha.replace(mes, capitalize(mes));
+    }
+
+    public static String capitalize(String word) {
+        char wordC[] = word.toCharArray();
+        wordC[0] = word.toUpperCase().charAt(0);
+        return String.valueOf(wordC);
+    }
+
+    public static KeyAdapter onlyNumbers() {
+        KeyAdapter keyAdapter = new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (!Character.isDigit(e.getKeyChar()) && !(e.getKeyChar() != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume();
+                }
+            }
+        };
+        return keyAdapter;
+    }
+
+    public static KeyAdapter onlyLetters() {
+        KeyAdapter keyAdapter = new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (!Character.isLetter(e.getKeyChar()) && !(e.getKeyChar() == KeyEvent.VK_SPACE) && !(e.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
+                    e.consume();
+                }
+            }
+        };
+        return keyAdapter;
+    }
+
+    public static String cleanField(JFormattedTextField formattedTextField) {
+        String value = (String) formattedTextField.getValue();
+        return value.trim();
+    }
+
+
 }

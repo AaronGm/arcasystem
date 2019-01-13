@@ -14,7 +14,12 @@ public class Usuario {
     private String usuario;
     private String passwd;
     private boolean admin;
-    
+
+    public static final String USUARIO_ID = "usuario_id";
+    public static final String USUARIO = "usuario";
+    public static final String PASSWD = "passwd";
+    public static final String IS_ADMIN = "is_admin";
+
     public Usuario() {
         
     }

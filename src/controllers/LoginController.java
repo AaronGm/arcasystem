@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controllers;
 
 import dao.postgres.ImplUsuario;
 import excepciones.ExcepcionGeneral;
-import java.awt.event.ActionEvent;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import models.Usuario;
 import views.LoginView;
 import views.PanelControl;
 import views.admin.Admin;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
 
 /**
  *

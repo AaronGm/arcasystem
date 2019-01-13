@@ -12,11 +12,8 @@ import views.components.FlatComboBox;
 import views.components.FlatLabel;
 import views.components.FlatRadioButton;
 import views.components.FlatTextField;
-import views.components.HeaderApp;
-import views.components.MenuApp;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -28,7 +25,7 @@ import java.awt.Insets;
  *
  * @author aarongmx
  */
-public class RegistrarProyecto extends JFrame {
+public class RegistrarProyecto extends View {
     private JPanel pnlForm;
 
     private FlatTextField txfNombreProyecto;
@@ -43,22 +40,11 @@ public class RegistrarProyecto extends JFrame {
     private FlatButton btnNext;    
     
     public RegistrarProyecto() {
-        super("Registro de Proyecto | " + config.Configuration.APP_NAME);
-        initView();
+        super("Registrar Proyecto | " + config.Configuration.APP_NAME, "Registrar Proyecto");
     }
     
-    
-    private void initView() {
-        helpers.Helpers.minScreenSize(this);
-        initComponents();
-        initForm();
-        setJMenuBar(new MenuApp());
-        getContentPane().add(BorderLayout.CENTER, pnlForm);
-        getContentPane().add(BorderLayout.NORTH ,new HeaderApp("Registro de proyectos"));
-        helpers.Helpers.centerCloseScreen(this);
-    }
-    
-    private void initComponents() {
+    @Override
+    protected void initComponents() {
         IconFontSwing.register(FontAwesome.getIconFont());
         pnlForm = new JPanel();
 
@@ -72,8 +58,15 @@ public class RegistrarProyecto extends JFrame {
         cmbNumeroResidentes = new FlatComboBox(new Integer[] {1, 2, 3, 4});
         
         btnNext = new FlatButton("SIGUIENTE");
+
+        initForm();
     }
-    
+
+    @Override
+    protected void setComponents() {
+        getContentPane().add(BorderLayout.CENTER, pnlForm);
+    }
+
     private void initForm() {
         GridBagConstraints c = new GridBagConstraints();
         ButtonGroup btnG = new ButtonGroup();

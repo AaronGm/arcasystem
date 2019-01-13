@@ -44,9 +44,9 @@ public class ImplUsuario implements UsuarioDAO {
             resultados = sentencia.executeQuery();
             if ( resultados.first() ) {
                 retUsuario = new Usuario(
-                    resultados.getString("usuario"),
-                    resultados.getString("passwd"),
-                    resultados.getBoolean("is_admin")
+                    resultados.getString(Usuario.USUARIO),
+                    resultados.getString(Usuario.PASSWD),
+                    resultados.getBoolean(Usuario.IS_ADMIN)
                 );
             }
         } catch ( SQLException ex ) {
@@ -58,7 +58,7 @@ public class ImplUsuario implements UsuarioDAO {
     }
     
     @Override
-    public void insertar( Usuario usuario ) throws ExcepcionGeneral {
+    public void insert(Usuario usuario ) throws ExcepcionGeneral {
         conexion = new ConnectionDB().getConnection();
         try {
             sentencia = conexion.prepareStatement(INSERTAR, Statement.RETURN_GENERATED_KEYS);
@@ -70,7 +70,7 @@ public class ImplUsuario implements UsuarioDAO {
             if ( filasAfectadas > 0) {
                 resultados = sentencia.getGeneratedKeys();
                 if ( resultados.next() ) {
-                    usuario.setUsuarioId(resultados.getInt(1));
+                    usuario.setUsuarioId(resultados.getInt(Usuario.USUARIO_ID));
                 }
             }
         } catch ( SQLException ex ) {
@@ -81,7 +81,7 @@ public class ImplUsuario implements UsuarioDAO {
     }
 
     @Override
-    public void modificar( Usuario usuario ) {
+    public void update(Usuario usuario ) {
         conexion = new ConnectionDB().getConnection();
         try {
             sentencia = conexion.prepareStatement(ACTUALIZAR);
@@ -99,7 +99,7 @@ public class ImplUsuario implements UsuarioDAO {
     }
 
     @Override
-    public void eliminar( Usuario usuario ) {
+    public void delete(Usuario usuario ) {
         conexion = new ConnectionDB().getConnection();
         try {
             sentencia = conexion.prepareStatement(ELIMINAR);
@@ -115,7 +115,7 @@ public class ImplUsuario implements UsuarioDAO {
     }
 
     @Override
-    public Usuario obtenerPorId( Integer key ) {
+    public Usuario getById(Integer key ) {
         Usuario usuario = null;
         conexion = new ConnectionDB().getConnection();
         try {
@@ -124,10 +124,10 @@ public class ImplUsuario implements UsuarioDAO {
             resultados = sentencia.executeQuery();
             if ( resultados.first() ) {
                 usuario = new Usuario(
-                    resultados.getInt("usuario_id"),
-                    resultados.getString("usuario"),
-                    resultados.getString("passwd"),
-                    resultados.getBoolean("is_admin")
+                    resultados.getInt(Usuario.USUARIO_ID),
+                    resultados.getString(Usuario.USUARIO),
+                    resultados.getString(Usuario.PASSWD),
+                    resultados.getBoolean(Usuario.IS_ADMIN)
                 );
             }
         } catch ( SQLException ex ) {
@@ -140,7 +140,7 @@ public class ImplUsuario implements UsuarioDAO {
     }
 
     @Override
-    public List<Usuario> listar() {
+    public List<Usuario> list() {
         List<Usuario> lista = new ArrayList<>();
         try {
             conexion = new ConnectionDB().getConnection();
@@ -149,10 +149,10 @@ public class ImplUsuario implements UsuarioDAO {
             while ( resultados.next() ) {
                 lista.add(
                     new Usuario(
-                        resultados.getInt("usuario_id"),
-                        resultados.getString("usuario"), 
-                        resultados.getString("passwd"),
-                        resultados.getBoolean("is_admin")
+                        resultados.getInt(Usuario.USUARIO_ID),
+                        resultados.getString(Usuario.USUARIO),
+                        resultados.getString(Usuario.PASSWD),
+                        resultados.getBoolean(Usuario.IS_ADMIN)
                     )
                 );
             }

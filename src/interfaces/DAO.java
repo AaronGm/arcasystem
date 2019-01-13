@@ -14,9 +14,9 @@ import java.util.List;
  * @param <Obj>
  */
 public interface DAO<Key, Obj> {
-    public void insertar(Obj obj);
-    public void modificar(Obj obj);
-    public void eliminar(Obj obj);
-    public Obj obtenerPorId(Key key);
-    public List<Obj> listar();
+    void insert(Obj obj);
+    void update(Obj obj);
+    void delete(Obj obj);
+    Obj getById(Key key);
+    List<Obj> list();
 }

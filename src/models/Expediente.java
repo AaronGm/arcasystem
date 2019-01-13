@@ -23,6 +23,20 @@ public class Expediente {
     private String estatus;
     private String noControl;
 
+    public static final String EXPEDIENTE_ID = "expediente_id";
+    public static final String CARTA_INICIO = "carta_inicio";
+    public static final String CRONOGRAMA = "cronograma";
+    public static final String ASESORIAS = "asesorias";
+    public static final String EVALUACION_SEGUIMIENTO = "evaluacion_seguimiento";
+    public static final String FORMATO_EVALUACION = "formato_evaluacion";
+    public static final String DISCOS = "discos";
+    public static final String CARTA_TERMINO = "carta_termino";
+    public static final String CARTA_LIBERACION = "carta_liberacion";
+    public static final String OBSERVACIONES = "observaciones";
+    public static final String ESTATUS = "estatus";
+    public static final String FK_NO_CONTROL = "no_control";
+
+
     public Expediente( int expedienteId, boolean cartaInicio, boolean cronograma, boolean asesorias, boolean evaluacionSeguimiento, boolean formatoEvaluacion, boolean discos, boolean cartaTermino, boolean cartaLiberacion, String observaciones, String estatus, String noControl ) {
         this.expedienteId = expedienteId;
         this.cartaInicio = cartaInicio;

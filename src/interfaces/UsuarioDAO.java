@@ -12,5 +12,5 @@ import models.Usuario;
  * @author aarongmx
  */
 public interface UsuarioDAO extends DAO<Integer, Usuario> {
-    public Usuario login(String usuario, String password);
+    Usuario login(String usuario, String password);
 }

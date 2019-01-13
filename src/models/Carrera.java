@@ -12,12 +12,20 @@ package models;
 public class Carrera {
     private String claveCarrera;
     private String nombre;
-    private String planCarrera;
+    private String planEstudios;
 
-    public Carrera( String claveCarrera, String nombre, String planCarrera ) {
+    public static final String CLAVE_CARRERA = "clave_carrera";
+    public static final String NOMBRE = "nombre";
+    public static final String PLAN_ESTUDIOS = "plan_estudios";
+
+    public Carrera() {
+
+    }
+
+    public Carrera( String claveCarrera, String nombre, String planEstudios) {
         this.claveCarrera = claveCarrera;
         this.nombre = nombre;
-        this.planCarrera = planCarrera;
+        this.planEstudios = planEstudios;
     }
 
     public String getClaveCarrera() {
@@ -36,11 +44,16 @@ public class Carrera {
         this.nombre = nombre;
     }
 
-    public String getPlanCarrera() {
-        return planCarrera;
+    public String getPlanEstudios() {
+        return planEstudios;
     }
 
-    public void setPlanCarrera( String planCarrera ) {
-        this.planCarrera = planCarrera;
+    public void setPlanEstudios(String planEstudios) {
+        this.planEstudios = planEstudios;
+    }
+
+    @Override
+    public String toString() {
+        return "Carrera{" + "claveCarrera='" + claveCarrera + '\'' + ", nombre='" + nombre + '\'' + ", planEstudios='" + planEstudios + '\'' + '}';
     }
 }

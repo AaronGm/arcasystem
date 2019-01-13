@@ -13,6 +13,9 @@ public class AsesorInterno {
     private int asesorInternoId;
     private int profesorId;
 
+    public static final String ASESOR_INTERNO_ID = "asesor_interno_id";
+    public static final String FK_PROFESOR_ID = "profesor_id";
+
     public AsesorInterno( int asesorInternoId, int profesorId ) {
         this.asesorInternoId = asesorInternoId;
         this.profesorId = profesorId;

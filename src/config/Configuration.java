@@ -10,7 +10,7 @@ package config;
  * @author aarongmx
  */
 public interface Configuration {
-    String APP_NAME = "Sistema de control de residencias";
+    String APP_NAME = "Sistema de Control de Residencias";
     
     /**
      * Database DATA

@@ -14,30 +14,29 @@ public class Alumno extends Persona {
     private int semestre;
     private String periodo;
     private String claveCarrera;
-    private int proyectoId;
-    private int empresaId;
-    private int asesorExternoId;
-    private int asesorInternoId;
 
-    private AsesorInterno asesorInterno;
+    public static final String NO_CONTROL = "no_control";
+    public static final String SEMESTRE = "semestre";
+    public static final String CLAVE_CARRERA = "clave_carrera";
+    public static final String PERIODO = "periodo";
 
-    public Alumno(String noControl, int semestre, String periodo, String claveCarrera, int proyectoId, int empresaId, int asesorExternoId, int asesorInternoId, String nombres, String apellidoPaterno, String apellidoMaterno ) {
+    public Alumno(String nombres, String apellidoPaterno, String apellidoMaterno) {
+        super(nombres, apellidoPaterno, apellidoMaterno);
+    }
+
+    public Alumno(String nombres, String apellidoPaterno, String apellidoMaterno, String noControl, int semestre, String periodo, String claveCarrera) {
         super(nombres, apellidoPaterno, apellidoMaterno);
         this.noControl = noControl;
         this.semestre = semestre;
         this.periodo = periodo;
         this.claveCarrera = claveCarrera;
-        this.proyectoId = proyectoId;
-        this.empresaId = empresaId;
-        this.asesorExternoId = asesorExternoId;
-        this.asesorInternoId = asesorInternoId;
     }
 
     public String getNoControl() {
         return noControl;
     }
 
-    public void setNoControl( String noControl ) {
+    public void setNoControl(String noControl) {
         this.noControl = noControl;
     }
 
@@ -45,7 +44,7 @@ public class Alumno extends Persona {
         return semestre;
     }
 
-    public void setSemestre( int semestre ) {
+    public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
 
@@ -53,7 +52,7 @@ public class Alumno extends Persona {
         return periodo;
     }
 
-    public void setPeriodo( String periodo ) {
+    public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
 
@@ -65,45 +64,10 @@ public class Alumno extends Persona {
         this.claveCarrera = claveCarrera;
     }
 
-    public int getProyectoId() {
-        return proyectoId;
+    @Override
+    public String toString() {
+        return "Alumno {\nNombre Completo: " + getNombreCompleto() + "\n" + "No. Control: " + noControl + "\n" +
+                "Semestre: " + semestre + "\n" + "Periodo: " + periodo + "\n" + "Clave Carrera: " + claveCarrera +
+                "\n}";
     }
-
-    public void setProyectoId( int proyectoId ) {
-        this.proyectoId = proyectoId;
-    }
-
-    public int getEmpresaId() {
-        return empresaId;
-    }
-
-    public void setEmpresaId( int empresaId ) {
-        this.empresaId = empresaId;
-    }
-
-    public int getAsesorExternoId() {
-        return asesorExternoId;
-    }
-
-    public void setAsesorExternoId( int asesorExternoId ) {
-        this.asesorExternoId = asesorExternoId;
-    }
-
-    public int getAsesorInternoId() {
-        return asesorInternoId;
-    }
-
-    public void setAsesorInternoId( int asesorInternoId ) {
-        this.asesorInternoId = asesorInternoId;
-    }
-
-    public AsesorInterno getAsesorInterno() {
-        return asesorInterno;
-    }
-
-    public void setAsesorInterno(AsesorInterno asesorInterno) {
-        this.asesorInterno = asesorInterno;
-    }
-
-
 }

@@ -24,6 +24,8 @@ import java.text.Format;
  */
 public class FlatTextField extends JFormattedTextField {
 
+    private boolean existsError;
+
     public FlatTextField() {
         initComponent();
     }
@@ -54,12 +56,13 @@ public class FlatTextField extends JFormattedTextField {
     }
     
     private void initComponent() {
+        existsError = false;
         Border defaultBorder = new CompoundBorder(
                 new MatteBorder(Helpers.paddingInset(1), Colors.GHOST_MEDIUM),
                 helpers.Helpers.padding(0, 8)
         );
         setPreferredSize(new Dimension(330, 30));
-        setFont(helpers.Typography.addFont("Open Sans", "pr"));
+        setFont(helpers.Typography.paragraphFont());
         setForeground(Colors.BLACK);
         setSelectionColor(Colors.BLUE_LIGHT);
         setSelectedTextColor(Color.white);
@@ -67,10 +70,10 @@ public class FlatTextField extends JFormattedTextField {
         addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                setBorder(new CompoundBorder(
+                    setBorder(new CompoundBorder(
                         new MatteBorder(Helpers.paddingInset(2), Colors.BLUE_LIGHT),
                         helpers.Helpers.padding(0, 8)
-                ));
+                    ));
             }
 
             @Override
@@ -78,5 +81,13 @@ public class FlatTextField extends JFormattedTextField {
                 setBorder(defaultBorder);
             }
         });
+    }
+
+    public boolean isExistsError() {
+        return existsError;
+    }
+
+    public void setExistsError(boolean existsError) {
+        this.existsError = existsError;
     }
 }

@@ -7,20 +7,16 @@ package views;
 
 import helpers.Helpers;
 import models.Alumno;
+import views.components.FlatButton;
 import views.components.FlatCheckbox;
 import views.components.FlatLabel;
-import views.components.HeaderApp;
-import views.components.MenuApp;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.util.Arrays;
 
@@ -28,7 +24,7 @@ import java.util.Arrays;
  *
  * @author aarongmx
  */
-public class RegistrarExpediente extends JFrame {
+public class RegistrarExpediente extends View {
     
     private JPanel pnlForm;
     private JPanel pnlHistorialAlumno;
@@ -43,26 +39,16 @@ public class RegistrarExpediente extends JFrame {
     private FlatCheckbox cartaLiberacion;
     private FlatLabel estatus;
 
+    private FlatButton btnGuardar;
+
     private Alumno alumno;
 
     public RegistrarExpediente() throws HeadlessException {
-        initView();
+        super("Registrar Expediente");
     }
 
-    private void initView() {
-        helpers.Helpers.minScreenSize(this);
-        initComponents();
-        setJMenuBar(new MenuApp());
-        add(BorderLayout.NORTH, new HeaderApp("Registrar Expediente"));
-
-        JPanel pnlCenter = new JPanel(new BorderLayout());
-        pnlCenter.add(BorderLayout.EAST, pnlForm);
-        pnlCenter.add(BorderLayout.CENTER, pnlHistorialAlumno);
-        add(BorderLayout.CENTER, pnlCenter);
-        helpers.Helpers.centerCloseScreen(this);
-    }
-    
-    private void initComponents() {
+    @Override
+    protected void initComponents() {
         pnlForm = new JPanel();
         pnlHistorialAlumno = new JPanel();
 
@@ -76,18 +62,28 @@ public class RegistrarExpediente extends JFrame {
         cartaLiberacion = new FlatCheckbox("Carta de liberación");
         estatus = new FlatLabel("Estado de la residencia:");
 
+        btnGuardar = new FlatButton("Guardar expediente");
+
         Helpers.setWhite(pnlForm, pnlHistorialAlumno);
 
         initForm();
         initDataAlumno();
     }
-    
+
+    @Override
+    protected void setComponents() {
+        JPanel pnlCenter = new JPanel(new BorderLayout());
+        pnlCenter.add(BorderLayout.EAST, pnlForm);
+        pnlCenter.add(BorderLayout.CENTER, pnlHistorialAlumno);
+        add(BorderLayout.CENTER, pnlCenter);
+    }
+
     private void initForm() {
         pnlForm.setPreferredSize(new Dimension(Helpers.PANTALLA.width/3 - 180, this.getHeight()));
         pnlForm.setLayout(new BoxLayout(pnlForm, BoxLayout.Y_AXIS));
         pnlForm.setBorder(Helpers.padding(32, 16));
 
-        alumno = new Alumno("151080126", 8, "Enero - Junio 2019", "ISC", 1, 1, 1, 1, "Aarón", "Gómez", "Méndez");
+        alumno = new Alumno("Aarón", "Gómez", "Méndez", "151080126", 9, "Enero - Junio 2019", "ISC");
 
         pnlForm.add(new FlatLabel("Documentos", "Raleway", "h2"));
         pnlForm.add(Box.createVerticalStrut(24));
@@ -104,6 +100,8 @@ public class RegistrarExpediente extends JFrame {
         }).forEach(item -> {
             pnlForm.add(item);
         });
+        pnlForm.add(Box.createVerticalStrut(16));
+        pnlForm.add(btnGuardar);
     }
 
     private void initDataAlumno() {
@@ -113,21 +111,25 @@ public class RegistrarExpediente extends JFrame {
         pnlHistorialAlumno.add(BorderLayout.NORTH ,new FlatLabel("Datos del alumno", "Raleway", "h2"));
 
         JPanel pnlDatosAlumno = new JPanel();
-        GroupLayout layout = new GroupLayout(pnlDatosAlumno);
+        pnlDatosAlumno.setLayout(new BoxLayout(pnlDatosAlumno, BoxLayout.Y_AXIS));
         pnlDatosAlumno.setBackground(Color.white);
 
-        /*layout.setVerticalGroup(
-                layout.createParallelGroup()
-                        .addComponent(new FlatLabel("No. Control"))
-                        .addComponent(new FlatLabel(alumno.getNoControl(), "Open Sans", "pr")).addGroup(layout.createSequentialGroup(
-                )
-        );*/
 
-//        pnlDatosAlumno.add(new FlatLabel("No. Control"));
-//        pnlDatosAlumno.add(new FlatLabel(alumno.getNoControl(), "Open Sans", "pr"));
+        pnlDatosAlumno.add(Box.createVerticalStrut(32));
 
-//        pnlDatosAlumno.add(new FlatLabel("Nombre"));
-//        pnlDatosAlumno.add(new FlatLabel(alumno.getNombreCompleto(), "Open Sans", "pr"));
+        pnlDatosAlumno.add(new FlatLabel("No. Control"));
+        pnlDatosAlumno.add(Box.createHorizontalStrut(8));
+        pnlDatosAlumno.add(new FlatLabel(alumno.getNoControl(), "Open Sans", "pr"));
+
+        pnlDatosAlumno.add(Box.createHorizontalStrut(16));
+
+        pnlDatosAlumno.add(new FlatLabel("Nombre"));
+        pnlDatosAlumno.add(Box.createHorizontalStrut(8));
+        pnlDatosAlumno.add(new FlatLabel(alumno.getNombreCompleto(), "Open Sans", "pr"));
+
+        pnlDatosAlumno.add(Box.createVerticalStrut(16));
+
+        pnlDatosAlumno.add(new FlatLabel(""));
 
 
         pnlHistorialAlumno.add(BorderLayout.CENTER, pnlDatosAlumno);

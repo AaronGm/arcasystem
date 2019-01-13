@@ -1,23 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao.postgres;
 
 import config.ConnectionDB;
 import excepciones.ExcepcionGeneral;
 import interfaces.ProfesorDAO;
+import models.Profesor;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import models.Persona;
-import models.Profesor;
 
 /**
  *
@@ -29,16 +23,20 @@ public class ImplProfesor implements ProfesorDAO {
     private PreparedStatement sentencia;
     private ResultSet resultados;
     
-    private final String INSERTAR = "INSERT INTO profesores(no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad) VALUES (?, ?, ?, ?, ?, ?::grado_estudios, ?::estado_profesor, ?);";
+    private final String INSERTAR = "INSERT INTO profesores(no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad) VALUES (?, ?, ?, ?, ?, ?::grado_estudios, ?::estado_profesor, ?) RETURNING profesor_id;";
     private final String LISTAR = "SELECT profesor_id, no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad FROM profesores;";
-    private final String PORID = "SELECT profesor_id, no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad FROM profesores WHERE profesor_id = ?;";
+    private final String OBTENERPORID = "SELECT profesor_id, no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad FROM profesores WHERE profesor_id = ?;";
+
+    private final String ACTUALIZAR = "UPDATE profesores SET no_trabajador = ?, nombres = ?, apellido_paterno = ?, apellido_materno = ?, fecha_ingreso = ?, grado_estudios = ?::grado_estudios, estatus_profesor = ?::estado_profesor, area_especialidad = ? WHERE profesor_id = ?;";
+    
+    private final String ELIMINAR = "DELETE FROM profesores WHERE profesor_id = ?;";
 
     @Override
-    public void insertar(Profesor profesor) throws ExcepcionGeneral {
+    public void insert(Profesor profesor) throws ExcepcionGeneral {
         conexion = new ConnectionDB().getConnection();
         try {
-            sentencia = conexion.prepareStatement(INSERTAR, Statement.RETURN_GENERATED_KEYS);
-            sentencia.setString(1, profesor.getNoContrato());
+            sentencia = conexion.prepareStatement(INSERTAR);
+            sentencia.setString(1, profesor.getNoTrabajador());
             sentencia.setString(2, profesor.getNombres());
             sentencia.setString(3, profesor.getApellidoPaterno());
             sentencia.setString(4, profesor.getApellidoMaterno());
@@ -46,15 +44,15 @@ public class ImplProfesor implements ProfesorDAO {
             sentencia.setString(6, profesor.getGradoEstudio());
             sentencia.setString(7, profesor.getEstatusProfesor());
             sentencia.setString(8, profesor.getAreaEspecialidad());
-            
-            int filasAfectadas = sentencia.executeUpdate();
-            
-            if ( filasAfectadas > 0 ) {
-                resultados = sentencia.getGeneratedKeys();
-                if (resultados.next()) {
-                    profesor.setProfesorId(resultados.getInt(Profesor.PROFESOR_ID));
-                }
+
+            resultados = sentencia.executeQuery();
+
+            if (resultados.next()) {
+                profesor.setProfesorId(resultados.getInt(Profesor.PROFESOR_ID));
+            } else {
+                throw new ExcepcionGeneral("No se insertó ningún registro");
             }
+
         } catch (SQLException e) {
             throw new ExcepcionGeneral(e.getMessage());
         } finally {
@@ -63,35 +61,69 @@ public class ImplProfesor implements ProfesorDAO {
     }
 
     @Override
-    public void modificar(Profesor profesor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Profesor profesor) {
+        conexion = new ConnectionDB().getConnection();
+        try {
+            sentencia = conexion.prepareStatement(ACTUALIZAR);
+            sentencia.setString(1, profesor.getNoTrabajador());
+            sentencia.setString(2, profesor.getNombres());
+            sentencia.setString(3, profesor.getApellidoPaterno());
+            sentencia.setString(4, profesor.getApellidoMaterno());
+            sentencia.setDate(5, (Date) profesor.getFechaIngreso());
+            sentencia.setString(6, profesor.getGradoEstudio());
+            sentencia.setString(7, profesor.getEstatusProfesor());
+            sentencia.setString(8, profesor.getAreaEspecialidad());
+            sentencia.setInt(9, profesor.getProfesorId());
+
+            if (sentencia.executeUpdate() == 0) {
+                throw new ExcepcionGeneral("No se insertó ningún registro");
+            }
+
+        } catch (SQLException e) {
+            throw new ExcepcionGeneral(e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(conexion, sentencia, resultados);
+        }
     }
 
     @Override
-    public void eliminar(Profesor profesor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(Profesor profesor) {
+       conexion = new ConnectionDB().getConnection();
+       try {
+            sentencia = conexion.prepareStatement(ELIMINAR);
+            sentencia.setInt(1, profesor.getProfesorId());
+
+           if (sentencia.executeUpdate() == 0) {
+               throw new ExcepcionGeneral("No se eliminó ningún registro");
+           }
+
+       } catch (SQLException e) {
+           throw new ExcepcionGeneral(e.getMessage());
+       } finally {
+           ConnectionDB.closeConnection(conexion, sentencia, resultados);
+       }
     }
 
     @Override
-    public Profesor obtenerPorId(Integer key) {
+    public Profesor getById(Integer id) {
         conexion = new ConnectionDB().getConnection();
         Profesor profesor = null;
         try {
-            sentencia = conexion.prepareStatement(PORID);
-            sentencia.setInt(1, key);
+            sentencia = conexion.prepareStatement(OBTENERPORID, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            sentencia.setInt(1, id);
             resultados = sentencia.executeQuery();
             if (resultados.first()) {
                 
                 profesor = new Profesor(
-                    resultados.getInt(Profesor.PROFESOR_ID),
+                    id,
                     resultados.getString(Profesor.NO_TRABAJADOR),
                     resultados.getDate(Profesor.FECHA_INGRESO),
                     resultados.getString(Profesor.GRADO_ESTUDIOS),
                     resultados.getString(Profesor.ESTATUS_PROFESOR),
                     resultados.getString(Profesor.AREA_ESPECIALIDAD),
-                    resultados.getString(Persona.NOMBRES),
-                    resultados.getString(Persona.APELLIDO_PATERNO),
-                    resultados.getString(Persona.APELLIDO_MATERNO)
+                    resultados.getString(Profesor.NOMBRES),
+                    resultados.getString(Profesor.APELLIDO_PATERNO),
+                    resultados.getString(Profesor.APELLIDO_MATERNO)
                 );
             }
         } catch (SQLException e) {
@@ -103,7 +135,7 @@ public class ImplProfesor implements ProfesorDAO {
     }
 
     @Override
-    public List<Profesor> listar() {
+    public List<Profesor> list() {
         ArrayList<Profesor> lista = new ArrayList<>();
         conexion = new ConnectionDB().getConnection();
         try {
@@ -118,9 +150,9 @@ public class ImplProfesor implements ProfesorDAO {
                         resultados.getString(Profesor.GRADO_ESTUDIOS),
                         resultados.getString(Profesor.ESTATUS_PROFESOR),
                         resultados.getString(Profesor.AREA_ESPECIALIDAD),
-                        resultados.getString(Persona.NOMBRES),
-                        resultados.getString(Persona.APELLIDO_PATERNO),
-                        resultados.getString(Persona.APELLIDO_MATERNO)
+                        resultados.getString(Profesor.NOMBRES),
+                        resultados.getString(Profesor.APELLIDO_PATERNO),
+                        resultados.getString(Profesor.APELLIDO_MATERNO)
                     )
                 );
             }

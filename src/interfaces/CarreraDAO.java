@@ -11,6 +11,6 @@ import models.Carrera;
  *
  * @author aarongmx
  */
-public interface CarreraDAO extends DAO<Integer, Carrera> {
+public interface CarreraDAO extends DAO<String, Carrera> {
     
 }
