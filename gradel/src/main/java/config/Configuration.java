@@ -16,7 +16,7 @@ public interface Configuration {
      * Database DATA
      */
     String HOST_DB = "localhost";
-    String USER_DB = "dao/postgres";
+    String USER_DB = "postgres";
     String PASS_DB = "dbadmin";
     String NAME_DB = "arca";
     String PORT_DB = "5432";
