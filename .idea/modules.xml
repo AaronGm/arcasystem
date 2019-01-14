@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ArcaSystem.iml" filepath="$PROJECT_DIR$/ArcaSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.iml" filepath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.main.iml" filepath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.test.iml" filepath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.test.iml" />
     </modules>
   </component>
 </project>
