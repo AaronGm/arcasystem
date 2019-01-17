@@ -4,11 +4,11 @@ import views.View;
 
 public interface Controller<Obj> {
 
-    View create(View view);
+    View create();
 
-    View update(View view, Obj obj);
+    View update(Obj obj);
 
-    View show(View view);
+    View show();
 
     void destroy(Obj obj);
 

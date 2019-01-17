@@ -5,7 +5,6 @@
  */
 package helpers;
 
-import static helpers.Helpers.FONTS_PATH;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.File;
@@ -14,6 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static helpers.Helpers.FONTS_PATH;
 
 /**
  *

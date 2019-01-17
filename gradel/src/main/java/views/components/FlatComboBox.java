@@ -5,11 +5,11 @@
  */
 package views.components;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Vector;
-import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
 
 /**
  *

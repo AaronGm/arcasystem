@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImplExpediente implements ExpedienteDAO {
+public class ExpedienteDB implements ExpedienteDAO {
 
     private Connection conexion;
     private PreparedStatement sentencia;

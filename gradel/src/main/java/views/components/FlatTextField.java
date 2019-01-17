@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views.components;
 
 import helpers.Colors;
@@ -12,8 +8,10 @@ import javax.swing.JFormattedTextField;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.text.JTextComponent;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.text.Format;
@@ -24,7 +22,11 @@ import java.text.Format;
  */
 public class FlatTextField extends JFormattedTextField {
 
-    private boolean existsError;
+    private static Insets sizeBorderMaterial = Helpers.paddingInset(0, 0, 2, 0);
+    private static Border defaultBorderMaterial = new CompoundBorder(
+        new MatteBorder(sizeBorderMaterial, Colors.DEFAULT_COMPONENT),
+        helpers.Helpers.padding(0, 8)
+    );
 
     public FlatTextField() {
         initComponent();
@@ -56,22 +58,22 @@ public class FlatTextField extends JFormattedTextField {
     }
     
     private void initComponent() {
-        existsError = false;
         Border defaultBorder = new CompoundBorder(
-                new MatteBorder(Helpers.paddingInset(1), Colors.GHOST_MEDIUM),
+                new MatteBorder(Helpers.paddingInset(1), Colors.DEFAULT_COMPONENT),
                 helpers.Helpers.padding(0, 8)
         );
+        setMinimumSize(new Dimension(300, 30));
         setPreferredSize(new Dimension(330, 30));
         setFont(helpers.Typography.paragraphFont());
         setForeground(Colors.BLACK);
-        setSelectionColor(Colors.BLUE_LIGHT);
+        setSelectionColor(Colors.SELECTED_COMPONENT);
         setSelectedTextColor(Color.white);
         setBorder(defaultBorder);
         addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
                     setBorder(new CompoundBorder(
-                        new MatteBorder(Helpers.paddingInset(2), Colors.BLUE_LIGHT),
+                        new MatteBorder(Helpers.paddingInset(2), Colors.SELECTED_COMPONENT),
                         helpers.Helpers.padding(0, 8)
                     ));
             }
@@ -83,11 +85,40 @@ public class FlatTextField extends JFormattedTextField {
         });
     }
 
-    public boolean isExistsError() {
-        return existsError;
+    public static void styleMaterial(JTextComponent component) {
+        component.setBorder(defaultBorderMaterial);
+        component.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                component.setBorder(new CompoundBorder(
+                    new MatteBorder(sizeBorderMaterial, Colors.SELECTED_COMPONENT),
+                    helpers.Helpers.padding(0, 8)
+                ));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                component.setBorder(defaultBorderMaterial);
+            }
+        });
+
     }
 
-    public void setExistsError(boolean existsError) {
-        this.existsError = existsError;
+    public static void styleMaterial(JTextComponent component, Color color) {
+        component.setBorder(defaultBorderMaterial);
+        component.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                component.setBorder(new CompoundBorder(
+                    new MatteBorder(sizeBorderMaterial, color),
+                    helpers.Helpers.padding(0, 8)
+                ));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                component.setBorder(defaultBorderMaterial);
+            }
+        });
     }
 }

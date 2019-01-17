@@ -5,18 +5,26 @@
  */
 package views;
 
+import enums.FontAwesome5;
 import helpers.Helpers;
+import jiconfont.swing.IconFontSwing;
 import models.Alumno;
+import views.components.AuthDialog;
 import views.components.FlatButton;
 import views.components.FlatCheckbox;
 import views.components.FlatLabel;
+import views.components.FlatPanel;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.util.Arrays;
 
@@ -26,8 +34,8 @@ import java.util.Arrays;
  */
 public class RegistrarExpediente extends View {
     
-    private JPanel pnlForm;
-    private JPanel pnlHistorialAlumno;
+    private FlatPanel pnlForm;
+    private FlatPanel pnlHistorialAlumno;
 
     private FlatCheckbox cartaInicio;
     private FlatCheckbox asesorias;
@@ -37,7 +45,8 @@ public class RegistrarExpediente extends View {
     private FlatCheckbox cartaTermino;
     private FlatCheckbox discos;
     private FlatCheckbox cartaLiberacion;
-    private FlatLabel estatus;
+
+    private JTextArea estatus;
 
     private FlatButton btnGuardar;
 
@@ -49,8 +58,9 @@ public class RegistrarExpediente extends View {
 
     @Override
     protected void initComponents() {
-        pnlForm = new JPanel();
-        pnlHistorialAlumno = new JPanel();
+        IconFontSwing.register(FontAwesome5.getIconFont("solid"));
+        pnlForm = new FlatPanel();
+        pnlHistorialAlumno = new FlatPanel();
 
         cartaInicio = new FlatCheckbox("Carta de Inicio");
         asesorias = new FlatCheckbox("Asesorias");
@@ -60,7 +70,8 @@ public class RegistrarExpediente extends View {
         cartaTermino = new FlatCheckbox("Carta de término");
         discos = new FlatCheckbox("Discos");
         cartaLiberacion = new FlatCheckbox("Carta de liberación");
-        estatus = new FlatLabel("Estado de la residencia:");
+        estatus = new JTextArea();
+
 
         btnGuardar = new FlatButton("Guardar expediente");
 
@@ -81,7 +92,6 @@ public class RegistrarExpediente extends View {
     private void initForm() {
         pnlForm.setPreferredSize(new Dimension(Helpers.PANTALLA.width/3 - 180, this.getHeight()));
         pnlForm.setLayout(new BoxLayout(pnlForm, BoxLayout.Y_AXIS));
-        pnlForm.setBorder(Helpers.padding(32, 16));
 
         alumno = new Alumno("Aarón", "Gómez", "Méndez", "151080126", 9, "Enero - Junio 2019", "ISC");
 
@@ -97,40 +107,82 @@ public class RegistrarExpediente extends View {
                 discos,
                 cartaTermino,
                 cartaLiberacion
-        }).forEach(item -> {
-            pnlForm.add(item);
-        });
+        }).forEach(item -> pnlForm.add(item));
+
+        JScrollPane scrollPane = new JScrollPane(estatus);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
         pnlForm.add(Box.createVerticalStrut(16));
+        pnlForm.add(new FlatLabel("Estatus de las residencias profesionales"));
+        pnlForm.add(scrollPane);
+
         pnlForm.add(btnGuardar);
+
+        btnGuardar.addActionListener(l -> {
+            AuthDialog authDialog = new AuthDialog(this, "Hola");
+            authDialog.setVisible(true);
+        });
     }
 
     private void initDataAlumno() {
-        pnlHistorialAlumno.setBorder(Helpers.padding(32, 16));
         pnlHistorialAlumno.setLayout(new BorderLayout());
 
         pnlHistorialAlumno.add(BorderLayout.NORTH ,new FlatLabel("Datos del alumno", "Raleway", "h2"));
 
-        JPanel pnlDatosAlumno = new JPanel();
-        pnlDatosAlumno.setLayout(new BoxLayout(pnlDatosAlumno, BoxLayout.Y_AXIS));
+        FlatPanel pnlDatosAlumno = new FlatPanel(16, 8);
+        pnlDatosAlumno.setLayout(new GridBagLayout());
         pnlDatosAlumno.setBackground(Color.white);
 
+        Alumno alumno = new Alumno("Aarón", "Gómez", "Méndez", "151080126", 9, "Enero - Junio 2020", "ISC");
 
-        pnlDatosAlumno.add(Box.createVerticalStrut(32));
-
-        pnlDatosAlumno.add(new FlatLabel("No. Control"));
-        pnlDatosAlumno.add(Box.createHorizontalStrut(8));
-        pnlDatosAlumno.add(new FlatLabel(alumno.getNoControl(), "Open Sans", "pr"));
-
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        pnlDatosAlumno.add(
+            Helpers.verticalElements(
+                new FlatLabel("Número de Control"),
+                new FlatLabel(alumno.getNoControl(), "pr")
+            ),
+            c
+        );
+        pnlDatosAlumno.add(Box.createHorizontalStrut(16), c);
+        pnlDatosAlumno.add(
+            Helpers.verticalElements(
+                new FlatLabel("Nombre Completo"),
+                new FlatLabel(alumno.getNombreCompleto(), "pr")
+            ),
+            c
+        );
         pnlDatosAlumno.add(Box.createHorizontalStrut(16));
+        pnlDatosAlumno.add(
+            Helpers.verticalElements(
+                new FlatLabel("Carrera"),
+                new FlatLabel(alumno.getClaveCarrera(), "pr")
+            ),
+            c
+        );
+        pnlDatosAlumno.add(Box.createHorizontalStrut(16), c);
+        pnlDatosAlumno.add(
+            Helpers.verticalElements(
+                new FlatLabel("Periodo"),
+                new FlatLabel(alumno.getPeriodo(), "pr")
+            ),
+            c
+        );
 
-        pnlDatosAlumno.add(new FlatLabel("Nombre"));
-        pnlDatosAlumno.add(Box.createHorizontalStrut(8));
-        pnlDatosAlumno.add(new FlatLabel(alumno.getNombreCompleto(), "Open Sans", "pr"));
+        c.gridy = 3;
+        c.gridwidth = 10;
+        pnlDatosAlumno.add(Box.createRigidArea(new Dimension(120, 168)));
 
-        pnlDatosAlumno.add(Box.createVerticalStrut(16));
-
-        pnlDatosAlumno.add(new FlatLabel(""));
-
+        c.gridy = 2;
+        c.gridx = 0;
+        pnlDatosAlumno.add(
+            Helpers.verticalElements(
+                new FlatLabel("Proyecto"),
+                new FlatLabel("IA clasificadora de imagénes", "pr")
+            ),
+            c
+        );
 
         pnlHistorialAlumno.add(BorderLayout.CENTER, pnlDatosAlumno);
 

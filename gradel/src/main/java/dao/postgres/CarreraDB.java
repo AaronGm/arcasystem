@@ -1,26 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao.postgres;
 
 import config.ConnectionDB;
 import excepciones.ExcepcionGeneral;
 import interfaces.CarreraDAO;
+import models.Carrera;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import models.Carrera;
 
 /**
  *
  * @author aarongmx
  */
-public class ImplCarrera implements CarreraDAO {
+public class CarreraDB implements CarreraDAO {
     
     private Connection conexion;
     private PreparedStatement sentencia;
@@ -33,8 +30,8 @@ public class ImplCarrera implements CarreraDAO {
             " = " +
             "?;";
     private final String ELIMINAR = "DELETE FROM carreras WHERE clave_carrera = ?;";
-    private final String LISTAR = "SELECT clave_carrera, nombre, plan_estudio FROM carreras;";
-    private final String OBTENERPORID = "SELECT nombre, plan_estudio FROM carreras WHERE clave_carrera" +
+    private final String LISTAR = "SELECT clave_carrera, nombre, plan_estudios FROM carreras;";
+    private final String OBTENERPORID = "SELECT nombre, plan_estudios FROM carreras WHERE clave_carrera" +
             " = ?;";
     
     @Override

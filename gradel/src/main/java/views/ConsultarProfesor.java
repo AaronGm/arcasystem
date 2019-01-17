@@ -5,7 +5,7 @@
  */
 package views;
 
-import dao.postgres.ImplProfesor;
+import dao.postgres.ProfesorDB;
 import helpers.Colors;
 import helpers.Helpers;
 import jiconfont.icons.font_awesome.FontAwesome;
@@ -147,7 +147,7 @@ public class ConsultarProfesor extends View {
     public void loadData() {
         model.setRowCount(0);
 
-        new ImplProfesor().list().forEach(el -> {
+        new ProfesorDB().list().forEach(el -> {
             model.addRow(new Object[]{
                 el.getProfesorId(),
                 el.getNoTrabajador(),

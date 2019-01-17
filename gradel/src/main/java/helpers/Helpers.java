@@ -1,27 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package helpers;
 
+import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.JTextComponent;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
@@ -38,6 +37,16 @@ public class Helpers {
     /**
      * Ruta a las fuentes tipográficas del proyecto
      * C:\Users\aarongmx\Documents\arcasystem\gradel\src\main\resources\fonts
+     */
+
+    /**
+     * 16 Spacing Points
+     * 8
+     * 16
+     * 24
+     * 36
+     * 64
+     * 128
      */
     public static String FONTS_PATH = ClassLoader.getSystemClassLoader().getResource("./fonts/").getPath();
     
@@ -59,12 +68,18 @@ public class Helpers {
     /**
      * Dimension mínima para las vistas
      */
-    public final static Dimension MINIMO_PANTALLA = new Dimension(PANTALLA.width - 260, PANTALLA.height - 80);
+    public final static Dimension MINIMO_PANTALLA = new Dimension(PANTALLA.width - 220, PANTALLA.height - 80);
     
     /**
      * Dimension para las vistas
      */
-    public final static Dimension SIZE_PANTALLA = new Dimension(PANTALLA.width - 20, PANTALLA.height);
+    public final static Dimension SIZE_PANTALLA = new Dimension(PANTALLA.width - 180, PANTALLA.height - 80);
+
+    /**
+     * Tamaño para los iconos de los componentes customizados
+     */
+    public final static int ICON_SIZE = 18;
+
 
     /**
      * Retorna un nuevo inset
@@ -182,7 +197,7 @@ public class Helpers {
         ImageIcon icon = new ImageIcon(IMAGES_PATH + "logo-itiz64.png");
         frame.setIconImage(icon.getImage());
         frame.setMinimumSize(MINIMO_PANTALLA);
-        frame.setSize(PANTALLA);
+        frame.setSize(SIZE_PANTALLA);
     }
     
     public static void centerCloseScreen(JFrame frame) {
@@ -230,6 +245,89 @@ public class Helpers {
         });
     }
 
+    public static void setBgColor(Color color, JComponent... component) {
+        Arrays.asList(component).forEach(el -> {
+            el.setBackground(color);
+        });
+    }
+
+    public static JPanel groupElementsVertical(JComponent... components) {
+        JPanel panel = new JPanel();
+        panel.setBorder(padding(8));
+        panel.setBackground(Color.white);
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        List<JComponent> lista = Arrays.asList(components);
+
+        c.anchor = GridBagConstraints.WEST;
+        c.insets = Helpers.paddingInset(0, 0, 32, 0);
+        for (int i = 0; i < lista.size(); i++) {
+            c.gridy = i;
+            c.insets = Helpers.paddingInset(0, 8);
+            panel.add(lista.get(i), c);
+            c.insets = Helpers.paddingInset(0);
+        }
+        return panel;
+    }
+
+    public static JPanel groupElementsHorizontal(JComponent... components) {
+        JPanel panel = new JPanel();
+        panel.setBorder(padding(8));
+        panel.setBackground(Color.white);
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        List<JComponent> lista = Arrays.asList(components);
+
+        for (int i = 0; i < lista.size(); i++) {
+            c.gridx = i;
+            c.anchor = GridBagConstraints.WEST;
+            c.insets = Helpers.paddingInset(0, 8);
+            panel.add(lista.get(i), c);
+            c.insets = Helpers.paddingInset(0);
+        }
+        return panel;
+    }
+
+    public static JPanel verticalElements(JComponent... components) {
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.white);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        Arrays.asList(components).forEach(el -> {
+            panel.add(el);
+        });
+        return panel;
+    }
+
+    public static JPanel verticalElements(Color color, JComponent... components) {
+        JPanel panel = verticalElements(components);
+        panel.setBackground(color);
+        return panel;
+    }
+
+    public static JLabel labelIcon(Icon icon, Dimension size) {
+        JLabel iconL = new JLabel(icon);
+        iconL.setPreferredSize(size);
+        return iconL;
+    }
+
+    public static JPanel panelHidde(int orientation, JComponent... components) {
+        JPanel panel = new JPanel(new FlowLayout(orientation));
+        Arrays.asList(components).forEach(el -> {
+            panel.add(el);
+        });
+        return panel;
+    }
+
+    public static JPanel panelHidde(int orientation, Color color, JComponent... components) {
+        JPanel panel = new JPanel(new FlowLayout(orientation));
+        panel.setBackground(color);
+        Arrays.asList(components).forEach(el -> {
+            panel.add(el);
+        });
+        return panel;
+    }
+
+
     public static String fechaDocumentos() {
         String fecha = FECHA.format(DateTimeFormatter.ofPattern("dd/MMMM/YYYY"));
         String mes = FECHA.getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
@@ -266,9 +364,12 @@ public class Helpers {
         return keyAdapter;
     }
 
-    public static String cleanField(JFormattedTextField formattedTextField) {
-        String value = (String) formattedTextField.getValue();
-        return value.trim();
+    public static GridBagConstraints ejes(int x, int y) {
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridy = y;
+        c.gridx = x;
+        return c;
     }
+
 
 }

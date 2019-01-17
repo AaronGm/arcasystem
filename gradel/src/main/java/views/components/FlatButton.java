@@ -6,19 +6,20 @@
 package views.components;
 
 import helpers.Colors;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
+
+import javax.swing.Action;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import javax.swing.Action;
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.MatteBorder;
-import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
 
 /**
  *
@@ -67,33 +68,27 @@ public class FlatButton extends JButton {
 
     private void initComponent() {
         IconFontSwing.register(FontAwesome.getIconFont());
-        setBackground(Colors.BLUE_LIGHT);
+        Border defaultBorder = new CompoundBorder(helpers.Helpers.padding(1),
+            helpers.Helpers.padding(8, 16)
+        );
+        setBackground(Colors.SELECTED_COMPONENT);
         setForeground(Color.white);
         setFont(helpers.Typography.componentsFont());
-        setBorder(
-            new CompoundBorder(helpers.Helpers.padding(2),
-            helpers.Helpers.padding(8, 16))
-        );
+        setBorder(defaultBorder);
         setFocusPainted(false);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         addFocusListener(new FocusListener() {
+            Color originalBG = getBackground();
             @Override
             public void focusGained(FocusEvent e) {
-                setBorder(
-                    new CompoundBorder(
-                        new MatteBorder(2, 2, 2, 2, getBackground().brighter()),
-                        helpers.Helpers.padding(8, 16)
-                    )
-                );
+
+                setBackground(originalBG.brighter());
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                setBorder(
-                    new CompoundBorder(helpers.Helpers.padding(2),
-                    helpers.Helpers.padding(8, 16))
-                );
+                setBackground(originalBG);
             }
         });
     }
@@ -102,6 +97,19 @@ public class FlatButton extends JButton {
         setBackground(Color.white);
         setForeground(Colors.BLACK_MEDIUM);
         setPressedColor(Colors.GHOST);
+        addFocusListener(new FocusListener() {
+            Color originalBG = getBackground();
+            @Override
+            public void focusGained(FocusEvent e) {
+
+                setBackground(originalBG);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                setBackground(originalBG);
+            }
+        });
     }
 
     public Color getPressedColor() {
@@ -128,7 +136,4 @@ public class FlatButton extends JButton {
     public void setContentAreaFilled(boolean b) {
     }
 
-    
-    
-    
 }

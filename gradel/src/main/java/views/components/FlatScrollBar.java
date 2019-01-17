@@ -6,9 +6,10 @@
 package views.components;
 
 import helpers.Colors;
-import java.awt.Dimension;
+
 import javax.swing.JScrollBar;
 import javax.swing.border.EmptyBorder;
+import java.awt.Dimension;
 
 /**
  *

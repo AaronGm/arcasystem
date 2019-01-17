@@ -6,9 +6,7 @@
 package views.components.table;
 
 import helpers.Colors;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -16,6 +14,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellRenderer;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 
 /**
  *

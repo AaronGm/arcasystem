@@ -6,6 +6,12 @@
 package views;
 
 import helpers.Colors;
+import views.components.FlatLabel;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,11 +19,6 @@ import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.SwingConstants;
-import views.components.FlatLabel;
 
 /**
  *

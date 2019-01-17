@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImplAlumno implements AlumnoDAO {
+public class AlumnoDB implements AlumnoDAO {
 
     private Connection conexion;
     private PreparedStatement sentencia;

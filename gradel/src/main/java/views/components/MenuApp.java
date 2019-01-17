@@ -5,6 +5,7 @@
  */
 package views.components;
 
+import controllers.AlumnoController;
 import controllers.ProfesorController;
 import helpers.Colors;
 import helpers.Helpers;
@@ -16,7 +17,6 @@ import views.RegistrarEmpresa;
 import views.RegistrarExpediente;
 import views.RegistrarProfesor;
 import views.RegistrarProyecto;
-import views.RegistrarResidente;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -45,7 +45,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
     
     private FlatMenuItem regProfesor;
     private FlatMenuItem regEmpresa;
-    private FlatMenuItem regResidente;
+    private FlatMenuItem regAlumno;
     private FlatMenuItem regProyecto;
     private FlatMenuItem regAsesorInterno;
     private FlatMenuItem regAsesorExterno;
@@ -53,7 +53,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
     
     private FlatMenuItem cnsProfesor;
     private FlatMenuItem cnsEmpresa;
-    private FlatMenuItem cnsResidente;
+    private FlatMenuItem cnsAlumno;
     private FlatMenuItem cnsProyecto;
     private FlatMenuItem cnsAsesorInterno;
     private FlatMenuItem cnsAsesorExterno;
@@ -66,6 +66,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
     FlatMenuItem itemsRegistro[];
 
     ProfesorController profesorController;
+    AlumnoController alumnoController;
     
     public MenuApp() {
         initView();
@@ -94,7 +95,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
         
         regProfesor = new FlatMenuItem("Profesor");
         regEmpresa = new FlatMenuItem("Empresa");
-        regResidente = new FlatMenuItem("Residente");
+        regAlumno = new FlatMenuItem("Alumno");
         regProyecto = new FlatMenuItem("Proyecto");
         regAsesorInterno = new FlatMenuItem("Asesor Interno");
         regAsesorExterno = new FlatMenuItem("Asesor Externo");
@@ -103,13 +104,13 @@ public class MenuApp extends JMenuBar implements ActionListener {
         cnsProfesor = new FlatMenuItem("Profesores");
         cnsEmpresa = new FlatMenuItem("Empresas");
         cnsProyecto = new FlatMenuItem("Proyectos");
-        cnsResidente = new FlatMenuItem("Residentes");
+        cnsAlumno = new FlatMenuItem("Alumno");
         cnsAsesorInterno = new FlatMenuItem("Asesores Internos");
         cnsAsesorExterno = new FlatMenuItem("Asesores Externos");
         cnsExpediente = new FlatMenuItem("Expediente");
 
         panelDeControl = new FlatMenuItem("Panel de Control", IconFontSwing.buildIcon(FontAwesome.WRENCH, 16, Colors.BLACK_MEDIUM));
-        cerrarSesion = new FlatMenuItem("Panel de Control", IconFontSwing.buildIcon(FontAwesome.SIGN_OUT, 16 , Colors.BLACK_MEDIUM));
+        cerrarSesion = new FlatMenuItem("Cerrar Sesión", IconFontSwing.buildIcon(FontAwesome.SIGN_OUT, 16 , Colors.BLACK_MEDIUM));
 
         initRegistrar();
     }
@@ -128,7 +129,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
             cnsProyecto,
             cnsEmpresa,
             cnsAsesorExterno,
-            cnsResidente,
+             cnsAlumno,
             cnsAsesorInterno,
             cnsExpediente
         };
@@ -137,8 +138,8 @@ public class MenuApp extends JMenuBar implements ActionListener {
             regProfesor,
             regProyecto, 
             regEmpresa, 
-            regAsesorExterno, 
-            regResidente, 
+            regAsesorExterno,
+            regAlumno,
             regAsesorInterno,
             regExpediente
         };
@@ -178,7 +179,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
         if (item == regProfesor) {
             if (!(jFrame instanceof RegistrarProfesor)) {
                 profesorController = new ProfesorController();
-                profesorController.create(new RegistrarProfesor()).setVisible(true);
+                profesorController.create().setVisible(true);
                 jFrame.dispose();
             }
         } else if (item == regProyecto) {
@@ -191,9 +192,10 @@ public class MenuApp extends JMenuBar implements ActionListener {
                 new RegistrarEmpresa().setVisible(true);
                 jFrame.dispose();
             }
-        } else if (item == regResidente) {
-            if (!(jFrame instanceof RegistrarResidente)) {
-                new RegistrarAlumno().setVisible(true);
+        } else if (item == regAlumno) {
+            if (!(jFrame instanceof RegistrarAlumno)) {
+                alumnoController = new AlumnoController();
+                alumnoController.create().setVisible(true);
                 jFrame.dispose();
             }
         } else if (item == regExpediente) {
@@ -204,7 +206,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
         } else if (item == cnsProfesor) {
             if (!(jFrame instanceof ConsultarProfesor)) {
                 profesorController = new ProfesorController();
-                profesorController.show(new ConsultarProfesor()).setVisible(true);
+                profesorController.show().setVisible(true);
                 jFrame.dispose();
             }
         }

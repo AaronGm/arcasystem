@@ -1,6 +1,6 @@
 package controllers;
 
-import dao.postgres.ImplProfesor;
+import dao.postgres.ProfesorDB;
 import excepciones.ExcepcionGeneral;
 import models.Profesor;
 import views.ConsultarProfesor;
@@ -17,98 +17,98 @@ import javax.swing.JOptionPane;
  */
 public class ProfesorController implements Controller<Integer> {
 
-    private ImplProfesor implProfesor = new ImplProfesor();
+    private ProfesorDB profesorDB = new ProfesorDB();
     private Profesor profesor;
 
     @Override
-    public View create(View view) {
-        RegistrarProfesor v = (RegistrarProfesor) view;
+    public View create() {
+        RegistrarProfesor view = new RegistrarProfesor();
         profesor = null;
 
-        v.getButton().addActionListener(l -> {
+        view.getButton().addActionListener(l -> {
             profesor = new Profesor(
-                v.getTxfNoContrato().getText(),
-                v.getJdtcFechaIngreso().getDate(),
-                v.getCmbGradoEstudio().getSelectedItem().toString(),
-                v.getCmbEstatusProfesor().getSelectedItem().toString(),
-                v.getTxfEspecialidad().getText(),
-                v.getTxfNombre().getText(),
-                v.getTxfApellidoPaterno().getText(),
-                v.getTxfApellidoMaterno().getText()
+                view.getTxfNoContrato().getText(),
+                view.getJdtcFechaIngreso().getDate(),
+                view.getCmbGradoEstudio().getSelectedItem().toString(),
+                view.getCmbEstatusProfesor().getSelectedItem().toString(),
+                view.getTxfEspecialidad().getText(),
+                view.getTxfNombre().getText(),
+                view.getTxfApellidoPaterno().getText(),
+                view.getTxfApellidoMaterno().getText()
             );
 
-            implProfesor.insert(profesor);
+            profesorDB.insert(profesor);
         });
 
-        return v;
+        return view;
     }
 
     @Override
-    public View update(View view, Integer id) {
-        EditarProfesor v = (EditarProfesor) view;
-        profesor = implProfesor.getById(id);
-        v.setProfesor(profesor);
+    public View update(Integer id) {
+        EditarProfesor view = new EditarProfesor();
+        profesor = profesorDB.getById(id);
+        view.setProfesor(profesor);
 
-        v.getButton().addActionListener(l -> {
+        view.getButton().addActionListener(l -> {
             Profesor tmpProfesor = new Profesor(
                 profesor.getProfesorId(),
-                v.getTxfNoContrato().getText(),
-                v.getJdtcFechaIngreso().getDate(),
-                v.getCmbGradoEstudio().getSelectedItem().toString(),
-                v.getCmbEstatusProfesor().getSelectedItem().toString(),
-                v.getTxfEspecialidad().getText(),
-                v.getTxfNombre().getText(),
-                v.getTxfApellidoPaterno().getText(),
-                v.getTxfApellidoMaterno().getText()
+                view.getTxfNoContrato().getText(),
+                view.getJdtcFechaIngreso().getDate(),
+                view.getCmbGradoEstudio().getSelectedItem().toString(),
+                view.getCmbEstatusProfesor().getSelectedItem().toString(),
+                view.getTxfEspecialidad().getText(),
+                view.getTxfNombre().getText(),
+                view.getTxfApellidoPaterno().getText(),
+                view.getTxfApellidoMaterno().getText()
             );
 
             try {
-                implProfesor.update(tmpProfesor);
-                this.show(new ConsultarProfesor()).setVisible(true);
-                v.dispose();
+                profesorDB.update(tmpProfesor);
+                this.show().setVisible(true);
+                view.dispose();
             } catch (ExcepcionGeneral e) {
                 System.out.println(e.getMessage());
             }
 
         });
 
-        return v;
+        return view;
     }
 
 
     @Override
-    public View show(View view) {
-        ConsultarProfesor v = (ConsultarProfesor) view;
-        FlatTable table = v.getTabla();
+    public View show() {
+        ConsultarProfesor view = new ConsultarProfesor();
+        FlatTable table = view.getTabla();
 
-        v.getBtnEditar().addActionListener(l -> {
+        view.getBtnEditar().addActionListener(l -> {
             try {
                 int id = (int) table.getModel().getValueAt(table.getSelectedRow(), 0);
                 // Nos manda a una nueva vista de actualización para el profesor
-                this.update(new EditarProfesor(), id).setVisible(true);
-                v.dispose();
+                this.update(id).setVisible(true);
+                view.dispose();
             } catch (ArrayIndexOutOfBoundsException e) {
                 JOptionPane.showMessageDialog(null, "No hay elementos para actualizar");
             }
         });
 
-        v.getBtnEliminar().addActionListener(l -> {
+        view.getBtnEliminar().addActionListener(l -> {
             try {
                 int id = (int) table.getModel().getValueAt(table.getSelectedRow(), 0);
                 this.destroy(id);
-                v.loadData();
+                view.loadData();
             } catch (ArrayIndexOutOfBoundsException e) {
                 JOptionPane.showMessageDialog(null, "No hay elementos para eliminar");
             }
 
         });
 
-        return v;
+        return view;
     }
 
     @Override
     public void destroy(Integer id) {
-        profesor = implProfesor.getById(id);
-        implProfesor.delete(profesor);
+        profesor = profesorDB.getById(id);
+        profesorDB.delete(profesor);
     }
 }

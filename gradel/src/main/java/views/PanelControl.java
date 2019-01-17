@@ -6,6 +6,7 @@
 package views;
 
 import com.toedter.calendar.JCalendar;
+import controllers.LoginController;
 import helpers.Colors;
 import helpers.Helpers;
 import helpers.Typography;
@@ -38,7 +39,7 @@ import java.awt.event.ItemEvent;
  * @author aarongmx
  */
 public class PanelControl extends View {
-    
+
     private JPanel pnlMain;
     private JPanel pnlMenu;
     
@@ -57,7 +58,7 @@ public class PanelControl extends View {
     private final String ESTADISTICS = "Card Estadistics";
     
     public PanelControl() throws HeadlessException {
-        super("Panel de Control | " + config.Configuration.APP_NAME);
+        super("Panel de Control");
     }
 
     @Override
@@ -145,7 +146,7 @@ public class PanelControl extends View {
         tbtnCalendario.addActionListener(actionListener);
         tbtnEstadisticas.addActionListener(actionListener);
         
-        FlatLabel lab = new FlatLabel("Aarón Gómez Méndez");
+        FlatLabel lab = new FlatLabel(LoginController.CURRENT_USER);
         
         pnlMenu.add(Helpers.logoItiz(100));
         pnlMenu.add(lab);

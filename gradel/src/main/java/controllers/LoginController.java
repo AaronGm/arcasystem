@@ -1,7 +1,7 @@
 
 package controllers;
 
-import dao.postgres.ImplUsuario;
+import dao.postgres.UsuarioDB;
 import excepciones.ExcepcionGeneral;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
  * @author aarongmx
  */
 public class LoginController {
+
+    public static String CURRENT_USER;
     
     private final LoginView view;
     
@@ -33,10 +35,10 @@ public class LoginController {
      * @return  
      */
     public JFrame login() {
-        ImplUsuario implUsuario = new ImplUsuario();
+        UsuarioDB usuarioDB = new UsuarioDB();
         try {
             view.getBtnSend().addActionListener(( ActionEvent e ) -> {
-                Usuario usuario = implUsuario.login(
+                Usuario usuario = usuarioDB.login(
                     view.getUserField().getText(),
                     String.valueOf(view.getPasswdField().getPassword())
                 );
@@ -46,6 +48,7 @@ public class LoginController {
                 }
 
                 if(usuario != null) {
+                    CURRENT_USER = usuario.getUsuario();
                     if ( usuario.isAdmin() ) {
                         view.dispose();
                         new Admin().setVisible(true);

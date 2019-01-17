@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author aarongmx
  */
-public class ImplProfesor implements ProfesorDAO {
+public class ProfesorDB implements ProfesorDAO {
     
     private Connection conexion;
     private PreparedStatement sentencia;

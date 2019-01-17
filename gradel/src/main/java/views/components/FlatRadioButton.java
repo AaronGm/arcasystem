@@ -5,12 +5,13 @@
  */
 package views.components;
 
+import enums.FontAwesome5;
 import helpers.Colors;
+import jiconfont.swing.IconFontSwing;
+
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JRadioButton;
-import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
 
 /**
  *
@@ -58,9 +59,9 @@ public class FlatRadioButton extends JRadioButton {
     }
 
     private void initComponent() {
-        IconFontSwing.register(FontAwesome.getIconFont());
-        setIcon(IconFontSwing.buildIcon(FontAwesome.CIRCLE_O, 18, Colors.GHOST_MEDIUM));
-        setSelectedIcon(IconFontSwing.buildIcon(FontAwesome.DOT_CIRCLE_O, 18, Colors.BLUE_LIGHT));
+        IconFontSwing.register(FontAwesome5.getIconFont());
+        setIcon(IconFontSwing.buildIcon(FontAwesome5.FA_CIRCLE, 18, Colors.DEFAULT_COMPONENT));
+        setSelectedIcon(IconFontSwing.buildIcon(FontAwesome5.FA_DOT_CIRCLE, 18, Colors.SELECTED_COMPONENT));
         setFont(helpers.Typography.componentsFont());
         setFocusPainted(false);
     }

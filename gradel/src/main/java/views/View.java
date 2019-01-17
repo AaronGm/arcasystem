@@ -4,8 +4,11 @@ import helpers.Helpers;
 import views.components.HeaderApp;
 import views.components.MenuApp;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.text.JTextComponent;
 import java.awt.BorderLayout;
+import java.util.Arrays;
 
 public abstract class View extends JFrame {
 
@@ -38,6 +41,18 @@ public abstract class View extends JFrame {
     protected abstract void initComponents();
 
     protected abstract void setComponents();
+
+    public void clearFields(JTextComponent... components) {
+        Arrays.asList(components).forEach(x -> {
+            x.setText("");
+        });
+    }
+
+    public void clearCombos(JComboBox... comboBox) {
+        Arrays.asList(comboBox).forEach(x -> {
+            x.setSelectedIndex(0);
+        });
+    }
 
     public String getTitleBar() {
         return titleBar;

@@ -26,4 +26,10 @@ public interface Colors {
     Color GHOST_LIGHT = new Color(0xeeeeee);
     Color RED = new Color(0xeb5757);
     Color GREEN = new Color(0x56c568);
+
+    Color DEFAULT_COMPONENT = new Color(0xBCC6CD);
+    Color SELECTED_COMPONENT = BLUE_LIGHT;
+
+    Color TITLE_COLOR = new Color(0x474747);
+    Color TEXT_COLOR = BLACK_MEDIUM;
 }

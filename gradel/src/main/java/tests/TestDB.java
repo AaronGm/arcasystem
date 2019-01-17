@@ -5,16 +5,10 @@
  */
 package tests;
 
-import helpers.Helpers;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import dao.postgres.UsuarioDB;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -22,7 +16,8 @@ import java.util.List;
  * @author aarongmx
  */
 public class TestDB {
-    public static void main( String[] args ) throws IOException, InvalidFormatException {
+    public static void main( String[] args ) {
+        /*InvalidFormatException {
             FileInputStream fis = new FileInputStream("/home/aarongmx/NetBeansProjects/ArcaSystem/src/tests/t1.docx");
             XWPFDocument doc = new XWPFDocument(OPCPackage.open(fis));
             TestDB.rep(doc, "FECHA", Helpers.fechaDocumentos());
@@ -39,7 +34,11 @@ public class TestDB {
 
             doc.write(new FileOutputStream("/home/aarongmx/NetBeansProjects/ArcaSystem/src/tests/new.docx"));
         XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
-        System.out.println(extractor.getText());
+        System.out.println(extractor.getText());*/
+
+        UsuarioDB usuarioDB = new UsuarioDB();
+        System.out.println(usuarioDB.auth("aarongm", "aagmx"));
+
     }
 
 

@@ -6,11 +6,12 @@
 package views.admin;
 
 import config.Configuration;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *

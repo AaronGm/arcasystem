@@ -19,6 +19,8 @@
     <orderEntry type="library" name="Gradle: org.apache.poi:poi:4.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.poi:poi-ooxml-schemas:4.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.knowm.xchart:xchart:3.5.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.postgresql:postgresql:42.2.5" level="project" />
+    <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.23" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.11" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-collections4:4.2" level="project" />

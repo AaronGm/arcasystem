@@ -1,9 +1,10 @@
 package views;
 
 import com.toedter.calendar.JDateChooser;
+import enums.EstadoProfesor;
+import enums.GradoEstudios;
 import helpers.Colors;
 import helpers.Helpers;
-import models.Profesor;
 import views.components.FlatButton;
 import views.components.FlatComboBox;
 import views.components.FlatLabel;
@@ -63,15 +64,15 @@ public class RegistrarProfesor extends View {
         txfApellidoPaterno = new FlatTextField();
         txfEspecialidad = new FlatTextField();
 
-        labelError = new FlatLabel(" ", "Roboto Medium", "sm", Colors.RED);
+        labelError = new FlatLabel("Error", "Roboto Medium", "sm", Colors.RED);
         
         jdtcFechaIngreso = new JDateChooser();
         
-        cmbGradoEstudio = new FlatComboBox(Profesor.TYPE_GRADOS_ESTUDIO);
-        cmbEstatusProfesor = new FlatComboBox(Profesor.TYPE_ESTATUS_PROFESOR);
+        cmbGradoEstudio = new FlatComboBox(GradoEstudios.getGrados());
+        cmbEstatusProfesor = new FlatComboBox(EstadoProfesor.getEstados());
         
         button = new FlatButton("Registrar");
-        
+
         helpers.Helpers.setWhite(pnlForm);
         
         initForm();

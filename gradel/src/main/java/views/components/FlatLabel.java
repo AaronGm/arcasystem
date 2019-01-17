@@ -6,6 +6,7 @@
 package views.components;
 
 import helpers.Colors;
+
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -32,6 +33,12 @@ public class FlatLabel extends JLabel {
         super(text);
         initComponent();
         setFont(helpers.Typography.addFont(fontFamily, fontSize));
+    }
+
+    public FlatLabel(String text, Color fontColor) {
+        super(text);
+        initComponent();
+        setForeground(fontColor);
     }
 
     public FlatLabel(String text, String fontSize, Color fontColor) {

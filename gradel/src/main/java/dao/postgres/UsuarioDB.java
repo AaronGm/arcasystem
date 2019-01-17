@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao.postgres;
 
 import config.ConnectionDB;
 import excepciones.ExcepcionGeneral;
 import interfaces.UsuarioDAO;
+import models.Usuario;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,13 +13,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import models.Usuario;
 
 /**
  *
  * @author aarongmx
  */
-public class ImplUsuario implements UsuarioDAO {
+public class UsuarioDB implements UsuarioDAO {
     private Connection conexion;
     private PreparedStatement sentencia;
     private ResultSet resultados;
@@ -56,7 +53,29 @@ public class ImplUsuario implements UsuarioDAO {
         }
         return retUsuario;
     }
-    
+
+    @Override
+    public boolean auth(String usuario, String password) {
+        conexion = new ConnectionDB().getConnection();
+        boolean isAuth = false;
+        try {
+            sentencia = conexion.prepareStatement("SELECT true as auth FROM usuarios WHERE usuario = ? AND passwd = crypt(?, passwd);", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            sentencia.setString(1, usuario);
+            sentencia.setString(2, password);
+            resultados = sentencia.executeQuery();
+
+            if (resultados.first()) {
+                isAuth = resultados.getBoolean(1);
+            }
+
+        } catch (SQLException e) {
+            throw new ExcepcionGeneral(e.getMessage());
+        }finally {
+            ConnectionDB.closeConnection(conexion,sentencia, resultados);
+        }
+        return isAuth;
+    }
+
     @Override
     public void insert(Usuario usuario ) throws ExcepcionGeneral {
         conexion = new ConnectionDB().getConnection();

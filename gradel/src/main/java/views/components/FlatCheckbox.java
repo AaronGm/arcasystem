@@ -5,13 +5,15 @@
  */
 package views.components;
 
+import enums.FontAwesome5;
 import helpers.Colors;
-import java.awt.Color;
+import helpers.Helpers;
+import jiconfont.swing.IconFontSwing;
+
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
-import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
+import java.awt.Color;
 
 /**
  *
@@ -59,12 +61,13 @@ public class FlatCheckbox extends JCheckBox {
     }
 
     private void initComponent() {
-        IconFontSwing.register(FontAwesome.getIconFont());
+        IconFontSwing.register(FontAwesome5.getIconFont("solid"));
         setBackground(Color.white);
         setFont(helpers.Typography.componentsFont());
         setBorderPainted(false);
-        setIcon(IconFontSwing.buildIcon(FontAwesome.SQUARE, 18, Colors.GHOST_MEDIUM));
-        setSelectedIcon(IconFontSwing.buildIcon(FontAwesome.CHECK_SQUARE, 18, Colors.BLUE_LIGHT));
+        setFocusPainted(false);
+        setIcon(IconFontSwing.buildIcon(FontAwesome5.FA_SQUARE, Helpers.ICON_SIZE, Colors.DEFAULT_COMPONENT));
+        setSelectedIcon(IconFontSwing.buildIcon(FontAwesome5.FA_CHECK_SQUARE, Helpers.ICON_SIZE, Colors.SELECTED_COMPONENT));
     }
     
 }

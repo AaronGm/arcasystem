@@ -5,11 +5,12 @@
  */
 package views;
 
-import java.awt.HeadlessException;
-import javax.swing.JFrame;
 import helpers.Helpers;
-import java.awt.BorderLayout;
 import views.components.MenuApp;
+
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.HeadlessException;
 /**
  *
  * @author aarongmx
