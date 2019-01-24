@@ -1,52 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73f74095-2550-46fe-82ff-9c45eb11b823" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/arcasystem/ArcaSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/arcasystem/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/ProfesorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/controllers/ProfesorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/components/AuthDialogController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/AlumnoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/AlumnoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/CarreraDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/CarreraDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/ProfesorDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/ProfesorDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/FontAwesome5.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/enums/FontAwesome5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/MensajesValidacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/enums/MensajesValidacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/helpers/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/helpers/Colors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/helpers/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/helpers/Helpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/helpers/Typography.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/helpers/Typography.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/AlumnoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/interfaces/AlumnoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Alumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/models/Alumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/AsesorExterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/models/AsesorExterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/models/Empresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/HistorialAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/models/HistorialAlumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Profesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/models/Profesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Proyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/models/Proyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/ConsultarProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/ConsultarProfesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/PanelControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/PanelControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarAlumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarExpediente.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarExpediente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProfesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/SplashScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/AuthDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/AuthDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/HeaderApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/HeaderApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/MenuApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/MenuApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/controlpanel/AlertTicketInspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/views/components/controlpanel/AlertTicketInspector.java" afterDir="false" />
-    </list>
+    <list default="true" id="73f74095-2550-46fe-82ff-9c45eb11b823" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/gradel/.gradle/" />
     <ignored path="$PROJECT_DIR$/gradel/build/" />
@@ -252,7 +207,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="500" />
     <option name="width" value="873" />
     <option name="height" value="745" />
