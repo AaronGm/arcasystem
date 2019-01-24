@@ -1,28 +1,33 @@
 package controllers;
 
 import dao.postgres.ProfesorDB;
+import dao.postgres.UsuarioDB;
+import enums.MensajesValidacion;
 import excepciones.ExcepcionGeneral;
 import models.Profesor;
 import views.ConsultarProfesor;
 import views.EditarProfesor;
 import views.RegistrarProfesor;
 import views.View;
+import views.components.AuthDialog;
 import views.components.FlatTable;
+import views.components.FlatTextField;
 
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author aarongmx
  */
 public class ProfesorController implements Controller<Integer> {
 
     private ProfesorDB profesorDB = new ProfesorDB();
     private Profesor profesor;
+    private AuthDialog authDialog;
 
     @Override
     public View create() {
         RegistrarProfesor view = new RegistrarProfesor();
+        authDialog = new AuthDialog(view, "Autorización");
         profesor = null;
 
         view.getButton().addActionListener(l -> {
@@ -37,7 +42,37 @@ public class ProfesorController implements Controller<Integer> {
                 view.getTxfApellidoMaterno().getText()
             );
 
-            profesorDB.insert(profesor);
+            boolean existEmptyFields = FlatTextField.validarCampoVacio(view.getTxfNoContrato(), view.getLbErrNoTrabajador())
+                && FlatTextField.validarCampoVacio(view.getTxfNombre(), view.getLbErrNombres())
+                && FlatTextField.validarCampoVacio(view.getTxfApellidoPaterno(), view.getLbErrApellidoPaterno())
+                && FlatTextField.validarCampoVacio(view.getTxfApellidoMaterno(), view.getLbErrApellidoMaterno());
+
+            // No deben haber campos vacios para poder guardarlos en la base de datos
+            if (!existEmptyFields) {
+                authDialog.setVisible(true);
+                authDialog.getBtnAuth().addActionListener(ls -> {
+                    String passwd = String.valueOf(authDialog.getPasswd().getPassword());
+                    if (new UsuarioDB().auth(LoginController.CURRENT_USER, passwd)) {
+                        profesorDB.insert(profesor);
+                        JOptionPane.showMessageDialog(null, "¡Profesor creado correctamente!");
+                        view.clearFields(
+                            view.getTxfNoContrato(),
+                            view.getTxfNombre(),
+                            view.getTxfApellidoPaterno(),
+                            view.getTxfApellidoMaterno(),
+                            view.getTxfEspecialidad()
+                        );
+                        view.getJdtcFechaIngreso().cleanup();
+                        view.clearCombos(
+                            view.getCmbEstatusProfesor(),
+                            view.getCmbGradoEstudio()
+                        );
+                        authDialog.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, MensajesValidacion.ERROR_AUTORIZACION);
+                    }
+                });
+            }
         });
 
         return view;

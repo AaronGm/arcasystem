@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views.components;
 
+import enums.SpacingPoints;
 import helpers.Colors;
-import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
+import helpers.Helpers;
 
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -67,14 +61,10 @@ public class FlatButton extends JButton {
     }
 
     private void initComponent() {
-        IconFontSwing.register(FontAwesome.getIconFont());
-        Border defaultBorder = new CompoundBorder(helpers.Helpers.padding(1),
-            helpers.Helpers.padding(8, 16)
-        );
         setBackground(Colors.SELECTED_COMPONENT);
         setForeground(Color.white);
         setFont(helpers.Typography.componentsFont());
-        setBorder(defaultBorder);
+        setBorder(Helpers.padding(SpacingPoints.SP8, SpacingPoints.SP16));
         setFocusPainted(false);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         
@@ -101,7 +91,6 @@ public class FlatButton extends JButton {
             Color originalBG = getBackground();
             @Override
             public void focusGained(FocusEvent e) {
-
                 setBackground(originalBG);
             }
 

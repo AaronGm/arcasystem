@@ -5,11 +5,21 @@
  */
 package tests;
 
+import controllers.HistorialAlumnoController;
+import dao.postgres.HistorialAlumnoDB;
 import dao.postgres.UsuarioDB;
+import helpers.Helpers;
+import models.HistorialAlumno;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
+import java.awt.EventQueue;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -17,8 +27,24 @@ import java.util.List;
  */
 public class TestDB {
     public static void main( String[] args ) {
+
+//        HistorialAlumno historialAlumno = new HistorialAlumnoDB().getById(1);
+
+//        System.out.println(historialAlumno.getAlumno());
+//        System.out.println(historialAlumno.getProyecto());
+//        System.out.println(historialAlumno.getEmpresa());
+//        System.out.println(historialAlumno.getAsesorExterno());
+        Runnable run = () -> {
+//            System.setProperty("awt.useSystemAAFontSettings","on");
+//            System.setProperty("swing.aatext", "true");
+//            new HistorialAlumnoController().show().setVisible(true);
+            System.out.println(Helpers.currentPeriodo());
+
+        };
+        EventQueue.invokeLater(run);
+
         /*InvalidFormatException {
-            FileInputStream fis = new FileInputStream("/home/aarongmx/NetBeansProjects/ArcaSystem/src/tests/t1.docx");
+            FileInputStream fis = new FileInputStream("/home/aarongmx/NetBeansProjects/App/src/tests/t1.docx");
             XWPFDocument doc = new XWPFDocument(OPCPackage.open(fis));
             TestDB.rep(doc, "FECHA", Helpers.fechaDocumentos());
             TestDB.rep(doc, "EPTO", "ISC");
@@ -32,13 +58,27 @@ public class TestDB {
             TestDB.rep(doc, "ALUMNO", "ARTURO DÍAZ LÓPEZ".toUpperCase());
             TestDB.rep(doc, "NOCONTROL", "151080123".toUpperCase());
 
-            doc.write(new FileOutputStream("/home/aarongmx/NetBeansProjects/ArcaSystem/src/tests/new.docx"));
+            doc.write(new FileOutputStream("/home/aarongmx/NetBeansProjects/App/src/tests/new.docx"));
         XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
         System.out.println(extractor.getText());*/
 
-        UsuarioDB usuarioDB = new UsuarioDB();
-        System.out.println(usuarioDB.auth("aarongm", "aagmx"));
-
+//        UsuarioDB usuarioDB = new UsuarioDB();
+//        System.out.println(usuarioDB.auth("aarongm", "aagmx"));
+//        ScheduledExecutorService executor = Executors.
+//            newSingleThreadScheduledExecutor();
+//
+//        ScheduledFuture future = executor.scheduleAtFixedRate(
+//            () -> System.out.println("Ya pasaron 10 segundos"), 10, 4, TimeUnit.SECONDS);
+//
+//        try {
+//            future.get();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
+//
+//        executor.shutdown();
     }
 
 

@@ -1,9 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views.components;
+
+import enums.FontFamily;
+import enums.FontSize;
+import enums.SpacingPoints;
+import helpers.Helpers;
+import helpers.Typography;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,12 +27,12 @@ public class HeaderApp extends JPanel {
     }
     
     private void initComponent() {
-        tituloVentana.setFont(helpers.Typography.addFont("Raleway", "h1"));
+        tituloVentana.setFont(Typography.addFont(FontFamily.RALEWAY, FontSize.H1));
         setBackground(Color.white);
         setLayout(new BorderLayout());
-        setBorder(helpers.Helpers.padding(16, 32));
+        setBorder(Helpers.padding(SpacingPoints.SP16, SpacingPoints.SP36));
         add(tituloVentana, BorderLayout.WEST);
-        add(helpers.Helpers.logoItiz(60), BorderLayout.EAST);
+        add(Helpers.logoItiz(60), BorderLayout.EAST);
     }
 
     public JLabel getTituloVentana() {

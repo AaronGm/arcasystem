@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views;
 
 import enums.FontAwesome5;
+import enums.FontSize;
+import enums.SpacingPoints;
 import helpers.Helpers;
 import jiconfont.swing.IconFontSwing;
 import models.Alumno;
@@ -23,7 +21,6 @@ import javax.swing.JTextArea;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.util.Arrays;
@@ -75,8 +72,6 @@ public class RegistrarExpediente extends View {
 
         btnGuardar = new FlatButton("Guardar expediente");
 
-        Helpers.setWhite(pnlForm, pnlHistorialAlumno);
-
         initForm();
         initDataAlumno();
     }
@@ -93,9 +88,9 @@ public class RegistrarExpediente extends View {
         pnlForm.setPreferredSize(new Dimension(Helpers.PANTALLA.width/3 - 180, this.getHeight()));
         pnlForm.setLayout(new BoxLayout(pnlForm, BoxLayout.Y_AXIS));
 
-        alumno = new Alumno("Aarón", "Gómez", "Méndez", "151080126", 9, "Enero - Junio 2019", "ISC");
+//        alumno = new Alumno("Aarón", "Gómez", "Méndez", "151080126", 9, "Enero - Junio 2019", "ISC");
 
-        pnlForm.add(new FlatLabel("Documentos", "Raleway", "h2"));
+        pnlForm.add(new FlatLabel("Documentos", FontSize.H2));
         pnlForm.add(Box.createVerticalStrut(24));
 
         Arrays.asList(new FlatCheckbox[]{
@@ -127,62 +122,62 @@ public class RegistrarExpediente extends View {
     private void initDataAlumno() {
         pnlHistorialAlumno.setLayout(new BorderLayout());
 
-        pnlHistorialAlumno.add(BorderLayout.NORTH ,new FlatLabel("Datos del alumno", "Raleway", "h2"));
+        pnlHistorialAlumno.add(BorderLayout.NORTH ,new FlatLabel("Datos del alumno", FontSize.H2));
 
-        FlatPanel pnlDatosAlumno = new FlatPanel(16, 8);
+        FlatPanel pnlDatosAlumno = new FlatPanel(SpacingPoints.SP16, SpacingPoints.SP24);
         pnlDatosAlumno.setLayout(new GridBagLayout());
         pnlDatosAlumno.setBackground(Color.white);
 
-        Alumno alumno = new Alumno("Aarón", "Gómez", "Méndez", "151080126", 9, "Enero - Junio 2020", "ISC");
+//        Alumno alumno = new Alumno("Aarón", "Gómez", "Méndez", "151080126", 9, "Enero - Junio 2020", "ISC");
 
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridy = 0;
-        c.anchor = GridBagConstraints.WEST;
-        pnlDatosAlumno.add(
-            Helpers.verticalElements(
-                new FlatLabel("Número de Control"),
-                new FlatLabel(alumno.getNoControl(), "pr")
-            ),
-            c
-        );
-        pnlDatosAlumno.add(Box.createHorizontalStrut(16), c);
-        pnlDatosAlumno.add(
-            Helpers.verticalElements(
-                new FlatLabel("Nombre Completo"),
-                new FlatLabel(alumno.getNombreCompleto(), "pr")
-            ),
-            c
-        );
-        pnlDatosAlumno.add(Box.createHorizontalStrut(16));
-        pnlDatosAlumno.add(
-            Helpers.verticalElements(
-                new FlatLabel("Carrera"),
-                new FlatLabel(alumno.getClaveCarrera(), "pr")
-            ),
-            c
-        );
-        pnlDatosAlumno.add(Box.createHorizontalStrut(16), c);
-        pnlDatosAlumno.add(
-            Helpers.verticalElements(
-                new FlatLabel("Periodo"),
-                new FlatLabel(alumno.getPeriodo(), "pr")
-            ),
-            c
-        );
-
-        c.gridy = 3;
-        c.gridwidth = 10;
-        pnlDatosAlumno.add(Box.createRigidArea(new Dimension(120, 168)));
-
-        c.gridy = 2;
-        c.gridx = 0;
-        pnlDatosAlumno.add(
-            Helpers.verticalElements(
-                new FlatLabel("Proyecto"),
-                new FlatLabel("IA clasificadora de imagénes", "pr")
-            ),
-            c
-        );
+//        GridBagConstraints c = new GridBagConstraints();
+//        c.gridy = 0;
+//        c.anchor = GridBagConstraints.WEST;
+//        pnlDatosAlumno.add(
+//            Helpers.verticalElements(
+//                new FlatLabel("Número de Control"),
+//                new FlatLabel(alumno.getNoControl(), "pr")
+//            ),
+//            c
+//        );
+//        pnlDatosAlumno.add(Box.createHorizontalStrut(16), c);
+//        pnlDatosAlumno.add(
+//            Helpers.verticalElements(
+//                new FlatLabel("Nombre Completo"),
+//                new FlatLabel(alumno.getNombreCompleto(), "pr")
+//            ),
+//            c
+//        );
+//        pnlDatosAlumno.add(Box.createHorizontalStrut(16));
+//        pnlDatosAlumno.add(
+//            Helpers.verticalElements(
+//                new FlatLabel("Carrera"),
+//                new FlatLabel(alumno.getClaveCarrera(), "pr")
+//            ),
+//            c
+//        );
+//        pnlDatosAlumno.add(Box.createHorizontalStrut(16), c);
+//        pnlDatosAlumno.add(
+//            Helpers.verticalElements(
+//                new FlatLabel("Periodo"),
+//                new FlatLabel(alumno.getPeriodo(), "pr")
+//            ),
+//            c
+//        );
+//
+//        c.gridy = 3;
+//        c.gridwidth = 10;
+//        pnlDatosAlumno.add(Box.createRigidArea(new Dimension(120, 168)));
+//
+//        c.gridy = 2;
+//        c.gridx = 0;
+//        pnlDatosAlumno.add(
+//            Helpers.verticalElements(
+//                new FlatLabel("Proyecto"),
+//                new FlatLabel("IA clasificadora de imagénes", "pr")
+//            ),
+//            c
+//        );
 
         pnlHistorialAlumno.add(BorderLayout.CENTER, pnlDatosAlumno);
 

@@ -1,6 +1,8 @@
 package views.components;
 
 import enums.FontAwesome5;
+import enums.FontSize;
+import enums.SpacingPoints;
 import helpers.Colors;
 import helpers.Helpers;
 import jiconfont.swing.IconFontSwing;
@@ -15,6 +17,8 @@ import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Window;
 
 public class AuthDialog extends JDialog {
@@ -127,24 +131,22 @@ public class AuthDialog extends JDialog {
 
     private void initSubComponents() {
         passwd = new JPasswordField();
-
-
         btnAuth = new FlatButton("Autorizar");
 
         initHeader();
         initInput();
-
     }
 
     private void initHeader() {
         FlatPanel panel = new FlatPanel(new BorderLayout());
+        panel.setPadding(SpacingPoints.SP24);
         panel.setBackground(getColorDialog());
 
         FlatButton btnClose = new FlatButton(IconFontSwing.buildIcon(FontAwesome5.FA_TIMES, 14, Color.white));
         btnClose.setBackground(getColorDialog());
         btnClose.setFocusable(false);
 
-        panel.add(BorderLayout.WEST, new FlatLabel("Autorización", "h2", Color.white));
+        panel.add(BorderLayout.WEST, new FlatLabel("Autorización", FontSize.H2, Color.white));
         panel.add(BorderLayout.EAST, btnClose);
 
         btnClose.addActionListener(l -> this.dispose());
@@ -153,12 +155,13 @@ public class AuthDialog extends JDialog {
     }
 
     private void initInput() {
-        FlatPanel panel1 = new FlatPanel();
-        GroupLayout layout = new GroupLayout(panel1);
-        panel1.setBackground(getColorDialog());
-        panel1.setLayout(layout);
+        FlatPanel panel = new FlatPanel();
+        GridBagLayout layout = new GridBagLayout();
+        panel.setPadding(SpacingPoints.SP24);
+        panel.setBackground(getColorDialog());
+        panel.setLayout(layout);
 
-        passwd.setBackground(panel1.getBackground());
+        passwd.setBackground(panel.getBackground());
         passwd.setForeground(Color.white);
         passwd.setCaretColor(Color.white);
         FlatTextField.styleMaterial(passwd, Color.white);
@@ -174,28 +177,21 @@ public class AuthDialog extends JDialog {
 
         btnAuth.styleGhost();
 
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(lbPasswd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                )
+        GridBagConstraints c = new GridBagConstraints();
 
-                .addComponent(pInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnAuth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        panel.add(lbPasswd, c);
 
-        );
+        c.gridy = 1;
+        panel.add(pInput, c);
 
-        layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+        c.gridy = 2;
+        c.anchor = GridBagConstraints.CENTER;
+        c.insets = Helpers.paddingInset(SpacingPoints.SP16, SpacingPoints.SP_NONE);
+        panel.add(btnAuth, c);
 
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(lbPasswd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAuth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                )
-        );
-
-        getContentPane().add(BorderLayout.CENTER, panel1);
+        getContentPane().add(BorderLayout.CENTER, panel);
     }
 
     public JPasswordField getPasswd() {

@@ -27,5 +27,6 @@
     <orderEntry type="library" name="Gradle: com.github.virtuald:curvesapi:1.05" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.xmlbeans:xmlbeans:3.0.2" level="project" />
     <orderEntry type="library" name="Gradle: de.erichseifert.vectorgraphics2d:VectorGraphics2D:0.13" level="project" />
+    <orderEntry type="library" name="groovy-2.5.5" level="application" />
   </component>
 </module>

@@ -1,6 +1,10 @@
 
 package helpers;
 
+import enums.SpacingPoints;
+import views.components.FlatLabel;
+import views.components.FlatPanel;
+
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -8,10 +12,10 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -73,7 +77,7 @@ public class Helpers {
     /**
      * Dimension para las vistas
      */
-    public final static Dimension SIZE_PANTALLA = new Dimension(PANTALLA.width - 180, PANTALLA.height - 80);
+    public final static Dimension SIZE_PANTALLA = new Dimension(PANTALLA.width - 120, PANTALLA.height - 60);
 
     /**
      * Tamaño para los iconos de los componentes customizados
@@ -86,16 +90,16 @@ public class Helpers {
      * @param padding
      * @return
      */
-    public static Insets paddingInset(int padding) {
-        return new Insets(padding, padding, padding, padding);
+    public static Insets paddingInset(SpacingPoints padding) {
+        return new Insets(padding.getSize(), padding.getSize(), padding.getSize(), padding.getSize());
     }
 
-    public static Insets paddingInset(int top, int right, int bottom, int left) {
-        return new Insets(top, left, bottom, right);
+    public static Insets paddingInset(SpacingPoints top, SpacingPoints right, SpacingPoints bottom, SpacingPoints left) {
+        return new Insets(top.getSize(), left.getSize(), bottom.getSize(), right.getSize());
     }
 
-    public static Insets paddingInset(int topBottom, int leftRight) {
-        return new Insets(topBottom, leftRight, topBottom, leftRight);
+    public static Insets paddingInset(SpacingPoints topBottom, SpacingPoints leftRight) {
+        return new Insets(topBottom.getSize(), leftRight.getSize(), topBottom.getSize(), leftRight.getSize());
     }
 
 
@@ -104,7 +108,7 @@ public class Helpers {
      * @param padding
      * @return 
      */
-    public static Border padding(int padding) {
+    public static Border padding(SpacingPoints padding) {
         return new EmptyBorder(paddingInset(padding));
     }
     
@@ -116,7 +120,7 @@ public class Helpers {
      * @param left
      * @return 
      */
-    public static Border padding(int top, int right, int bottom, int left) {
+    public static Border padding(SpacingPoints top, SpacingPoints right, SpacingPoints bottom, SpacingPoints left) {
         return new EmptyBorder(paddingInset(top, right, bottom, left));
     }
     
@@ -126,7 +130,7 @@ public class Helpers {
      * @param leftRight
      * @return 
      */
-    public static Border padding(int topBottom, int leftRight) {
+    public static Border padding(SpacingPoints topBottom, SpacingPoints leftRight) {
         return new EmptyBorder(paddingInset(topBottom, leftRight));
     }
     
@@ -211,7 +215,7 @@ public class Helpers {
      */
     public static List<String> getPeriodo() {
         ArrayList<String> periodos = new ArrayList<>();
-        LocalDate date = LocalDate.now();
+        LocalDate date = FECHA.minusYears(1);
         for (byte i = 0; i < 5; i++) {
             for (byte j = 0; j < 1; j++) {
                 periodos.add("Enero - Junio " +  date.plusYears(i).getYear());
@@ -221,28 +225,22 @@ public class Helpers {
         return periodos;
     }
 
-    public static void cleanFields(JTextField... fields) {
-        Arrays.asList(fields).forEach(field -> {
-            field.setText("");
-        });
-    }
-    
-    /**
-     * Función para hacer log de Objetos
-     * @param o 
-     */
-    public static void log(Object o) {
-        System.out.println(o);
-    }
-    
-    /**
-     * Colorear background blanco de multiples componentes
-     * @param component 
-     */
-    public static void setWhite(JComponent... component) {
-        Arrays.asList(component).forEach(el -> {
-            el.setBackground(Color.white);
-        });
+    public static String currentPeriodo() {
+        String periodoActual = null;
+        byte mes = (byte) FECHA.getMonthValue();
+        short year = (short) FECHA.getYear();
+        for (byte i = 0; i < getPeriodo().size(); i++) {
+            if (mes <= 7) {
+                if (((i == 0) || ((i % 2) == 0)) && getPeriodo().get(i).contains(String.valueOf(year))) {
+                    periodoActual = getPeriodo().get(i);
+                }
+            } else {
+                if (getPeriodo().get(i).contains(String.valueOf(year))) {
+                    periodoActual = getPeriodo().get(i);
+                }
+            }
+        }
+        return periodoActual;
     }
 
     public static void setBgColor(Color color, JComponent... component) {
@@ -251,29 +249,24 @@ public class Helpers {
         });
     }
 
-    public static JPanel groupElementsVertical(JComponent... components) {
-        JPanel panel = new JPanel();
-        panel.setBorder(padding(8));
-        panel.setBackground(Color.white);
+    public static FlatPanel groupElementsVertical(JComponent... components) {
+        FlatPanel panel = new FlatPanel();
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         List<JComponent> lista = Arrays.asList(components);
 
         c.anchor = GridBagConstraints.WEST;
-        c.insets = Helpers.paddingInset(0, 0, 32, 0);
+        c.insets = Helpers.paddingInset(SpacingPoints.SP_NONE, SpacingPoints.SP_NONE, SpacingPoints.SP24, SpacingPoints.SP_NONE);
         for (int i = 0; i < lista.size(); i++) {
             c.gridy = i;
-            c.insets = Helpers.paddingInset(0, 8);
+            c.insets = Helpers.paddingInset(SpacingPoints.SP_NONE, SpacingPoints.SP_NONE);
             panel.add(lista.get(i), c);
-            c.insets = Helpers.paddingInset(0);
         }
         return panel;
     }
 
-    public static JPanel groupElementsHorizontal(JComponent... components) {
-        JPanel panel = new JPanel();
-        panel.setBorder(padding(8));
-        panel.setBackground(Color.white);
+    public static FlatPanel groupElementsHorizontal(JComponent... components) {
+        FlatPanel panel = new FlatPanel();
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         List<JComponent> lista = Arrays.asList(components);
@@ -281,52 +274,31 @@ public class Helpers {
         for (int i = 0; i < lista.size(); i++) {
             c.gridx = i;
             c.anchor = GridBagConstraints.WEST;
-            c.insets = Helpers.paddingInset(0, 8);
+            c.insets = Helpers.paddingInset(SpacingPoints.SP_NONE, SpacingPoints.SP8);
             panel.add(lista.get(i), c);
-            c.insets = Helpers.paddingInset(0);
         }
         return panel;
     }
 
     public static JPanel verticalElements(JComponent... components) {
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.white);
+        FlatPanel panel = new FlatPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        Arrays.asList(components).forEach(el -> {
-            panel.add(el);
-        });
+        Arrays.asList(components).forEach(panel::add);
         return panel;
     }
 
-    public static JPanel verticalElements(Color color, JComponent... components) {
-        JPanel panel = verticalElements(components);
-        panel.setBackground(color);
-        return panel;
-    }
 
-    public static JLabel labelIcon(Icon icon, Dimension size) {
-        JLabel iconL = new JLabel(icon);
+    public static FlatLabel labelIcon(Icon icon, Dimension size) {
+        FlatLabel iconL = new FlatLabel(icon);
         iconL.setPreferredSize(size);
         return iconL;
     }
 
     public static JPanel panelHidde(int orientation, JComponent... components) {
-        JPanel panel = new JPanel(new FlowLayout(orientation));
-        Arrays.asList(components).forEach(el -> {
-            panel.add(el);
-        });
+        FlatPanel panel = new FlatPanel(new FlowLayout(orientation));
+        Arrays.asList(components).forEach(panel::add);
         return panel;
     }
-
-    public static JPanel panelHidde(int orientation, Color color, JComponent... components) {
-        JPanel panel = new JPanel(new FlowLayout(orientation));
-        panel.setBackground(color);
-        Arrays.asList(components).forEach(el -> {
-            panel.add(el);
-        });
-        return panel;
-    }
-
 
     public static String fechaDocumentos() {
         String fecha = FECHA.format(DateTimeFormatter.ofPattern("dd/MMMM/YYYY"));
@@ -340,16 +312,10 @@ public class Helpers {
         return String.valueOf(wordC);
     }
 
-    public static KeyAdapter onlyNumbers() {
-        KeyAdapter keyAdapter = new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                if (!Character.isDigit(e.getKeyChar()) && !(e.getKeyChar() != KeyEvent.VK_BACK_SPACE)) {
-                    e.consume();
-                }
-            }
-        };
-        return keyAdapter;
+    public static void onlyNumbers(KeyEvent e) {
+        if (!Character.isDigit(e.getKeyChar()) && !(e.getKeyChar() != KeyEvent.VK_BACK_SPACE)) {
+            e.consume();
+        }
     }
 
     public static KeyAdapter onlyLetters() {
@@ -371,5 +337,21 @@ public class Helpers {
         return c;
     }
 
+    public static FlatPanel centerAbsolute(JComponent... components) {
+        FlatPanel horizontalPanel = new FlatPanel();
+        FlatPanel verticalPanel = new FlatPanel();
 
+        verticalPanel.setLayout(new BoxLayout(verticalPanel, BoxLayout.Y_AXIS));
+        horizontalPanel.setLayout(new BoxLayout(horizontalPanel, BoxLayout.X_AXIS));
+
+        Arrays.asList(components).forEach(el -> {
+            FlatPanel internalPane = new FlatPanel(new FlowLayout());
+            internalPane.add(el);
+            verticalPanel.add(internalPane);
+        });
+
+        horizontalPanel.add(verticalPanel);
+
+        return horizontalPanel;
+    }
 }

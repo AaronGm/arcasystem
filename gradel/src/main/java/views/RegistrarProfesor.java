@@ -3,78 +3,114 @@ package views;
 import com.toedter.calendar.JDateChooser;
 import enums.EstadoProfesor;
 import enums.GradoEstudios;
-import helpers.Colors;
+import enums.SpacingPoints;
 import helpers.Helpers;
 import views.components.FlatButton;
 import views.components.FlatComboBox;
 import views.components.FlatLabel;
+import views.components.FlatPanel;
 import views.components.FlatTextField;
 
-import javax.swing.JPanel;
+import javax.swing.Box;
+import javax.swing.JComponent;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- *
  * @author aarongmx
  */
 public class RegistrarProfesor extends View {
-    
-    private JPanel pnlForm;
-    
+
+    private FlatPanel pnlForm;
+
     private FlatTextField txfNoContrato;
     private FlatTextField txfNombre;
     private FlatTextField txfApellidoPaterno;
     private FlatTextField txfApellidoMaterno;
     private FlatTextField txfEspecialidad;
 
-    private FlatLabel labelError;
-    
+    private FlatLabel lbErrNoTrabajador;
+    private FlatLabel lbErrNombres;
+    private FlatLabel lbErrApellidoPaterno;
+    private FlatLabel lbErrApellidoMaterno;
+
+
     private JDateChooser jdtcFechaIngreso;
-    
+
     private FlatComboBox cmbGradoEstudio;
     private FlatComboBox cmbEstatusProfesor;
-    
+
     private FlatButton button;
-    
-    private String headerTitle;
+
+    private FlatLabel lbErrEspecialidad;
 
     public RegistrarProfesor() {
         super("Registrar Profesor");
     }
 
-    public RegistrarProfesor(String title) {
-        super(title);
-    }
-
-    public RegistrarProfesor(String title, String titleBar) {
-        super(title, titleBar);
+    public RegistrarProfesor(String headerTitle) {
+        super(headerTitle);
     }
 
     @Override
     protected void initComponents() {
-        pnlForm = new JPanel(new GridBagLayout());
-                
+        pnlForm = new FlatPanel(new GridBagLayout());
+
         txfNoContrato = new FlatTextField();
         txfNombre = new FlatTextField();
         txfApellidoMaterno = new FlatTextField();
         txfApellidoPaterno = new FlatTextField();
         txfEspecialidad = new FlatTextField();
 
-        labelError = new FlatLabel("Error", "Roboto Medium", "sm", Colors.RED);
-        
+        lbErrNoTrabajador = new FlatLabel(" ");
+        lbErrNombres = new FlatLabel(" ");
+        lbErrApellidoPaterno = new FlatLabel(" ");
+        lbErrApellidoMaterno = new FlatLabel(" ");
+        lbErrEspecialidad = new FlatLabel(" ");
+
         jdtcFechaIngreso = new JDateChooser();
-        
+
         cmbGradoEstudio = new FlatComboBox(GradoEstudios.getGrados());
         cmbEstatusProfesor = new FlatComboBox(EstadoProfesor.getEstados());
-        
+
         button = new FlatButton("Registrar");
 
-        helpers.Helpers.setWhite(pnlForm);
-        
+        KeyAdapter keyAdapter = new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                FlatTextField txf = (FlatTextField) e.getSource();
+                Map<FlatTextField, FlatLabel> map = new HashMap<>();
+                map.put(txfNombre, lbErrNombres);
+                map.put(txfApellidoPaterno, lbErrApellidoPaterno);
+                map.put(txfApellidoMaterno, lbErrApellidoMaterno);
+                map.put(txfEspecialidad, lbErrEspecialidad);
+
+                map.forEach((k, v) -> {
+                    if (k.equals(txf)) {
+                        FlatTextField.escribirSoloLetrasYEspacios(e, v);
+                    }
+                });
+
+                if (txf.equals(txfNoContrato)) {
+                    FlatTextField.escribirSoloNumeros(e, lbErrNoTrabajador);
+                }
+
+            }
+        };
+
+        txfNoContrato.addKeyListener(keyAdapter);
+        txfNombre.addKeyListener(keyAdapter);
+        txfApellidoPaterno.addKeyListener(keyAdapter);
+        txfApellidoMaterno.addKeyListener(keyAdapter);
+        txfEspecialidad.addKeyListener(keyAdapter);
+
+        FlatLabel.styleError(lbErrNoTrabajador, lbErrNombres, lbErrApellidoPaterno, lbErrApellidoMaterno, lbErrEspecialidad);
         initForm();
     }
 
@@ -85,151 +121,104 @@ public class RegistrarProfesor extends View {
 
     private void initForm() {
         GridBagConstraints c = new GridBagConstraints();
-        Insets mt = new Insets(16, 8, 0, 0);
 
         jdtcFechaIngreso.setPreferredSize(new Dimension(180, 28));
         jdtcFechaIngreso.setFont(helpers.Typography.paragraphFont());
         txfEspecialidad.setFont(helpers.Typography.paragraphFont());
-                
-        c.insets = mt;
+
         c.anchor = GridBagConstraints.WEST;
-        
+
         c.gridy = 0;
         c.gridx = 0;
-        pnlForm.add(new FlatLabel("Número de trabajador"), c);
-        c.gridx = 1;
-        pnlForm.add(txfNoContrato, c);
+        c.insets = Helpers.paddingInset(SpacingPoints.SP_NONE, SpacingPoints.SP8, SpacingPoints.SP16, SpacingPoints.SP8);
+        pnlForm.add(Helpers.groupElementsVertical(
+            new FlatLabel("Número de trabajador"),
+            txfNoContrato,
+            lbErrNoTrabajador
+            ), c
+        );
+
+        c.gridx = GridBagConstraints.RELATIVE;
+        c.gridwidth = 2;
+        pnlForm.add(Helpers.groupElementsVertical( new FlatLabel("Estatus de contrato"),cmbEstatusProfesor, (JComponent) Box.createVerticalStrut(16) ), c);
+
         c.gridy = 1;
-        c.insets = Helpers.paddingInset(0, 8, 16, 8);
-        pnlForm.add(labelError, c);
+        c.gridx = GridBagConstraints.RELATIVE;
+        c.gridwidth = 1;
+        pnlForm.add(Helpers.groupElementsVertical(new FlatLabel("Nombres"), txfNombre, lbErrNombres), c);
+
+        c.gridx = GridBagConstraints.RELATIVE;
+        pnlForm.add(Helpers.groupElementsVertical(new FlatLabel("Apellido Paterno"), txfApellidoPaterno, lbErrApellidoPaterno), c);
+
+        c.gridx = GridBagConstraints.RELATIVE;
+        pnlForm.add(Helpers.groupElementsVertical(new FlatLabel("Apellido Materno"), txfApellidoMaterno, lbErrApellidoMaterno), c);
 
 
         c.gridy = 2;
-        c.gridx = 0;
-        pnlForm.add(new FlatLabel("Estatus de Contrato"), c);
         c.gridx = GridBagConstraints.RELATIVE;
-        pnlForm.add(cmbEstatusProfesor, c);
-        
+        pnlForm.add(Helpers.groupElementsVertical(new FlatLabel("Fecha de Ingreso"), jdtcFechaIngreso, (JComponent) Box.createVerticalStrut(16)), c);
+
+        c.gridx = GridBagConstraints.RELATIVE;
+        pnlForm.add(Helpers.groupElementsVertical(new FlatLabel("Grado de Estudios"), cmbGradoEstudio, (JComponent) Box.createVerticalStrut(16)), c);
+
         c.gridy = 3;
-        c.gridx = 0;
-        pnlForm.add(new FlatLabel("Nombres"), c);
         c.gridx = GridBagConstraints.RELATIVE;
-        pnlForm.add(txfNombre, c);
-        
+        pnlForm.add(Helpers.groupElementsVertical(new FlatLabel("Área de especialidad"), txfEspecialidad, lbErrEspecialidad), c);
+
         c.gridy = 4;
-        c.gridx = 0;
-        pnlForm.add(new FlatLabel("Apellido Paterno"), c);
-        c.gridx = GridBagConstraints.RELATIVE;
-        pnlForm.add(txfApellidoPaterno, c);
-        
-        c.gridy = 5;
-        c.gridx = 0;
-        pnlForm.add(new FlatLabel("Apellido Materno"), c);
-        c.gridx = GridBagConstraints.RELATIVE;
-        pnlForm.add(txfApellidoMaterno, c);
-        
-        c.gridy = 6;
-        c.gridx = 0;
-        pnlForm.add(new FlatLabel("Fecha de Ingreso"), c);
-        c.gridx = GridBagConstraints.RELATIVE;
-        pnlForm.add(jdtcFechaIngreso, c);
-        
-        c.gridy = 7;
-        c.gridx = 0;
-        pnlForm.add(new FlatLabel("Grado de estudios"), c);
-        c.gridx = GridBagConstraints.RELATIVE;
-        pnlForm.add(cmbGradoEstudio, c);
-        
-        c.gridy = 8;
-        c.gridx = 0;
-        pnlForm.add(new FlatLabel("Áreas de especialidad"), c);
-        c.gridx = GridBagConstraints.RELATIVE;
-        pnlForm.add(txfEspecialidad, c);
-        
-        
-        c.gridy = GridBagConstraints.RELATIVE;
         c.gridwidth = 2;
-        c.gridx = 1;
         pnlForm.add(button, c);
     }
 
-    public String getHeaderTitle() {
-        return headerTitle;
-    }
-
-    public void setHeaderTitle(String headerTitle) {
-        this.headerTitle = headerTitle;
-    }
-    
     public FlatTextField getTxfNoContrato() {
         return txfNoContrato;
-    }
-
-    public void setTxfNoContrato(FlatTextField txfNoContrato) {
-        this.txfNoContrato = txfNoContrato;
     }
 
     public FlatTextField getTxfNombre() {
         return txfNombre;
     }
 
-    public void setTxfNombre(FlatTextField txfNombre) {
-        this.txfNombre = txfNombre;
-    }
-
     public FlatTextField getTxfApellidoPaterno() {
         return txfApellidoPaterno;
-    }
-
-    public void setTxfApellidoPaterno(FlatTextField txfApellidoPaterno) {
-        this.txfApellidoPaterno = txfApellidoPaterno;
     }
 
     public FlatTextField getTxfApellidoMaterno() {
         return txfApellidoMaterno;
     }
 
-    public void setTxfApellidoMaterno(FlatTextField txfApellidoMaterno) {
-        this.txfApellidoMaterno = txfApellidoMaterno;
-    }
-
     public FlatTextField getTxfEspecialidad() {
         return txfEspecialidad;
     }
 
-    public void setTxfEspecialidad(FlatTextField txfEspecialidad) {
-        this.txfEspecialidad = txfEspecialidad;
-    }
-    
-    public JDateChooser getJdtcFechaIngreso() {
-        return jdtcFechaIngreso;
+    public FlatLabel getLbErrNoTrabajador() {
+        return lbErrNoTrabajador;
     }
 
-    public void setJdtcFechaIngreso(JDateChooser jdtcFechaIngreso) {
-        this.jdtcFechaIngreso = jdtcFechaIngreso;
+    public FlatLabel getLbErrNombres() {
+        return lbErrNombres;
+    }
+
+    public FlatLabel getLbErrApellidoPaterno() {
+        return lbErrApellidoPaterno;
+    }
+
+    public FlatLabel getLbErrApellidoMaterno() {
+        return lbErrApellidoMaterno;
+    }
+
+    public JDateChooser getJdtcFechaIngreso() {
+        return jdtcFechaIngreso;
     }
 
     public FlatComboBox getCmbGradoEstudio() {
         return cmbGradoEstudio;
     }
 
-    public void setCmbGradoEstudio(FlatComboBox cmbGradoEstudio) {
-        this.cmbGradoEstudio = cmbGradoEstudio;
-    }
-
     public FlatComboBox getCmbEstatusProfesor() {
         return cmbEstatusProfesor;
-    }
-
-    public void setCmbEstatusProfesor(FlatComboBox cmbEstatusProfesor) {
-        this.cmbEstatusProfesor = cmbEstatusProfesor;
     }
 
     public FlatButton getButton() {
         return button;
     }
-
-    public void setButton(FlatButton button) {
-        this.button = button;
-    }    
 }

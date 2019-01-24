@@ -2,10 +2,10 @@ package models;
 
 public class HistorialAlumno {
     private int id;
-    private String noControl;
-    private int empresaId;
-    private int proyectoId;
-    private int asesorExternoId;
+    private Alumno alumno;
+    private Empresa empresa;
+    private Proyecto proyecto;
+    private AsesorExterno asesorExterno;
 
     public static final String TABLE = "historial_residentes";
     public static final String ID = "historial_id";
@@ -14,12 +14,12 @@ public class HistorialAlumno {
     public static final String FK_PROYECTO_ID = "proyecto_id";
     public static final String FK_ASESOR_EXTERNO_ID = "asesor_externo_id";
 
-    public HistorialAlumno(int id, String noControl, int empresaId, int proyectoId, int asesorExternoId) {
+    public HistorialAlumno(int id, Alumno alumno, Empresa empresa, Proyecto proyecto, AsesorExterno asesorExterno) {
         this.id = id;
-        this.noControl = noControl;
-        this.empresaId = empresaId;
-        this.proyectoId = proyectoId;
-        this.asesorExternoId = asesorExternoId;
+        this.alumno = alumno;
+        this.empresa = empresa;
+        this.proyecto = proyecto;
+        this.asesorExterno = asesorExterno;
     }
 
     public int getId() {
@@ -30,35 +30,35 @@ public class HistorialAlumno {
         this.id = id;
     }
 
-    public String getNoControl() {
-        return noControl;
+    public Alumno getAlumno() {
+        return alumno;
     }
 
-    public void setNoControl(String noControl) {
-        this.noControl = noControl;
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
-    public int getEmpresaId() {
-        return empresaId;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setEmpresaId(int empresaId) {
-        this.empresaId = empresaId;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
-    public int getProyectoId() {
-        return proyectoId;
+    public Proyecto getProyecto() {
+        return proyecto;
     }
 
-    public void setProyectoId(int proyectoId) {
-        this.proyectoId = proyectoId;
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
     }
 
-    public int getAsesorExternoId() {
-        return asesorExternoId;
+    public AsesorExterno getAsesorExterno() {
+        return asesorExterno;
     }
 
-    public void setAsesorExternoId(int asesorExternoId) {
-        this.asesorExternoId = asesorExternoId;
+    public void setAsesorExterno(AsesorExterno asesorExterno) {
+        this.asesorExterno = asesorExterno;
     }
 }

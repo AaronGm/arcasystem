@@ -5,6 +5,7 @@
  */
 package views;
 
+import enums.SpacingPoints;
 import helpers.Helpers;
 import views.components.FlatButton;
 import views.components.FlatComboBox;
@@ -74,7 +75,7 @@ public class RegistrarEmpresa extends JFrame {
         pnlForm = new JPanel();
         pnlForm.setLayout(new GridBagLayout());
         pnlForm.setBackground(Color.white);
-        pnlForm.setBorder(Helpers.padding(16, 32));
+        pnlForm.setBorder(Helpers.padding(SpacingPoints.SP16, SpacingPoints.SP36));
         
         scrollPane = new JScrollPane(pnlForm);
         scrollPane.setBorder(null);

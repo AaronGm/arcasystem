@@ -24,6 +24,7 @@ public interface Colors {
     Color GHOST = new Color(0xd4d4d4);
     Color GHOST_MEDIUM = new Color(0xaaaaaa);
     Color GHOST_LIGHT = new Color(0xeeeeee);
+    Color INDIGO = new Color(0x3F51B5);
     Color RED = new Color(0xeb5757);
     Color GREEN = new Color(0x56c568);
 

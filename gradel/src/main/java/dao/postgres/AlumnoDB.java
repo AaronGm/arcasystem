@@ -4,7 +4,6 @@ import config.ConnectionDB;
 import excepciones.ExcepcionGeneral;
 import interfaces.AlumnoDAO;
 import models.Alumno;
-import models.Carrera;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,36 +22,11 @@ public class AlumnoDB implements AlumnoDAO {
 
     private final String LISTAR = "SELECT no_control, nombres, apellido_paterno, apellido_materno, semestre, clave_carrera, periodo FROM alumnos;";
 
-    private final String CARRERA = "SELECT carreras.nombre, carreras.plan_estudios FROM carreras, alumnos WHERE alumnos.clave_carrera = carreras.clave_carrera AND alumnos.no_control = ?;";
-
     private final String ELIMINAR = "DELETE FROM alumnos WHERE no_control = ?;";
 
     private final String ACTUALIZAR = "UPDATE alumnos SET nombres = ?, apellido_paterno = ?, apellido_materno = ?, semestre = ?, clave_carrera = ?, periodo = ?  WHERE no_control = ?;";
 
     private final String OBTENERPORID = "SELECT nombres, apellido_paterno, apellido_materno, semestre, clave_carrera, periodo FROM alumnos WHERE no_control = ?;";
-
-
-    @Override
-    public Carrera getCarrera(Alumno alumno) {
-        conexion = new ConnectionDB().getConnection();
-        Carrera carrera = null;
-        try {
-            sentencia = conexion.prepareStatement(CARRERA, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            sentencia.setString(1, alumno.getNoControl());
-            resultados = sentencia.executeQuery();
-            if (resultados.first()) {
-                carrera = new Carrera();
-                carrera.setNombre(resultados.getString(Carrera.NOMBRE));
-                carrera.setPlanEstudios(resultados.getString(Carrera.PLAN_ESTUDIOS));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConnectionDB.closeConnection(conexion, sentencia, resultados);
-        }
-        return carrera;
-    }
 
     @Override
     public void insert(Alumno alumno) {
@@ -64,10 +38,15 @@ public class AlumnoDB implements AlumnoDAO {
             sentencia.setString(3, alumno.getApellidoPaterno());
             sentencia.setString(4, alumno.getApellidoMaterno());
             sentencia.setInt(5, alumno.getSemestre());
-            sentencia.setString(6, alumno.getClaveCarrera());
+            sentencia.setString(6, alumno.getCarrera().getClaveCarrera());
             sentencia.setString(7, alumno.getPeriodo());
 
             resultados = sentencia.executeQuery();
+            if (resultados.next()) {
+                alumno.setNoControl(resultados.getString(Alumno.NO_CONTROL));
+            } else {
+                throw new ExcepcionGeneral("No se insertó ningún registro");
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,7 +65,7 @@ public class AlumnoDB implements AlumnoDAO {
             sentencia.setString(2, alumno.getApellidoPaterno());
             sentencia.setString(3, alumno.getApellidoMaterno());
             sentencia.setInt(4, alumno.getSemestre());
-            sentencia.setString(5, alumno.getClaveCarrera());
+            sentencia.setString(5, alumno.getCarrera().getClaveCarrera());
             sentencia.setString(6, alumno.getPeriodo());
             sentencia.setString(7, alumno.getNoControl());
 
@@ -130,13 +109,13 @@ public class AlumnoDB implements AlumnoDAO {
 
             if (resultados.first()) {
                 alumno = new Alumno(
-                        resultados.getString(Alumno.NOMBRES),
-                        resultados.getString(Alumno.APELLIDO_PATERNO),
-                        resultados.getString(Alumno.APELLIDO_MATERNO),
-                        noControl,
-                        resultados.getInt(Alumno.SEMESTRE),
-                        resultados.getString(Alumno.CLAVE_CARRERA),
-                        resultados.getString(Alumno.PERIODO)
+                    resultados.getString(Alumno.NOMBRES),
+                    resultados.getString(Alumno.APELLIDO_PATERNO),
+                    resultados.getString(Alumno.APELLIDO_MATERNO),
+                    noControl,
+                    resultados.getInt(Alumno.SEMESTRE),
+                    resultados.getString(Alumno.PERIODO),
+                    new CarreraDB().getById(resultados.getString(Alumno.CLAVE_CARRERA))
                 );
             }
 
@@ -157,13 +136,13 @@ public class AlumnoDB implements AlumnoDAO {
             resultados = sentencia.executeQuery();
             while (resultados.next()) {
                 list.add(new Alumno(
-                        resultados.getString(Alumno.NOMBRES),
-                        resultados.getString(Alumno.APELLIDO_PATERNO),
-                        resultados.getString(Alumno.APELLIDO_MATERNO),
-                        resultados.getString(Alumno.NO_CONTROL),
-                        resultados.getInt(Alumno.SEMESTRE),
-                        resultados.getString(Alumno.PERIODO),
-                        resultados.getString(Alumno.CLAVE_CARRERA)
+                    resultados.getString(Alumno.NOMBRES),
+                    resultados.getString(Alumno.APELLIDO_PATERNO),
+                    resultados.getString(Alumno.APELLIDO_MATERNO),
+                    resultados.getString(Alumno.NO_CONTROL),
+                    resultados.getInt(Alumno.SEMESTRE),
+                    resultados.getString(Alumno.PERIODO),
+                    new CarreraDB().getById(resultados.getString(Alumno.CLAVE_CARRERA))
                 ));
             }
         } catch (SQLException e) {

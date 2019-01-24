@@ -95,4 +95,17 @@ public class Proyecto {
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
+
+    @Override
+    public String toString() {
+        return "Proyecto {" +
+            "\n\tproyectoId: " + proyectoId +
+            "\n\tnombre: '" + nombre + '\'' +
+            "\n\tsemanas: " + semanas +
+            "\n\tperiodo: '" + periodo + '\'' +
+            "\n\tfechaInicio: " + fechaInicio +
+            "\n\tfechaTermino: " + fechaTermino +
+            "\n\testatus: '" + estatus + '\'' +
+            "\n}";
+    }
 }

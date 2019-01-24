@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package models;
 
 import java.util.Date;
@@ -29,10 +25,6 @@ public class Profesor extends Persona {
     public static final String ESTATUS_PROFESOR = "estatus_profesor";
     public static final String AREA_ESPECIALIDAD = "area_especialidad";
 
-    public static final String TYPE_GRADOS_ESTUDIO[] = {"Licenciatura", "Ingeniería", "Maestría", "Doctorado"};
-
-    public static final String TYPE_ESTATUS_PROFESOR[] = {"Tiempo Completo", "Clave 10", "Clave 20", "Clave 95", "Por Horario", "Por Asignatura"};
-
     public Profesor(String noTrabajador, Date fechaIngreso, String gradoEstudio, String estatusProfesor, String areaEspecialidad, String nombres, String apellidoPaterno, String apellidoMaterno) {
         super(nombres, apellidoPaterno, apellidoMaterno);
         this.noTrabajador = noTrabajador;
@@ -41,9 +33,7 @@ public class Profesor extends Persona {
         this.estatusProfesor = estatusProfesor;
         this.areaEspecialidad = areaEspecialidad;
     }
-    
-    
-    
+
     public Profesor(int profesorId, String noTrabajador, Date fechaIngreso, String gradoEstudio, String estatusProfesor, String areaEspecialidad, String nombres, String apellidoPaterno, String apellidoMaterno) {
         super(nombres, apellidoPaterno, apellidoMaterno);
         this.profesorId = profesorId;

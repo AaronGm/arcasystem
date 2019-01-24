@@ -1,5 +1,6 @@
 package enums;
 
+import helpers.Helpers;
 import jiconfont.IconCode;
 import jiconfont.IconFont;
 
@@ -1361,7 +1362,7 @@ public enum FontAwesome5 implements IconCode {
 
             @Override
             public InputStream getFontInputStream() {
-                return FontAwesome5.class.getResourceAsStream("../../resources/fonts/fa-regular-400.ttf");
+                return FontAwesome5.class.getResourceAsStream("../../resources/fonts/fa-solid-900.ttf");
             }
         };
     }
@@ -1376,11 +1377,11 @@ public enum FontAwesome5 implements IconCode {
             @Override
             public InputStream getFontInputStream() {
                 String ruta = "../../resources/fonts/fa-";
-                if (fuente == "bands" || fuente == "regular"){
+                if (fuente.equals("bands") || fuente.equals("regular")){
                     ruta += fuente + "-400";
                 }
 
-                if (fuente == "solid") {
+                if (fuente.equals("solid")) {
                     ruta += fuente + "-900";
                 }
                 return FontAwesome5.class.getResourceAsStream(ruta + ".ttf");

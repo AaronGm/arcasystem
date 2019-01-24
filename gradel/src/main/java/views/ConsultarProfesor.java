@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import dao.postgres.ProfesorDB;
+import enums.SpacingPoints;
 import helpers.Colors;
 import helpers.Helpers;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import views.components.FlatButton;
 import views.components.FlatLabel;
+import views.components.FlatPanel;
 import views.components.FlatScrollBar;
 import views.components.FlatTable;
 import views.components.FlatTextField;
@@ -34,10 +31,10 @@ import java.awt.event.ActionEvent;
  */
 public class ConsultarProfesor extends View {
 
-    private JPanel pnlBuscar;
-    private JPanel pnlTabla;
-    private JPanel pnlCenter;
-    private JPanel pnlBotones;
+    private FlatPanel pnlBuscar;
+    private FlatPanel pnlTabla;
+    private FlatPanel pnlCenter;
+    private FlatPanel pnlBotones;
     
     private FlatTextField txfBuscar;
     
@@ -56,10 +53,10 @@ public class ConsultarProfesor extends View {
     @Override
     protected void initComponents() {
         IconFontSwing.register(FontAwesome.getIconFont());
-        pnlCenter = new JPanel(new BorderLayout());
-        pnlBuscar = new JPanel();
-        pnlTabla = new JPanel();
-        pnlBotones = new JPanel();
+        pnlCenter = new FlatPanel(new BorderLayout());
+        pnlBuscar = new FlatPanel();
+        pnlTabla = new FlatPanel();
+        pnlBotones = new FlatPanel();
         
         txfBuscar = new FlatTextField();
         
@@ -77,7 +74,6 @@ public class ConsultarProfesor extends View {
         initTabla();
         initBotones();
         
-        helpers.Helpers.setWhite(pnlBuscar, pnlTabla, pnlBotones);
         pnlCenter.add(BorderLayout.NORTH, pnlBuscar);
         pnlCenter.add(BorderLayout.CENTER, pnlTabla);
         pnlCenter.add(BorderLayout.SOUTH, pnlBotones);
@@ -96,7 +92,7 @@ public class ConsultarProfesor extends View {
     
     private void initTabla() {
         pnlTabla.setLayout(new BorderLayout());
-        pnlTabla.setBorder(helpers.Helpers.padding(32, 16));
+        pnlTabla.setBorder(helpers.Helpers.padding(SpacingPoints.SP36, SpacingPoints.SP16));
         model = new FlatTableModel(new String[] {
             "",
             "No. Trabajador", 
@@ -110,6 +106,7 @@ public class ConsultarProfesor extends View {
         }, 0);
 
         JScrollPane scroll = new JScrollPane(tabla);
+        scroll.setWheelScrollingEnabled(true);
         scroll.setVerticalScrollBar(new FlatScrollBar());
         scroll.setBorder(new EmptyBorder(0, 0, 0, 0));
 
@@ -138,7 +135,7 @@ public class ConsultarProfesor extends View {
     }
 
     private void initBotones() {
-        pnlBotones.setBorder(Helpers.padding(32, 16));
+        pnlBotones.setBorder(Helpers.padding(SpacingPoints.SP36, SpacingPoints.SP16));
         pnlBotones.setLayout(new FlowLayout(FlowLayout.RIGHT));
         pnlBotones.add(btnEditar);
         pnlBotones.add(btnEliminar);
@@ -147,19 +144,17 @@ public class ConsultarProfesor extends View {
     public void loadData() {
         model.setRowCount(0);
 
-        new ProfesorDB().list().forEach(el -> {
-            model.addRow(new Object[]{
-                el.getProfesorId(),
-                el.getNoTrabajador(),
-                el.getNombres(),
-                el.getApellidoPaterno(),
-                el.getApellidoMaterno(),
-                el.getFechaIngreso(),
-                el.getGradoEstudio(),
-                el.getEstatusProfesor(),
-                el.getAreaEspecialidad(),
-            });
-        });
+        new ProfesorDB().list().forEach(el -> model.addRow(new Object[]{
+            el.getProfesorId(),
+            el.getNoTrabajador(),
+            el.getNombres(),
+            el.getApellidoPaterno(),
+            el.getApellidoMaterno(),
+            el.getFechaIngreso(),
+            el.getGradoEstudio(),
+            el.getEstatusProfesor(),
+            el.getAreaEspecialidad(),
+        }));
         tabla.setModel(model);
     }
 

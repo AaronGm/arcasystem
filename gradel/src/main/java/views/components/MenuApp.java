@@ -1,17 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views.components;
 
 import controllers.AlumnoController;
+import controllers.PanelController;
 import controllers.ProfesorController;
+import controllers.ProyectoController;
+import enums.FontAwesome5;
 import helpers.Colors;
 import helpers.Helpers;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import views.ConsultarProfesor;
+import views.PanelControl;
 import views.RegistrarAlumno;
 import views.RegistrarEmpresa;
 import views.RegistrarExpediente;
@@ -67,6 +66,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
 
     ProfesorController profesorController;
     AlumnoController alumnoController;
+    ProyectoController proyectoController;
     
     public MenuApp() {
         initView();
@@ -86,7 +86,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
     }
 
     private void initComponents() {
-        IconFontSwing.register(FontAwesome.getIconFont());
+        IconFontSwing.register(FontAwesome5.getIconFont());
         inicio = new JMenu("Inicio");
         registrar = new JMenu("Registrar");
         consultar = new JMenu("Consultar");
@@ -109,8 +109,8 @@ public class MenuApp extends JMenuBar implements ActionListener {
         cnsAsesorExterno = new FlatMenuItem("Asesores Externos");
         cnsExpediente = new FlatMenuItem("Expediente");
 
-        panelDeControl = new FlatMenuItem("Panel de Control", IconFontSwing.buildIcon(FontAwesome.WRENCH, 16, Colors.BLACK_MEDIUM));
-        cerrarSesion = new FlatMenuItem("Cerrar Sesión", IconFontSwing.buildIcon(FontAwesome.SIGN_OUT, 16 , Colors.BLACK_MEDIUM));
+        panelDeControl = new FlatMenuItem("Panel de Control", IconFontSwing.buildIcon(FontAwesome5.FA_USER_COG, 16, Colors.BLACK_MEDIUM));
+        cerrarSesion = new FlatMenuItem("Cerrar Sesión", IconFontSwing.buildIcon(FontAwesome5.FA_SIGN_OUT_ALT, 16 , Colors.BLACK_MEDIUM));
 
         initRegistrar();
     }
@@ -146,7 +146,7 @@ public class MenuApp extends JMenuBar implements ActionListener {
 
         Arrays.asList(menus).forEach(el -> {
             el.setForeground(Color.white);
-            el.setBorder(new EmptyBorder(Helpers.paddingInset(0)));
+            el.setBorder(null);
             el.setFont(helpers.Typography.componentsFont());
         });
         
@@ -162,6 +162,14 @@ public class MenuApp extends JMenuBar implements ActionListener {
 
         Arrays.asList(new JMenuItem[] { panelDeControl, cerrarSesion }).forEach(el -> {
             cuenta.add(el);
+        });
+
+        panelDeControl.addActionListener(e -> {
+            JFrame jFrame = (JFrame) getTopLevelAncestor();
+            if (!(jFrame instanceof PanelControl)) {
+                new PanelController().show().setVisible(true);
+                jFrame.dispose();
+            }
         });
     }
     
@@ -184,7 +192,8 @@ public class MenuApp extends JMenuBar implements ActionListener {
             }
         } else if (item == regProyecto) {
             if (!(jFrame instanceof RegistrarProyecto)) {
-                new RegistrarProyecto().setVisible(true);
+                proyectoController = new ProyectoController();
+                proyectoController.create().setVisible(true);
                 jFrame.dispose();
             }
         } else if (item == regEmpresa) {

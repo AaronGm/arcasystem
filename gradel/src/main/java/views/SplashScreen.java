@@ -1,12 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views;
 
+import enums.FontFamily;
+import enums.FontSize;
+import enums.SpacingPoints;
 import helpers.Colors;
+import helpers.Typography;
 import views.components.FlatLabel;
+import views.components.FlatPanel;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,8 +27,8 @@ import java.net.SocketAddress;
  */
 public class SplashScreen extends JFrame {
 
-    private JPanel pnlCenter;
-    private JPanel pnlProgress;
+    private FlatPanel pnlCenter;
+    private FlatPanel pnlProgress;
     
     private JProgressBar bar;
     
@@ -48,14 +49,13 @@ public class SplashScreen extends JFrame {
     }
     
     private void initComponents() {
-        pnlCenter = new JPanel();
-        pnlProgress = new JPanel();
+        pnlCenter = new FlatPanel();
+        pnlProgress = new FlatPanel();
         
         lbProgress = new FlatLabel();
         
         bar = new JProgressBar(SwingConstants.HORIZONTAL);
         
-        helpers.Helpers.setWhite(pnlCenter, pnlProgress);
         initCenter();
         initBar();
     }
@@ -65,10 +65,10 @@ public class SplashScreen extends JFrame {
     SocketAddress address = new InetSocketAddress("localhost", 5432);
 
     private void initCenter() {
-        pnlCenter.setBorder(helpers.Helpers.padding(72, 16));
-        pnlCenter.add(new FlatLabel("Instituto Tecnológico de Iztapalapa", "Raleway", "h1"));
+        pnlCenter.setBorder(helpers.Helpers.padding(SpacingPoints.SP64, SpacingPoints.SP16));
+        pnlCenter.add(new FlatLabel("Instituto Tecnológico de Iztapalapa", FontSize.H1));
         pnlCenter.add(helpers.Helpers.logoItiz(200));
-        pnlCenter.add(new FlatLabel("\"Por la ciencia, tecnológia y educación en beneficio de la juventud.\"", "Raleway", "h3"));
+        pnlCenter.add(new FlatLabel("\"Por la ciencia, tecnológia y educación en beneficio de la juventud.\"", FontSize.H3));
     }
     
     private void initBar() {
@@ -81,7 +81,7 @@ public class SplashScreen extends JFrame {
         bar.setForeground(Colors.BLUE_MEDIUM);
         bar.setPreferredSize(new Dimension(getWidth(), 5));
         
-        lbProgress.setFont(helpers.Typography.addFont("Roboto", 28f));
+        lbProgress.setFont(Typography.addFont(FontFamily.ROBOTO, FontSize.H3));
         
         lbProgress.setText("20%");
         

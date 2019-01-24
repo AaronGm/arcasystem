@@ -44,5 +44,16 @@ public class AsesorExterno extends Persona {
     public void setEmpresaId( int empresaId ) {
         this.empresaId = empresaId;
     }
-    
+
+    @Override
+    public String toString() {
+        return "AsesorExterno {" +
+            "\n\tasesorExternoId: " + asesorExternoId +
+            "\n\tnombres: '" + getNombres() + '\'' +
+            "\n\tapellidoPaterno: '" + getApellidoPaterno() + '\'' +
+            "\n\tapellidoMaterno: '" + getApellidoMaterno() + '\'' +
+            "\n\tcargo: '" + cargo + '\'' +
+            "\n\tempresaId: " + empresaId +
+            "\n}";
+    }
 }

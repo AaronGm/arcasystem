@@ -53,10 +53,10 @@ public class RegistrarAlumno extends View {
         cmbCarrera = new FlatComboBox(carreras);
         cmbPeriodo = new FlatComboBox(Helpers.getPeriodo().toArray());
         cmbSemestre = new FlatComboBox(new Integer[] { 9, 10, 11, 12 });
+        cmbPeriodo.setSelectedItem(Helpers.currentPeriodo());
 
         btnSig = new FlatButton("Registrar");
 
-        Helpers.setWhite(pnlForm);
         initForm();
     }
 

@@ -106,7 +106,7 @@ public class CarreraDB implements CarreraDAO {
             resultados = sentencia.executeQuery();
             if (resultados.first()) {
                 carrera = new Carrera(
-                        resultados.getString(claveCarrera),
+                        claveCarrera,
                         resultados.getString(Carrera.NOMBRE),
                         resultados.getString(Carrera.PLAN_ESTUDIOS)
                 );

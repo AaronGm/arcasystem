@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views.components;
 
+import enums.FontFamily;
+import enums.FontSize;
 import helpers.Colors;
+import helpers.Typography;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import javax.swing.text.JTextComponent;
 import java.awt.Color;
 
 /**
@@ -22,17 +22,30 @@ public class FlatLabel extends JLabel {
         initComponent();
     }
 
-    public FlatLabel(String text,String fontFamily, String fontSize, Color fontColor) {
+    public FlatLabel(FontFamily fontFamily, FontSize fontSize, Color fontColor) {
+        super();
+        initComponent();
+        setForeground(fontColor);
+        setFont(Typography.addFont(fontFamily, fontSize));
+    }
+
+    public FlatLabel(String text, FontFamily fontFamily, FontSize fontSize, Color fontColor) {
         super(text);
         initComponent();
         setForeground(fontColor);
-        setFont(helpers.Typography.addFont(fontFamily, fontSize));
+        setFont(Typography.addFont(fontFamily, fontSize));
     }
     
-    public FlatLabel(String text,String fontFamily, String fontSize) {
+    public FlatLabel(String text, FontFamily fontFamily, FontSize fontSize) {
         super(text);
         initComponent();
-        setFont(helpers.Typography.addFont(fontFamily, fontSize));
+        setFont(Typography.addFont(fontFamily, fontSize));
+    }
+
+    public FlatLabel(FontFamily fontFamily, FontSize fontSize) {
+        super();
+        initComponent();
+        setFont(Typography.addFont(fontFamily, fontSize));
     }
 
     public FlatLabel(String text, Color fontColor) {
@@ -41,37 +54,43 @@ public class FlatLabel extends JLabel {
         setForeground(fontColor);
     }
 
-    public FlatLabel(String text, String fontSize, Color fontColor) {
+    public FlatLabel(String text, FontSize fontSize, Color fontColor) {
         super(text);
         initComponent();
         setForeground(fontColor);
         switch(fontSize) {
-            case "h1":
-            case "h2":
-            case "h3":
-                setFont(helpers.Typography.addFont("Raleway", fontSize));
+            case H1:
+            case H2:
+            case H3:
+                setFont(helpers.Typography.addFont(FontFamily.RALEWAY, fontSize));
                 break;
-            case "pr":
-            case "sm":
-            case "sl":
-                setFont(helpers.Typography.addFont("Open Sans", fontSize));
+            case P:
+            case SM:
+            case SL:
+                setFont(helpers.Typography.addFont(FontFamily.OPEN_SANS, fontSize));
                 break;
         }
     }
+
+    public FlatLabel(FontSize fontSize) {
+        super();
+        initComponent();
+        setFont(Typography.addFont(FontFamily.OPEN_SANS, fontSize));
+    }
     
-    public FlatLabel(String text, String fontSize) {
+    public FlatLabel(String text, FontSize fontSize) {
         super(text);
         initComponent();
         switch(fontSize) {
-            case "h1":
-            case "h2":
-            case "h3":
-                setFont(helpers.Typography.addFont("Raleway", fontSize));
+            case H1:
+            case H2:
+            case H3:
+                setFont(helpers.Typography.addFont(FontFamily.RALEWAY, fontSize));
                 break;
-            case "pr":
-            case "sm":
-            case "sl":
-                setFont(helpers.Typography.addFont("Open Sans", fontSize));
+            case P:
+            case SM:
+            case SL:
+                setFont(helpers.Typography.addFont(FontFamily.OPEN_SANS, fontSize));
                 break;
         }
     }
@@ -101,8 +120,18 @@ public class FlatLabel extends JLabel {
     }
 
     private void initComponent() {
-        setFont(helpers.Typography.componentsFont());
+        setFont(Typography.componentsFont());
         setForeground(Colors.BLACK_MEDIUM);
+    }
+
+    public void styleError() {
+        setForeground(Colors.RED);
+    }
+
+    public static void styleError(FlatLabel... flatLabels) {
+        for (FlatLabel flatLabel : flatLabels) {
+            flatLabel.setForeground(Colors.RED);
+        }
     }
     
 }

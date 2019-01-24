@@ -1,23 +1,26 @@
 package controllers;
 
-import controllers.components.AuthDialogController;
 import dao.postgres.AlumnoDB;
+import dao.postgres.CarreraDB;
 import dao.postgres.UsuarioDB;
+import enums.MensajesValidacion;
 import models.Alumno;
 import views.RegistrarAlumno;
 import views.View;
 import views.components.AuthDialog;
 
+import javax.swing.JOptionPane;
+
 public class AlumnoController implements Controller<Alumno> {
 
     private final AlumnoDB alumnoDB = new AlumnoDB();
     private Alumno alumno;
-    private AuthDialogController authDialogController;
+    private AuthController authController;
 
     @Override
     public View create() {
         RegistrarAlumno view = new RegistrarAlumno();
-        AuthDialog authDialog = new AuthDialog(view, "Auth");
+        AuthDialog authDialog = new AuthDialog(view, "Autorización");
         alumno = null;
         view.getBtnSig().addActionListener(l -> {
             alumno = new Alumno(
@@ -27,7 +30,7 @@ public class AlumnoController implements Controller<Alumno> {
                 view.getTxfNoControl().getText(),
                 Integer.parseInt(view.getCmbSemestre().getSelectedItem().toString()),
                 view.getCmbPeriodo().getSelectedItem().toString(),
-                view.getCmbCarrera().getSelectedItem().toString()
+                new CarreraDB().getById(view.getCmbCarrera().getSelectedItem().toString())
             );
 
             authDialog.setVisible(true);
@@ -48,7 +51,7 @@ public class AlumnoController implements Controller<Alumno> {
                     );
                     authDialog.dispose();
                 } else {
-                    System.out.println("No esta autorizado!");
+                    JOptionPane.showConfirmDialog(null, MensajesValidacion.ERROR_AUTORIZACION);
                 }
             });
 

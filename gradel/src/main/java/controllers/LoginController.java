@@ -21,21 +21,14 @@ import java.awt.event.ActionEvent;
 public class LoginController {
 
     public static String CURRENT_USER;
-    
-    private final LoginView view;
-    
-    public LoginController(LoginView view) {
-        IconFontSwing.register(FontAwesome.getIconFont());
-        this.view = view;
-    }
 
-    
     /**
-     * Verifica si el usuario tiene acceso a la aplicación 
-     * @return  
+     * Acceso a la aplicación
+     * @return view
      */
     public JFrame login() {
         UsuarioDB usuarioDB = new UsuarioDB();
+        LoginView view = new LoginView();
         try {
             view.getBtnSend().addActionListener(( ActionEvent e ) -> {
                 Usuario usuario = usuarioDB.login(
@@ -62,11 +55,6 @@ public class LoginController {
         } catch ( ExcepcionGeneral e ) {
             System.out.println(e.getMessage());
         }
-        return this.view;
-    }
-
-    public void limpiarCampos() {
-        view.getUserField().setText("");
-        view.getPasswdField().setText("");
+        return view;
     }
 }

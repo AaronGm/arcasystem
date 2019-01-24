@@ -1,8 +1,9 @@
 
 package views.components;
 
+import enums.MensajesValidacion;
+import enums.SpacingPoints;
 import helpers.Colors;
-import helpers.Helpers;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.border.Border;
@@ -14,7 +15,11 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 import java.text.Format;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
@@ -22,10 +27,10 @@ import java.text.Format;
  */
 public class FlatTextField extends JFormattedTextField {
 
-    private static Insets sizeBorderMaterial = Helpers.paddingInset(0, 0, 2, 0);
-    private static Border defaultBorderMaterial = new CompoundBorder(
+    private static final Insets sizeBorderMaterial = new Insets(0, 0, 2, 0);
+    private static final Border defaultBorderMaterial = new CompoundBorder(
         new MatteBorder(sizeBorderMaterial, Colors.DEFAULT_COMPONENT),
-        helpers.Helpers.padding(0, 8)
+        helpers.Helpers.padding(SpacingPoints.SP_NONE, SpacingPoints.SP8)
     );
 
     public FlatTextField() {
@@ -58,9 +63,10 @@ public class FlatTextField extends JFormattedTextField {
     }
     
     private void initComponent() {
+        Insets sizeBorderDefault = new Insets(1, 1, 1, 1);
         Border defaultBorder = new CompoundBorder(
-                new MatteBorder(Helpers.paddingInset(1), Colors.DEFAULT_COMPONENT),
-                helpers.Helpers.padding(0, 8)
+                new MatteBorder(new Insets(1,1,1,1), Colors.DEFAULT_COMPONENT),
+                helpers.Helpers.padding(SpacingPoints.SP_NONE, SpacingPoints.SP8)
         );
         setMinimumSize(new Dimension(300, 30));
         setPreferredSize(new Dimension(330, 30));
@@ -73,8 +79,8 @@ public class FlatTextField extends JFormattedTextField {
             @Override
             public void focusGained(FocusEvent e) {
                     setBorder(new CompoundBorder(
-                        new MatteBorder(Helpers.paddingInset(2), Colors.SELECTED_COMPONENT),
-                        helpers.Helpers.padding(0, 8)
+                        new MatteBorder(sizeBorderDefault, Colors.SELECTED_COMPONENT),
+                        helpers.Helpers.padding(SpacingPoints.SP_NONE, SpacingPoints.SP8)
                     ));
             }
 
@@ -92,7 +98,7 @@ public class FlatTextField extends JFormattedTextField {
             public void focusGained(FocusEvent e) {
                 component.setBorder(new CompoundBorder(
                     new MatteBorder(sizeBorderMaterial, Colors.SELECTED_COMPONENT),
-                    helpers.Helpers.padding(0, 8)
+                    helpers.Helpers.padding(SpacingPoints.SP_NONE, SpacingPoints.SP8)
                 ));
             }
 
@@ -111,7 +117,7 @@ public class FlatTextField extends JFormattedTextField {
             public void focusGained(FocusEvent e) {
                 component.setBorder(new CompoundBorder(
                     new MatteBorder(sizeBorderMaterial, color),
-                    helpers.Helpers.padding(0, 8)
+                    helpers.Helpers.padding(SpacingPoints.SP_NONE, SpacingPoints.SP8)
                 ));
             }
 
@@ -120,5 +126,35 @@ public class FlatTextField extends JFormattedTextField {
                 component.setBorder(defaultBorderMaterial);
             }
         });
+    }
+
+    public static boolean validarCampoVacio(JTextComponent textComponent, FlatLabel lbError) {
+        boolean isEmpty = false;
+        if (textComponent.getText().isEmpty() || textComponent.getText().equals(" ")) {
+            lbError.setText(MensajesValidacion.CAMPO_VACIO.getMensaje());
+            lbError.styleError();
+            isEmpty = true;
+        }
+        return isEmpty;
+    }
+
+    public static void escribirSoloLetrasYEspacios(KeyEvent evt, FlatLabel etiquetaError){
+        if(!Character.isLetter(evt.getKeyChar()) && !(evt.getKeyChar() == KeyEvent.VK_SPACE) && !(evt.getKeyChar() == KeyEvent.VK_BACK_SPACE) && !(evt.getKeyChar() == KeyEvent.VK_COMMA) && !(evt.getKeyChar() == KeyEvent.VK_QUOTE)){
+            evt.consume();
+            etiquetaError.setText(MensajesValidacion.SOLO_LETRAS.getMensaje());
+            etiquetaError.styleError();
+        } else {
+            etiquetaError.setText(" ");
+        }
+    }
+
+    public static void escribirSoloNumeros(KeyEvent evt, FlatLabel etiquetaError){
+        if(!Character.isDigit(evt.getKeyChar()) && !(evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+            etiquetaError.setText(MensajesValidacion.SOLO_NUMEROS.getMensaje());
+            etiquetaError.styleError();
+        } else {
+            etiquetaError.setText(" ");
+        }
     }
 }

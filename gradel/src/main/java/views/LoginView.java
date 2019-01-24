@@ -1,21 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import config.Configuration;
 import enums.FontAwesome5;
+import enums.FontSize;
+import enums.SpacingPoints;
 import helpers.Colors;
 import helpers.Helpers;
 import helpers.Typography;
 import jiconfont.swing.IconFontSwing;
 import views.components.FlatButton;
 import views.components.FlatLabel;
+import views.components.FlatPanel;
 import views.components.FlatTextField;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,7 +23,6 @@ import javax.swing.JPasswordField;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
@@ -36,8 +34,8 @@ import java.awt.Toolkit;
  */
 public class LoginView extends JFrame {
 
-    private JPanel headerPanel;
-    private JPanel formPanel;
+    private FlatPanel headerPanel;
+    private FlatPanel formPanel;
     private JLabel headerTitle;
 
     private FlatTextField userField;
@@ -54,6 +52,7 @@ public class LoginView extends JFrame {
     }
     
     private void initView() {
+        setIconImage(new ImageIcon(Helpers.IMAGES_PATH + "logo-itiz64.png").getImage());
         setSize(screen.width / 3 - 100, screen.height - 150);
         setResizable(false);
         getContentPane().setBackground(Color.white);
@@ -63,17 +62,15 @@ public class LoginView extends JFrame {
     }
     
     private void initComponents() {
-        formPanel = new JPanel(new GridBagLayout());
-        headerPanel = new JPanel();
+        formPanel = new FlatPanel(new GridBagLayout());
+        headerPanel = new FlatPanel();
         
         headerTitle = new JLabel(Configuration.APP_NAME);
 
         userField = new FlatTextField();
         passwdField = new JPasswordField();
 
-        btnSend = new FlatButton("Iniciar Sesión".toUpperCase());
-
-        Helpers.setWhite(formPanel, headerPanel);
+        btnSend = new FlatButton("Iniciar Sesión");
 
         initHeader();
         initForm();
@@ -82,29 +79,34 @@ public class LoginView extends JFrame {
     }
     
     private void initHeader() {
-        headerTitle.setFont(Typography.titleFont("h3"));
+        headerTitle.setFont(Typography.titleFont(FontSize.H3));
+        headerPanel.setPreferredSize(new Dimension(getWidth(), getHeight() / 3 + 60));
+        headerPanel.setBorder(Helpers.padding(SpacingPoints.SP24, SpacingPoints.SP16));
 
-        headerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        headerPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = Helpers.paddingInset(SpacingPoints.SP64, SpacingPoints.SP_NONE, SpacingPoints.SP_NONE, SpacingPoints.SP_NONE);
+        headerPanel.add(headerTitle, c);
+        c.gridy = 1;
+        c.insets = Helpers.paddingInset(SpacingPoints.SP16, SpacingPoints.SP_NONE);
+        headerPanel.add(Helpers.logoItiz(160), c);
 
-        headerPanel.add(headerTitle);
-        headerPanel.add(helpers.Helpers.logoItiz(180));
     }
         
     private void initForm() {
         IconFontSwing.register(FontAwesome5.getIconFont("solid"));
         JLabel iconUser = new JLabel(IconFontSwing.buildIcon(FontAwesome5.FA_USER, 24, Colors.BLACK_LIGHT));
-        JLabel iconPass = new JLabel(IconFontSwing.buildIcon(FontAwesome5.FA_FINGERPRINT, 24, Colors.BLACK_LIGHT));
+        JLabel iconPass = new JLabel(IconFontSwing.buildIcon(FontAwesome5.FA_LOCK, 24, Colors.BLACK_LIGHT));
         GridBagConstraints gbConstraint = new GridBagConstraints();
 
 
         FlatTextField.styleMaterial(userField);
         FlatTextField.styleMaterial(passwdField);
         
-        userField.setPreferredSize(new Dimension(210, 30));
+        userField.setPreferredSize(new Dimension(280, 30));
         passwdField.setPreferredSize(userField.getPreferredSize());
 
-        formPanel.setBorder(Helpers.padding(16, 8));
-        
+
         gbConstraint.gridy = 0;
         gbConstraint.gridx = 1;
         gbConstraint.anchor = GridBagConstraints.WEST;
@@ -133,7 +135,7 @@ public class LoginView extends JFrame {
 
         gbConstraint.gridy = GridBagConstraints.RELATIVE;
         formPanel.add(Box.createVerticalStrut(24), gbConstraint);
-        gbConstraint.gridwidth = 2;
+        gbConstraint.gridwidth = 1;
         gbConstraint.anchor = GridBagConstraints.CENTER;
         formPanel.add(btnSend, gbConstraint);
 

@@ -23,11 +23,11 @@ public class ProfesorDB implements ProfesorDAO {
     private PreparedStatement sentencia;
     private ResultSet resultados;
     
-    private final String INSERTAR = "INSERT INTO profesores(no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad) VALUES (?, ?, ?, ?, ?, ?::grado_estudios, ?::estado_profesor, ?) RETURNING profesor_id;";
+    private final String INSERTAR = "INSERT INTO profesores(no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad) VALUES (?, INITCAP(?), INITCAP(?), INITCAP(?), ?, ?::grado_estudios, ?::estado_profesor, UPPER(?)) RETURNING profesor_id;";
     private final String LISTAR = "SELECT profesor_id, no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad FROM profesores;";
     private final String OBTENERPORID = "SELECT profesor_id, no_trabajador, nombres, apellido_paterno, apellido_materno, fecha_ingreso, grado_estudios, estatus_profesor, area_especialidad FROM profesores WHERE profesor_id = ?;";
 
-    private final String ACTUALIZAR = "UPDATE profesores SET no_trabajador = ?, nombres = ?, apellido_paterno = ?, apellido_materno = ?, fecha_ingreso = ?, grado_estudios = ?::grado_estudios, estatus_profesor = ?::estado_profesor, area_especialidad = ? WHERE profesor_id = ?;";
+    private final String ACTUALIZAR = "UPDATE profesores SET no_trabajador = ?, nombres = INITCAP(?), apellido_paterno = INITCAP(?), apellido_materno = INITCAP(?), fecha_ingreso = ?, grado_estudios = ?::grado_estudios, estatus_profesor = ?::estado_profesor, area_especialidad = UPPER(?) WHERE profesor_id = ?;";
     
     private final String ELIMINAR = "DELETE FROM profesores WHERE profesor_id = ?;";
 

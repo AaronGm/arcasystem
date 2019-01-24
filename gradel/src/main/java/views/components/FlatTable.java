@@ -69,5 +69,5 @@ public class FlatTable extends JTable {
     public void hiddeId(int column) {
         removeColumn(getColumnModel().getColumn(column));
     }
-    
+
 }

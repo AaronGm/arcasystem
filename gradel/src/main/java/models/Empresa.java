@@ -5,6 +5,13 @@
  */
 package models;
 
+import helpers.Helpers;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 /**
  *
  * @author aarongmx
@@ -112,5 +119,20 @@ public class Empresa {
 
     public void setPaginaWeb(String paginaWeb) {
         this.paginaWeb = paginaWeb;
+    }
+
+    @Override
+    public String toString() {
+        return "Empresa {" +
+            "\n\tempresaId: " + empresaId +
+            "\n\trfc: '" + rfc + '\'' +
+            "\n\tnombre: '" + nombre + '\'' +
+            "\n\tencargado: '" + encargado + '\'' +
+            "\n\tdomicilio: '" + domicilio + '\'' +
+            "\n\tcolonia: '" + colonia + '\'' +
+            "\n\tcodigoPostal: '" + codigoPostal + '\'' +
+            "\n\talcaldiaMunicipio: '" + alcaldiaMunicipio + '\'' +
+            "\n\tpaginaWeb: '" + paginaWeb + '\'' +
+            "\n}";
     }
 }

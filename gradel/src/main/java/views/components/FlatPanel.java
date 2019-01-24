@@ -1,8 +1,10 @@
 package views.components;
 
+import enums.SpacingPoints;
 import helpers.Helpers;
 
 import javax.swing.JPanel;
+import java.awt.Color;
 import java.awt.LayoutManager;
 
 public class FlatPanel extends JPanel {
@@ -25,19 +27,26 @@ public class FlatPanel extends JPanel {
         initComponent();
     }
 
-    public FlatPanel(int topBottom, int leftRight) {
+    public FlatPanel(SpacingPoints size) {
+        initComponent();
+        setBorder(Helpers.padding(size, size));
+    }
+
+    public FlatPanel(SpacingPoints topBottom, SpacingPoints leftRight) {
+        initComponent();
         setBorder(Helpers.padding(topBottom, leftRight));
     }
 
     private void initComponent() {
-        setBorder(Helpers.padding(32, 16));
+        setBackground(Color.white);
+        setBorder(Helpers.padding(SpacingPoints.SP_NONE));
     }
 
-    public void setPadding(int all) {
-        setBorder(Helpers.padding(all));
+    public void setPadding(SpacingPoints spacingPoints) {
+        setBorder(Helpers.padding(spacingPoints));
     }
 
-    public void setPadding(int topBottom, int leftRight) {
+    public void setPadding(SpacingPoints topBottom, SpacingPoints leftRight) {
         setBorder(Helpers.padding(topBottom, leftRight));
     }
 }
