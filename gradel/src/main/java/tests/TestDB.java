@@ -10,10 +10,17 @@ import dao.postgres.HistorialAlumnoDB;
 import dao.postgres.UsuarioDB;
 import helpers.Helpers;
 import models.HistorialAlumno;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 import java.awt.EventQueue;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -26,8 +33,8 @@ import java.util.concurrent.TimeUnit;
  * @author aarongmx
  */
 public class TestDB {
-    public static void main( String[] args ) {
-
+    public static void main( String[] args ) throws IOException, InvalidFormatException {
+/*
 //        HistorialAlumno historialAlumno = new HistorialAlumnoDB().getById(1);
 
 //        System.out.println(historialAlumno.getAlumno());
@@ -41,10 +48,9 @@ public class TestDB {
             System.out.println(Helpers.currentPeriodo());
 
         };
-        EventQueue.invokeLater(run);
+        EventQueue.invokeLater(run);*/
 
-        /*InvalidFormatException {
-            FileInputStream fis = new FileInputStream("/home/aarongmx/NetBeansProjects/App/src/tests/t1.docx");
+            FileInputStream fis = new FileInputStream("C:\\Users\\aarongmx\\Desktop\\arcasystem\\gradel\\src\\main\\java\\tests\\t1.docx");
             XWPFDocument doc = new XWPFDocument(OPCPackage.open(fis));
             TestDB.rep(doc, "FECHA", Helpers.fechaDocumentos());
             TestDB.rep(doc, "EPTO", "ISC");
@@ -58,9 +64,14 @@ public class TestDB {
             TestDB.rep(doc, "ALUMNO", "ARTURO DÍAZ LÓPEZ".toUpperCase());
             TestDB.rep(doc, "NOCONTROL", "151080123".toUpperCase());
 
-            doc.write(new FileOutputStream("/home/aarongmx/NetBeansProjects/App/src/tests/new.docx"));
-        XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
-        System.out.println(extractor.getText());*/
+            try {
+                doc.write(new FileOutputStream("C:\\Users\\aarongmx\\Desktop\\arcasystem\\gradel\\src\\main\\java\\tests\\nuevoT1.docx"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
+        System.out.println(extractor.getText());
+
 
 //        UsuarioDB usuarioDB = new UsuarioDB();
 //        System.out.println(usuarioDB.auth("aarongm", "aagmx"));

@@ -33,7 +33,13 @@ public class AlumnoController implements Controller<Alumno> {
                 new CarreraDB().getById(view.getCmbCarrera().getSelectedItem().toString())
             );
 
-            authDialog.setVisible(true);
+            authController = new AuthController(view);
+
+            if (authController.auth()) {
+                System.out.println("Autorizado");
+            }
+
+           /* authDialog.setVisible(true);
             authDialog.getBtnAuth().addActionListener(ls -> {
                 String passwd = String.valueOf(authDialog.getPasswd().getPassword());
                 if (new UsuarioDB().auth(LoginController.CURRENT_USER, passwd)) {
@@ -53,7 +59,7 @@ public class AlumnoController implements Controller<Alumno> {
                 } else {
                     JOptionPane.showConfirmDialog(null, MensajesValidacion.ERROR_AUTORIZACION);
                 }
-            });
+            });*/
 
 
 

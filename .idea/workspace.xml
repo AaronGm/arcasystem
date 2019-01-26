@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73f74095-2550-46fe-82ff-9c45eb11b823" name="Default Changelist" comment="" />
+    <list default="true" id="73f74095-2550-46fe-82ff-9c45eb11b823" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/gradel/.gradle/" />
     <ignored path="$PROJECT_DIR$/gradel/build/" />
@@ -47,11 +52,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProyecto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
+            <state relative-caret-position="1800">
               <caret line="115" column="173" selection-start-line="115" selection-start-column="173" selection-end-line="115" selection-end-column="173" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1029">
+              <caret line="67" column="129" selection-start-line="67" selection-start-column="129" selection-end-line="67" selection-end-column="129" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/ProyectoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+            <state relative-caret-position="220">
+              <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/AuthController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="367">
+              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#267#268#0" expanded="true" />
@@ -92,10 +109,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/ProfesorController.java">
+        <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/components/AuthDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1160">
-              <caret line="71" column="54" selection-start-line="71" selection-start-column="54" selection-end-line="71" selection-end-column="54" />
+            <state relative-caret-position="3129">
+              <caret line="184" selection-start-line="184" selection-end-line="184" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="38" column="49" lean-forward="true" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/RegistrarAlumno.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gradel/src/main/java/arcasystem/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,7 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gradel/src/main/java/arcasystem/ArcaSystem.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/CarreraDB.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/enums/FontSize.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/helpers/Typography.java" />
@@ -165,13 +214,11 @@
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarExpediente.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/SplashScreen.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/LoginView.java" />
-        <option value="$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarAlumno.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatLabel.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/models/Profesor.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/ProfesorDB.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/components/AuthDialog.java" />
-        <option value="$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProfesor.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/controllers/ProfesorController.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/helpers/Helpers.java" />
@@ -185,12 +232,15 @@
         <option value="$PROJECT_DIR$/gradel/src/main/java/controllers/PanelController.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/controllers/components/AuthDialogController.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/components/MenuApp.java" />
-        <option value="$PROJECT_DIR$/gradel/src/main/java/controllers/AuthController.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatTextField.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/components/controlpanel/AlertTicketInspector.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/enums/MensajesValidacion.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProyecto.java" />
         <option value="$PROJECT_DIR$/gradel/src/main/java/controllers/ProyectoController.java" />
+        <option value="$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java" />
+        <option value="$PROJECT_DIR$/gradel/src/main/java/controllers/AuthController.java" />
       </list>
     </option>
   </component>
@@ -216,11 +266,27 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="PackagesPane" proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="arcasystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arcasystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arcasystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arcasystem" type="462c0819:PsiDirectoryNode" />
+              <item name="gradel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -236,49 +302,7 @@
             <path>
               <item name="arcasystem" type="58d84e3e:PackageViewProjectNode" />
               <item name="arcasystem.arcasystem.main" type="616d4139:PackageViewModuleNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="arcasystem" type="58d84e3e:PackageViewProjectNode" />
-              <item name="arcasystem.arcasystem.main" type="616d4139:PackageViewModuleNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-              <item name="components" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="arcasystem" type="58d84e3e:PackageViewProjectNode" />
-              <item name="arcasystem.arcasystem.main" type="616d4139:PackageViewModuleNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-              <item name="components" type="1f31426a:PackageElementNode" />
-              <item name="controlpanel" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="arcasystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arcasystem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arcasystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arcasystem" type="462c0819:PsiDirectoryNode" />
-              <item name="gradel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="arcasystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arcasystem" type="462c0819:PsiDirectoryNode" />
-              <item name="gradel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arcasystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arcasystem" type="462c0819:PsiDirectoryNode" />
-              <item name="gradel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="tests" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -404,7 +428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547424639756</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Actualizando .gitignore">
+      <created>1548391459370</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1548391459370</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -433,7 +464,7 @@
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="5" />
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.3286385" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32237872" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32216907" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32943144" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.3046252" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" weight="0.32840723" />
@@ -447,7 +478,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Run" order="8" weight="0.021961933" />
+      <window_info anchor="right" id="Run" order="8" weight="0.2818448" />
       <window_info anchor="right" id="Gradle" order="9" weight="0.32930514" />
     </layout>
     <layout-to-restore>
@@ -532,27 +563,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Vista padre para todas las vistas" />
     <MESSAGE value="Migrando a Gradle para dependencias" />
-    <option name="LAST_COMMIT_MESSAGE" value="Migrando a Gradle para dependencias" />
+    <MESSAGE value="Actualizando .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualizando .gitignore" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/enums/FontSize.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <element signature="e#165#166#0" expanded="true" />
-            <element signature="e#189#190#0" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#327#328#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradel/src/main/java/helpers/Typography.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -774,16 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/ConsultarProfesor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="910">
@@ -838,23 +846,6 @@
             <element signature="e#374#375#0" expanded="true" />
             <element signature="e#418#419#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/components/AuthDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4238">
-          <caret line="184" selection-start-line="184" selection-end-line="184" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -924,23 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="549">
           <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/RegistrarAlumno.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/arcasystem/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1049,17 +1023,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="133" column="7" lean-forward="true" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/ProfesorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProyecto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
+        <state relative-caret-position="1800">
           <caret line="115" column="173" selection-start-line="115" selection-start-column="173" selection-end-line="115" selection-end-column="173" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/ProyectoController.java">
+    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        <state relative-caret-position="1029">
+          <caret line="67" column="129" selection-start-line="67" selection-start-column="129" selection-end-line="67" selection-end-column="129" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/arcasystem/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1073,22 +1071,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/ProyectoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/RegistrarAlumno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="38" column="49" lean-forward="true" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/views/components/AuthDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3129">
+          <caret line="184" selection-start-line="184" selection-end-line="184" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/AuthController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="367">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#267#268#0" expanded="true" />
             <element signature="e#301#302#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradel/src/main/java/controllers/ProfesorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1160">
-          <caret line="71" column="54" selection-start-line="71" selection-start-column="54" selection-end-line="71" selection-end-column="54" />
         </state>
       </provider>
     </entry>
