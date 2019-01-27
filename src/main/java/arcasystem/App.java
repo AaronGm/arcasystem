@@ -1,6 +1,7 @@
 
 package arcasystem;
 
+import controllers.HistorialAlumnoController;
 import controllers.LoginController;
 import views.AsignarAsesorInterno;
 import views.ConsultarHistorialAlumno;
@@ -33,10 +34,11 @@ public class App {
 //               new AlumnoController().create().setVisible(true);
                 LoginController loginController = new LoginController();
                 loginController.login().setVisible(true);
+
 //                new AsignarAsesorInterno().setVisible(true);
 //            new AsignarAsesorInterno().setVisible(true);
 //            new PanelControl().setVisible(true);
-//            new ConsultarHistorialAlumno().setVisible(true);
+//            new HistorialAlumnoController().show().setVisible(true);
 //            } catch (IOException ex) {
 //                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
 //            }

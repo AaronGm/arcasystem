@@ -1,6 +1,5 @@
 package controllers;
 
-import dao.postgres.UsuarioDB;
 import views.components.AuthDialog;
 
 import java.awt.Frame;

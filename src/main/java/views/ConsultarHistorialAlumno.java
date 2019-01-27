@@ -1,6 +1,7 @@
 package views;
 
 import views.components.FlatPanel;
+import views.components.FlatScrollBar;
 import views.components.historial.DatosAlumno;
 import views.components.historial.DatosAsesorExterno;
 import views.components.historial.DatosEmpresa;
@@ -32,6 +33,9 @@ public class ConsultarHistorialAlumno extends View {
         datosAsesorExterno = new DatosAsesorExterno();
 
         scrollPane = new JScrollPane(pnlMain);
+        scrollPane.setWheelScrollingEnabled(true);
+        scrollPane.setVerticalScrollBar(new FlatScrollBar());
+        scrollPane.setBorder(null);
 
         initMain();
     }

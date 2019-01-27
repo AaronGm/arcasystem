@@ -5,6 +5,7 @@
  */
 package views.components;
 
+import enums.SpacingPoints;
 import helpers.Colors;
 
 import javax.swing.JScrollBar;
@@ -36,6 +37,7 @@ public class FlatScrollBar extends JScrollBar {
         setPreferredSize(new Dimension(12, 120));
         setBorder(new EmptyBorder(0, 0, 0, 0));
         setBackground(Colors.GHOST);
+        setUnitIncrement(SpacingPoints.SP24.getSize());
     }
     
     

@@ -4,6 +4,7 @@ import enums.SpacingPoints;
 import helpers.Helpers;
 
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.LayoutManager;
 
@@ -49,4 +50,25 @@ public class FlatPanel extends JPanel {
     public void setPadding(SpacingPoints topBottom, SpacingPoints leftRight) {
         setBorder(Helpers.padding(topBottom, leftRight));
     }
+
+    public void setPadding(SpacingPoints top, SpacingPoints right, SpacingPoints bottom, SpacingPoints left) {
+        setBorder(Helpers.padding(top, right, bottom, left));
+    }
+
+    public void setPaddingTop(SpacingPoints paddingTop) {
+        setBorder(new EmptyBorder(paddingTop.getSize(), 0, 0, 0));
+    }
+
+    public void setPaddingBottom(SpacingPoints paddingBottom) {
+        setBorder(new EmptyBorder(0, 0, paddingBottom.getSize(), 0));
+    }
+
+    public void setPaddingLeft(SpacingPoints paddingLeft) {
+        setBorder(new EmptyBorder(0, paddingLeft.getSize(), 0, 0));
+    }
+
+    public void setPaddingRight(SpacingPoints paddingRight) {
+        setBorder(new EmptyBorder( 0, 0, 0, paddingRight.getSize()));
+    }
+
 }

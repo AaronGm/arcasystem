@@ -1,6 +1,8 @@
 
 package models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author aarongmx
@@ -9,6 +11,8 @@ public class AsesorExterno extends Persona {
     private int asesorExternoId;
     private String cargo;
     private int empresaId;
+    private ArrayList<String> telefonos;
+    private ArrayList<String> correos;
 
     public static final String ASESOR_EXTERNO_ID = "asesor_externo_id";
     public static final String CARGO = "cargo";
@@ -43,6 +47,22 @@ public class AsesorExterno extends Persona {
 
     public void setEmpresaId( int empresaId ) {
         this.empresaId = empresaId;
+    }
+
+    public ArrayList<String> getTelefonos() {
+        return telefonos;
+    }
+
+    public void setTelefonos(ArrayList<String> telefonos) {
+        this.telefonos = telefonos;
+    }
+
+    public ArrayList<String> getCorreos() {
+        return correos;
+    }
+
+    public void setCorreos(ArrayList<String> correos) {
+        this.correos = correos;
     }
 
     @Override

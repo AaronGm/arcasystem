@@ -2,163 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54ffbb60-6ce7-40f5-9b8a-d98a499d762c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/arcasystem.arcasystem.test.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/TelAsesorExternoDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/TelefonoAsesorExternoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/TelefonosAsesorExterno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/views/components/controlpanel/ProjectsBank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/views/panels/Estadisticas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/views/panels/FormularioEmpresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/views/panels/RegistrarEmpresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/views/panels/RegistrarProyecto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/views/panels/TablaEmpresas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArcaSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ArcaSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/.gradle/4.10/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/.gradle/4.10/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/ArcaBD.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ArcaBD.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/arcasystem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arcasystem/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/config/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/AlumnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AlumnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/HistorialAlumnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HistorialAlumnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/PanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/ProfesorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ProfesorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/controllers/ProyectoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ProyectoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/AlumnoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/AlumnoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/AsesorExternoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/AsesorExternoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/AsesorInternoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/AsesorInternoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/CarreraDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/CarreraDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/EmpresaDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/EmpresaDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/ExpedienteDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/ExpedienteDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/HistorialAlumnoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/HistorialAlumnoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/ProfesorDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/ProfesorDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/ProyectoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/ProyectoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/dao/postgres/UsuarioDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/postgres/UsuarioDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/EstadoProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/EstadoProfesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/EstatusProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/EstatusProyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/FontAwesome5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/FontAwesome5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/FontFamily.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/FontFamily.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/FontSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/FontSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/GradoEstudios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/GradoEstudios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/MensajesValidacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/MensajesValidacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/enums/SpacingPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/SpacingPoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/excepciones/ExcepcionGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/excepciones/ExcepcionGeneral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/helpers/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/Colors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/helpers/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/Helpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/helpers/Typography.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/Typography.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/AlumnoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/AlumnoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/AsesorExternoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/AsesorExternoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/AsesorInternoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/AsesorInternoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/CarreraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/CarreraDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/EmpresaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/EmpresaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/ExpedienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/ExpedienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/HistorialAlumnoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/HistorialAlumnoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/ProfesorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/ProfesorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/ProyectoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/ProyectoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/interfaces/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/UsuarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Alumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Alumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/AsesorExterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/AsesorExterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/AsesorInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/AsesorInterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Carrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Carrera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/CorreoEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/CorreoEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Correos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Correos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Empresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Expediente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Expediente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/HistorialAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/HistorialAlumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Profesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Profesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Proyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Proyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Revisor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Revisor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/TelefonoEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/TelefonoEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Telefonos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Telefonos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/tests/TestDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tests/TestDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/tests/new.docx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tests/new.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/tests/nuevo.docx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tests/nuevo.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/tests/t1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tests/t1.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/tests/test.docx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tests/test.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/AsignarAsesorInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/AsignarAsesorInterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/ConsultarAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/ConsultarAlumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/ConsultarHistorialAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/ConsultarHistorialAlumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/ConsultarProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/ConsultarProfesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/EditarProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/EditarProfesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/InicioUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/InicioUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/PanelControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/PanelControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegistrarAlumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegistrarEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarExpediente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegistrarExpediente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegistrarProfesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegistrarProyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/RegistrarResidente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegistrarResidente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/SplashScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/admin/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/admin/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/AuthDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/AuthDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatBigButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatBigButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatCheckbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatCheckbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatComboBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatMenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatMenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatMinCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatMinCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatRadioButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatRadioButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatScrollBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatScrollBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/FlatToggleButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatToggleButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/HeaderApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/HeaderApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/MenuApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/MenuApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/controlpanel/AlertTicketInspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/controlpanel/AlertTicketInspector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/controlpanel/CreateRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/controlpanel/CreateRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/controlpanel/DocumentsSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/controlpanel/DocumentsSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/historial/DatosAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosAlumno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/historial/DatosAsesorExterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosAsesorExterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/historial/DatosEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/historial/DatosProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosProyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/table/FlatButtonRenderTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/table/FlatButtonRenderTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/table/FlatTableButtonMouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/table/FlatTableButtonMouseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/table/FlatTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/table/FlatTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/java/views/components/table/HeaderRenderFlatTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/table/HeaderRenderFlatTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/OpenSans-Light.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-Light.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/OpenSans-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/OpenSans-SemiBold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-SemiBold.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/Raleway-Light.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Raleway-Light.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/Raleway-Medium.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Raleway-Medium.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/Raleway-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Raleway-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/Roboto-Bold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Roboto-Bold.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/Roboto-Medium.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Roboto-Medium.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/Roboto-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Roboto-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/fa-brands-400.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/fa-brands-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/fa-regular-400.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/fa-regular-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/fonts/fa-solid-900.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/fa-solid-900.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/img/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/img/logo-itiz.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/logo-itiz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/img/logo-itiz16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/logo-itiz16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/img/logo-itiz32.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/logo-itiz32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/img/logo-itiz64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/logo-itiz64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/img/logo-sep.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/logo-sep.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradel/src/main/resources/img/logo-tecnm.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/logo-tecnm.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/arcasystem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arcasystem/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HistorialAlumnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HistorialAlumnoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/Helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/AsesorExterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/AsesorExterno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/ConsultarHistorialAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/ConsultarHistorialAlumno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/ConsultarProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/ConsultarProfesor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/PanelControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/PanelControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/components/FlatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/components/FlatScrollBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/FlatScrollBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/components/controlpanel/CreateRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/controlpanel/CreateRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/components/controlpanel/DocumentsSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/controlpanel/DocumentsSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosAlumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosAlumno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosAsesorExterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosAsesorExterno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosEmpresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/components/historial/DatosProyecto.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -192,20 +64,168 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/arcasystem/App.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/components/FlatToggleButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-234">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="-713">
+              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/RegistrarEmpresa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="507">
+              <caret line="52" column="147" selection-start-line="52" selection-start-column="147" selection-end-line="52" selection-end-column="147" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1198#1199#0" expanded="true" />
+                <element signature="e#1218#1219#0" expanded="true" />
+                <element signature="e#1889#1890#0" expanded="true" />
+                <element signature="e#1919#1920#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/Estadisticas.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#188#189#0" expanded="true" />
+                <element signature="e#219#220#0" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#862#863#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/RegistrarProyecto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-373">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1046#1047#0" expanded="true" />
+                <element signature="e#1076#1077#0" expanded="true" />
+                <element signature="e#1114#1115#0" expanded="true" />
+                <element signature="e#1144#1145#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/components/controlpanel/ProjectsBank.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#236#237#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/FormularioEmpresa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/TablaEmpresas.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1111#1112#0" expanded="true" />
+                <element signature="e#1139#1140#0" expanded="true" />
+                <element signature="e#1082#1083#0" expanded="true" />
+                <element signature="e#1102#1103#0" expanded="true" />
+                <element signature="e#1321#1322#0" expanded="true" />
+                <element signature="e#1349#1350#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
+                <element signature="e#1417#1418#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/components/controlpanel/CreateRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/controllers/AuthController.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/helpers/Helpers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/ConsultarProfesor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/ConsultarHistorialAlumno.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/FlatScrollBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/historial/DatosAlumno.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/historial/DatosEmpresa.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/historial/DatosProyecto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/AsesorExterno.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/postgres/AsesorExternoDB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/interfaces/AsesorExternoDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/HistorialAlumnoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/historial/DatosAsesorExterno.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/TelefonosAsesorExterno.java" />
+        <option value="$PROJECT_DIR$/src/main/java/interfaces/TelefonoAsesorExternoDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/postgres/TelAsesorExterno.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/postgres/TelAsesorExternoDB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/arcasystem/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/PanelControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/FlatToggleButton.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/controlpanel/CreateRecord.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/panels/RegistrarProyecto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/FlatPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/controlpanel/DocumentsSettings.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/LoginView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/panels/FormularioEmpresa.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/panels/TablaEmpresas.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/panels/RegistrarEmpresa.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/components/controlpanel/ProjectsBank.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/panels/Estadisticas.java" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="500" />
@@ -217,6 +237,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -227,18 +249,24 @@
             <path>
               <item name="arcasystem" type="58d84e3e:PackageViewProjectNode" />
               <item name="arcasystem.arcasystem.main" type="616d4139:PackageViewModuleNode" />
-              <item name="arcasystem" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="arcasystem" type="58d84e3e:PackageViewProjectNode" />
+              <item name="arcasystem.arcasystem.main" type="616d4139:PackageViewModuleNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+              <item name="panels" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="editor.config.ad.shown" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -271,59 +299,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="arcasystem" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="arcasystem" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="1" BundledDictionary0="english.dic" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -341,37 +323,392 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25755286" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17862372" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Build" weight="0.32854864" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32838285" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Gradle" weight="0.32930514" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.39872408" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" />
+      <window_info anchor="bottom" id="Terminal" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50073206" side_tool="true" weight="0.20733653" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Build" order="9" weight="0.32854864" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32854864" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Gradle" order="5" weight="0.32930514" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Run" order="7" sideWeight="0.49926794" weight="0.021961933" />
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/enums/EstadoProfesor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/postgres/AlumnoDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/helpers/Helpers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/ConsultarHistorialAlumno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/FlatScrollBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="39" column="55" lean-forward="true" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/historial/DatosAlumno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2926#2927#0" expanded="true" />
+            <element signature="e#2962#2963#0" expanded="true" />
+            <element signature="e#3005#3006#0" expanded="true" />
+            <element signature="e#3041#3042#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/historial/DatosEmpresa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="63" column="74" selection-start-line="63" selection-start-column="74" selection-end-line="63" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/historial/DatosProyecto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="54" column="67" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="67" />
+          <folding>
+            <element signature="e#2587#2588#0" expanded="true" />
+            <element signature="e#2618#2619#0" expanded="true" />
+            <element signature="e#2657#2658#0" expanded="true" />
+            <element signature="e#2689#2690#0" expanded="true" />
+            <element signature="e#2728#2729#0" expanded="true" />
+            <element signature="e#2760#2761#0" expanded="true" />
+            <element signature="e#2803#2804#0" expanded="true" />
+            <element signature="e#2839#2840#0" expanded="true" />
+            <element signature="e#2883#2884#0" expanded="true" />
+            <element signature="e#2920#2921#0" expanded="true" />
+            <element signature="e#2959#2960#0" expanded="true" />
+            <element signature="e#2991#2992#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Telefonos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/postgres/AsesorExternoDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2627">
+          <caret line="152" column="5" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PanelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/historial/DatosAsesorExterno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/HistorialAlumnoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="32" column="73" lean-forward="true" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/TelefonoEmpresa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/AsesorExternoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/TelefonosAsesorExterno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#594#595#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="true" />
+            <element signature="e#861#862#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/postgres/TelAsesorExternoDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#561#562#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/TelefonoAsesorExternoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="85" selection-start-line="5" selection-start-column="85" selection-end-line="5" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/RegistrarEmpresa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/arcasystem/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-234">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/AsesorExterno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <element signature="e#1322#1323#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/FlatToggleButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-713">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/controlpanel/CreateRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/PanelControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/ConsultarProfesor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="123" column="22" lean-forward="true" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/FlatPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="108" column="31" lean-forward="true" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/controlpanel/DocumentsSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="51" column="38" lean-forward="true" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/FormularioEmpresa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/TablaEmpresas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1111#1112#0" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1082#1083#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
+            <element signature="e#1321#1322#0" expanded="true" />
+            <element signature="e#1349#1350#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1417#1418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/RegistrarProyecto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/AsignarAsesorInterno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/RegistrarProyecto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-373">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+            <element signature="e#1144#1145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/components/controlpanel/ProjectsBank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#236#237#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/RegistrarEmpresa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="52" column="147" selection-start-line="52" selection-start-column="147" selection-end-line="52" selection-end-column="147" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1889#1890#0" expanded="true" />
+            <element signature="e#1919#1920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/panels/Estadisticas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#188#189#0" expanded="true" />
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

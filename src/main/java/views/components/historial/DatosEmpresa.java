@@ -1,12 +1,16 @@
 package views.components.historial;
 
 import enums.FontSize;
+import enums.SpacingPoints;
 import helpers.Helpers;
 import views.components.Component;
 import views.components.FlatLabel;
 import views.components.FlatPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 public class DatosEmpresa extends FlatPanel implements Component {
 
@@ -28,6 +32,7 @@ public class DatosEmpresa extends FlatPanel implements Component {
     @Override
     public void initComponent() {
         setLayout(new BorderLayout());
+        setPadding(SpacingPoints.SP24, SpacingPoints.SP36);
         initSubComponents();
         setSubComponents();
     }
@@ -48,84 +53,68 @@ public class DatosEmpresa extends FlatPanel implements Component {
     }
 
     private void initMain() {
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("RFC"), lbRfc));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Nombre"), lbNombre));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Encargado"), lbEncargado));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Domicilio"), lbDomicilio));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Colonia"), lbColonia));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Código Postal"), lbCodigoPostal));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Alcaldía/Municipio"), lbAlcaldiaMunicipio));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Página Web"), lbPaginaWeb));
+        pnlMain.setLayout(new GridBagLayout());
+        pnlMain.setPadding(SpacingPoints.SP24, SpacingPoints.SP36);
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        c.insets = Helpers.paddingInset(SpacingPoints.SP_NONE, SpacingPoints.SP24, SpacingPoints.SP16, SpacingPoints.SP_NONE);
+
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("RFC", Color.gray), lbRfc), c);
+
+        c.gridy = 1;
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Nombre de la Empresa", Color.gray), lbNombre), c);
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Encargado", Color.gray), lbEncargado), c);
+
+        c.gridy = 2;
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Domicilio", Color.gray), lbDomicilio), c);
+
+        c.gridy = 3;
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Colonia", Color.gray), lbColonia), c);
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Código Postal", Color.gray), lbCodigoPostal), c);
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Alcaldía/Municipio", Color.gray), lbAlcaldiaMunicipio), c);
+
+        c.gridy = 4;
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Página Web", Color.gray), lbPaginaWeb), c);
 
     }
 
     @Override
     public void setSubComponents() {
         add(BorderLayout.NORTH, new FlatLabel("Datos de la empresa", FontSize.H2));
-        add(BorderLayout.CENTER, pnlMain);
+        add(BorderLayout.WEST, pnlMain);
     }
 
     public FlatLabel getLbRfc() {
         return lbRfc;
     }
 
-    public void setLbRfc(FlatLabel lbRfc) {
-        this.lbRfc = lbRfc;
-    }
-
     public FlatLabel getLbNombre() {
         return lbNombre;
-    }
-
-    public void setLbNombre(FlatLabel lbNombre) {
-        this.lbNombre = lbNombre;
     }
 
     public FlatLabel getLbEncargado() {
         return lbEncargado;
     }
 
-    public void setLbEncargado(FlatLabel lbEncargado) {
-        this.lbEncargado = lbEncargado;
-    }
-
     public FlatLabel getLbDomicilio() {
         return lbDomicilio;
-    }
-
-    public void setLbDomicilio(FlatLabel lbDomicilio) {
-        this.lbDomicilio = lbDomicilio;
     }
 
     public FlatLabel getLbColonia() {
         return lbColonia;
     }
 
-    public void setLbColonia(FlatLabel lbColonia) {
-        this.lbColonia = lbColonia;
-    }
-
     public FlatLabel getLbCodigoPostal() {
         return lbCodigoPostal;
-    }
-
-    public void setLbCodigoPostal(FlatLabel lbCodigoPostal) {
-        this.lbCodigoPostal = lbCodigoPostal;
     }
 
     public FlatLabel getLbAlcaldiaMunicipio() {
         return lbAlcaldiaMunicipio;
     }
 
-    public void setLbAlcaldiaMunicipio(FlatLabel lbAlcaldiaMunicipio) {
-        this.lbAlcaldiaMunicipio = lbAlcaldiaMunicipio;
-    }
-
     public FlatLabel getLbPaginaWeb() {
         return lbPaginaWeb;
-    }
-
-    public void setLbPaginaWeb(FlatLabel lbPaginaWeb) {
-        this.lbPaginaWeb = lbPaginaWeb;
     }
 }

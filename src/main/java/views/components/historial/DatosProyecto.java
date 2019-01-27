@@ -1,12 +1,16 @@
 package views.components.historial;
 
 import enums.FontSize;
+import enums.SpacingPoints;
 import helpers.Helpers;
 import views.components.Component;
 import views.components.FlatLabel;
 import views.components.FlatPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 public class DatosProyecto extends FlatPanel implements Component {
 
@@ -27,6 +31,7 @@ public class DatosProyecto extends FlatPanel implements Component {
     @Override
     public void initComponent() {
         setLayout(new BorderLayout());
+        setPadding(SpacingPoints.SP24, SpacingPoints.SP36);
         initSubComponents();
         setSubComponents();
     }
@@ -46,65 +51,54 @@ public class DatosProyecto extends FlatPanel implements Component {
     }
 
     private void initMain() {
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Nombre del proyecto"), lbNombre));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Semanas"), lbSemanas));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Periodo"), lbPeriodo));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Fecha de inicio"), lbFechaInicio));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Fecha de termino"), lbFechaTermino));
-        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Estatus del proyecto"), lbEstatus));
+        pnlMain.setLayout(new GridBagLayout());
+        pnlMain.setPadding(SpacingPoints.SP24, SpacingPoints.SP36);
+
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        c.insets = Helpers.paddingInset(SpacingPoints.SP_NONE, SpacingPoints.SP24, SpacingPoints.SP16, SpacingPoints.SP_NONE);
+        c.gridwidth = 3;
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Nombre del proyecto", Color.gray), lbNombre), c);
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Semanas", Color.gray), lbSemanas), c);
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Estatus del proyecto", Color.gray), lbEstatus), c);
+
+        c.gridy = 1;
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Periodo", Color.gray), lbPeriodo), c);
+
+        c.gridy = 2;
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Fecha de inicio", Color.gray), lbFechaInicio), c);
+        pnlMain.add(Helpers.groupElementsVertical(new FlatLabel("Fecha de termino", Color.gray), lbFechaTermino), c);
     }
 
     @Override
     public void setSubComponents() {
         add(BorderLayout.NORTH, new FlatLabel("Datos del proyecto", FontSize.H2));
-        add(BorderLayout.CENTER, pnlMain);
+        add(BorderLayout.WEST, pnlMain);
     }
 
     public FlatLabel getLbNombre() {
         return lbNombre;
     }
 
-    public void setLbNombre(FlatLabel lbNombre) {
-        this.lbNombre = lbNombre;
-    }
-
     public FlatLabel getLbSemanas() {
         return lbSemanas;
-    }
-
-    public void setLbSemanas(FlatLabel lbSemanas) {
-        this.lbSemanas = lbSemanas;
     }
 
     public FlatLabel getLbPeriodo() {
         return lbPeriodo;
     }
 
-    public void setLbPeriodo(FlatLabel lbPeriodo) {
-        this.lbPeriodo = lbPeriodo;
-    }
-
     public FlatLabel getLbFechaInicio() {
         return lbFechaInicio;
-    }
-
-    public void setLbFechaInicio(FlatLabel lbFechaInicio) {
-        this.lbFechaInicio = lbFechaInicio;
     }
 
     public FlatLabel getLbFechaTermino() {
         return lbFechaTermino;
     }
 
-    public void setLbFechaTermino(FlatLabel lbFechaTermino) {
-        this.lbFechaTermino = lbFechaTermino;
-    }
-
     public FlatLabel getLbEstatus() {
         return lbEstatus;
-    }
-
-    public void setLbEstatus(FlatLabel lbEstatus) {
-        this.lbEstatus = lbEstatus;
     }
 }

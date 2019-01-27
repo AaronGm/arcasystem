@@ -1,6 +1,7 @@
 package views;
 
 import dao.postgres.ProfesorDB;
+import enums.FontAwesome5;
 import enums.SpacingPoints;
 import helpers.Colors;
 import helpers.Helpers;
@@ -52,7 +53,7 @@ public class ConsultarProfesor extends View {
 
     @Override
     protected void initComponents() {
-        IconFontSwing.register(FontAwesome.getIconFont());
+        IconFontSwing.register(FontAwesome5.getIconFont());
         pnlCenter = new FlatPanel(new BorderLayout());
         pnlBuscar = new FlatPanel();
         pnlTabla = new FlatPanel();
@@ -62,12 +63,12 @@ public class ConsultarProfesor extends View {
         
         tabla = new FlatTable();
 
-        btnBuscar = new FlatButton("Buscar", IconFontSwing.buildIcon(FontAwesome.SEARCH, 18, Color.white));
+        btnBuscar = new FlatButton("Buscar", IconFontSwing.buildIcon(FontAwesome5.FA_SEARCH, 18, Color.white));
         
-        btnEditar = new FlatButton("Actualizar", IconFontSwing.buildIcon(FontAwesome.PENCIL, 14, Color.white));
+        btnEditar = new FlatButton("Actualizar", IconFontSwing.buildIcon(FontAwesome5.FA_PEN, 14, Color.white));
         btnEditar.setBackground(Colors.BLUE_MEDIUM);
         
-        btnEliminar = new FlatButton("Eliminar", IconFontSwing.buildIcon(FontAwesome.TRASH, 14, Color.white));
+        btnEliminar = new FlatButton("Eliminar", IconFontSwing.buildIcon(FontAwesome5.FA_TRASH, 14, Color.white));
         btnEliminar.setBackground(Colors.RED);
         
         initBarraBuscar();
@@ -109,11 +110,6 @@ public class ConsultarProfesor extends View {
         scroll.setWheelScrollingEnabled(true);
         scroll.setVerticalScrollBar(new FlatScrollBar());
         scroll.setBorder(new EmptyBorder(0, 0, 0, 0));
-
-        btnEditar = new FlatButton("Actualizar", IconFontSwing.buildIcon(FontAwesome.PENCIL_SQUARE, 16, Color.white));
-
-        btnEliminar = new FlatButton("Eliminar", IconFontSwing.buildIcon(FontAwesome.TRASH, 16, Color.white));
-        btnEliminar.setBackground(Colors.RED);
 
         loadData();
 
@@ -162,31 +158,15 @@ public class ConsultarProfesor extends View {
         return btnEditar;
     }
 
-    public void setBtnEditar(FlatButton btnEditar) {
-        this.btnEditar = btnEditar;
-    }
-
     public FlatButton getBtnEliminar() {
         return btnEliminar;
-    }
-
-    public void setBtnEliminar(FlatButton btnEliminar) {
-        this.btnEliminar = btnEliminar;
     }
 
     public FlatTable getTabla() {
         return tabla;
     }
 
-    public void setTabla(FlatTable tabla) {
-        this.tabla = tabla;
-    }
-
     public FlatTableModel getModel() {
         return model;
-    }
-
-    public void setModel(FlatTableModel model) {
-        this.model = model;
     }
 }

@@ -106,6 +106,9 @@ public class LoginView extends JFrame {
         userField.setPreferredSize(new Dimension(280, 30));
         passwdField.setPreferredSize(userField.getPreferredSize());
 
+        userField.setText("aarongm");
+        passwdField.setText("aagmx");
+
 
         gbConstraint.gridy = 0;
         gbConstraint.gridx = 1;

@@ -12,6 +12,7 @@ import views.components.FlatToggleButton;
 import views.components.controlpanel.AlertTicketInspector;
 import views.components.controlpanel.CreateRecord;
 import views.components.controlpanel.DocumentsSettings;
+import views.components.controlpanel.ProjectsBank;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JToggleButton;
@@ -36,10 +37,12 @@ public class PanelControl extends View {
     private FlatToggleButton tBtnCalendario;
     private FlatToggleButton tBtnConfiguracion;
     private FlatToggleButton tBtnExpedientes;
+    private FlatToggleButton tBtnBancoProyectos;
 
     private AlertTicketInspector alertTicketInspector;
     private DocumentsSettings documentsSettings;
     private CreateRecord createRecord;
+    private ProjectsBank projectsBank;
 
     private CardLayout cardLayout;
 
@@ -55,13 +58,15 @@ public class PanelControl extends View {
         cardLayout = new CardLayout();
         pnlMain = new FlatPanel(cardLayout);
 
-        tBtnCalendario = new FlatToggleButton("Calendario", FontAwesome5.FA_CALENDAR_ALT, Colors.BLACK_MEDIUM);
+        tBtnCalendario = new FlatToggleButton("Calendario", FontAwesome5.FA_CALENDAR_DAY, Colors.BLACK_MEDIUM);
         tBtnConfiguracion = new FlatToggleButton("Plantillas", FontAwesome5.FA_FILE, Colors.BLACK_MEDIUM);
         tBtnExpedientes = new FlatToggleButton("Expedientes", FontAwesome5.FA_FOLDER, Colors.BLACK_MEDIUM);
+        tBtnBancoProyectos = new FlatToggleButton("Banco de proyectos", FontAwesome5.FA_ARCHIVE, Colors.BLACK_MEDIUM);
 
         alertTicketInspector = new AlertTicketInspector();
         documentsSettings = new DocumentsSettings();
         createRecord = new CreateRecord();
+        projectsBank = new ProjectsBank();
 
         initMain();
         initMenu();
@@ -77,6 +82,7 @@ public class PanelControl extends View {
         pnlMain.add(alertTicketInspector, AlertTicketInspector.NAME);
         pnlMain.add(documentsSettings, DocumentsSettings.NAME);
         pnlMain.add(createRecord, CreateRecord.NAME);
+        pnlMain.add(projectsBank, ProjectsBank.NAME);
     }
     
     private void initMenu() {
@@ -90,6 +96,7 @@ public class PanelControl extends View {
         group.add(tBtnCalendario);
         group.add(tBtnConfiguracion);
         group.add(tBtnExpedientes);
+        group.add(tBtnBancoProyectos);
 
         ActionListener actionListener = (ActionEvent e) -> {
             JToggleButton tbtn = (JToggleButton)e.getSource();
@@ -102,11 +109,15 @@ public class PanelControl extends View {
             if (Objects.equals(tbtn, tBtnExpedientes)) {
                 cardLayout.show(pnlMain, CreateRecord.NAME);
             }
+            if (Objects.equals(tbtn, tBtnBancoProyectos)) {
+                cardLayout.show(pnlMain, ProjectsBank.NAME);
+            }
         };
         
         tBtnCalendario.addActionListener(actionListener);
         tBtnConfiguracion.addActionListener(actionListener);
         tBtnExpedientes.addActionListener(actionListener);
+        tBtnBancoProyectos.addActionListener(actionListener);
 
         FlatLabel lbUsername = new FlatLabel(LoginController.CURRENT_USER.toUpperCase());
 
@@ -114,6 +125,7 @@ public class PanelControl extends View {
         pnlMenu.add(tBtnCalendario);
         pnlMenu.add(tBtnConfiguracion);
         pnlMenu.add(tBtnExpedientes);
+        pnlMenu.add(tBtnBancoProyectos);
     }
 
     public AlertTicketInspector getAlertTicketInspector() {

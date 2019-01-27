@@ -1,5 +1,6 @@
 package controllers;
 
+import dao.postgres.AsesorExternoDB;
 import dao.postgres.HistorialAlumnoDB;
 import models.Alumno;
 import models.AsesorExterno;
@@ -9,9 +10,9 @@ import models.Proyecto;
 import views.ConsultarHistorialAlumno;
 import views.View;
 
-public class HistorialAlumnoController implements Controller<HistorialAlumno> {
+import java.util.ArrayList;
 
-    private HistorialAlumno historialAlumno;
+public class HistorialAlumnoController implements Controller<HistorialAlumno> {
 
     @Override
     public View create() {
@@ -25,7 +26,7 @@ public class HistorialAlumnoController implements Controller<HistorialAlumno> {
 
     @Override
     public View show() {
-        historialAlumno = new HistorialAlumnoDB().getById(1);
+        HistorialAlumno historialAlumno = new HistorialAlumnoDB().getById(1);
         Alumno alumno = historialAlumno.getAlumno();
         Proyecto proyecto = historialAlumno.getProyecto();
         Empresa empresa = historialAlumno.getEmpresa();
@@ -33,7 +34,9 @@ public class HistorialAlumnoController implements Controller<HistorialAlumno> {
 
         ConsultarHistorialAlumno view = new ConsultarHistorialAlumno();
         view.getDatosAlumno().getLbNoControl().setText(alumno.getNoControl());
-        view.getDatosAlumno().getLbNombreCompleto().setText(alumno.getNombreCompleto());
+        view.getDatosAlumno().getLbNombres().setText(alumno.getNombres());
+        view.getDatosAlumno().getLbApellidoPat().setText(alumno.getApellidoPaterno());
+        view.getDatosAlumno().getLbApellidoMat().setText(alumno.getApellidoMaterno());
         view.getDatosAlumno().getLbCarrera().setText(alumno.getCarrera().getNombre() + " (" + alumno.getCarrera().getClaveCarrera() + ")");
         view.getDatosAlumno().getLbPeriodo().setText(alumno.getPeriodo());
         view.getDatosAlumno().getLbSemestre().setText(String.valueOf(alumno.getSemestre()));
