@@ -23,13 +23,33 @@ public class UsuarioDB implements UsuarioDAO {
     private PreparedStatement sentencia;
     private ResultSet resultados;
     
-    private final String LOGIN = "SELECT usuario, passwd, is_admin FROM usuarios WHERE usuario = ? AND passwd = crypt(?, passwd);";
-    private final String INSERTAR = "INSERT INTO usuarios(usuario, passwd, is_admin) VALUES (?, crypt(?, gen_salt('xdes')), ?);";
-    private final String ELIMINAR = "DELETE FROM usuarios WHERE usuario_id = ?;";
-    private final String ACTUALIZAR = "UPDATE usuarios SET usuario = ?, passwd = ?, is_admin = ? WHERE usuario_id = ?;";
-    private final String ID = "SELECT usuario_id, usuario, passwd, is_admin FROM usuarios WHERE usuario_id = ?;";
-    private final String LISTAR = "SELECT usuario_id, usuario, passwd, is_admin FROM usuarios;";
-    
+    private final String LOGIN;
+    private final String INSERTAR;
+    private final String ELIMINAR;
+    private final String ACTUALIZAR;
+    private final String ID;
+    private final String LISTAR;
+
+    public UsuarioDB() {
+        //language=POSTGRES-SQL
+        LOGIN = "SELECT usuario, passwd, is_admin FROM usuarios WHERE usuario = ? AND passwd = crypt(?, passwd);";
+
+        //language=POSTGRES-SQL
+        INSERTAR = "INSERT INTO usuarios(usuario, passwd, is_admin) VALUES (?, crypt(?, gen_salt('xdes')), ?);";
+
+        //language=POSTGRES-SQL
+        ELIMINAR = "DELETE FROM usuarios WHERE usuario_id = ?;";
+
+        //language=POSTGRES-SQL
+        ACTUALIZAR = "UPDATE usuarios SET usuario = ?, passwd = ?, is_admin = ? WHERE usuario_id = ?;";
+
+        //language=POSTGRES-SQL
+        ID = "SELECT usuario_id, usuario, passwd, is_admin FROM usuarios WHERE usuario_id = ?;";
+
+        //language=POSTGRES-SQL
+        LISTAR = "SELECT usuario_id, usuario, passwd, is_admin FROM usuarios;";
+    }
+
     @Override
     public Usuario login( String usuario, String password ) {
         Usuario retUsuario = null;
@@ -59,7 +79,7 @@ public class UsuarioDB implements UsuarioDAO {
         conexion = new ConnectionDB().getConnection();
         boolean isAuth = false;
         try {
-            sentencia = conexion.prepareStatement("SELECT true as auth FROM usuarios WHERE usuario = ? AND passwd = crypt(?, passwd);", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            sentencia = conexion.prepareStatement("SELECT 1 as auth FROM usuarios WHERE usuario = ? AND passwd = crypt(?, passwd);", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             sentencia.setString(1, usuario);
             sentencia.setString(2, password);
             resultados = sentencia.executeQuery();

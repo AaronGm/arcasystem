@@ -1,19 +1,19 @@
 package controllers;
 
 import dao.postgres.ProfesorDB;
-import dao.postgres.UsuarioDB;
 import enums.MensajesValidacion;
 import excepciones.ExcepcionGeneral;
 import models.Profesor;
-import views.ConsultarProfesor;
-import views.EditarProfesor;
-import views.RegistrarProfesor;
+import views.old.ConsultarProfesor;
+import views.old.EditarProfesor;
+import views.old.RegistrarProfesor;
 import views.View;
-import views.components.AuthDialog;
-import views.components.FlatTable;
-import views.components.FlatTextField;
+import views.old.components.AuthDialog;
+import views.old.components.FlatTable;
+import views.old.components.FlatTextField;
 
 import javax.swing.JOptionPane;
+import java.util.Objects;
 
 /**
  * @author aarongmx
@@ -34,8 +34,8 @@ public class ProfesorController implements Controller<Integer> {
             profesor = new Profesor(
                 view.getTxfNoContrato().getText(),
                 view.getJdtcFechaIngreso().getDate(),
-                view.getCmbGradoEstudio().getSelectedItem().toString(),
-                view.getCmbEstatusProfesor().getSelectedItem().toString(),
+                Objects.requireNonNull(view.getCmbGradoEstudio().getSelectedItem()).toString(),
+                Objects.requireNonNull(view.getCmbEstatusProfesor().getSelectedItem()).toString(),
                 view.getTxfEspecialidad().getText(),
                 view.getTxfNombre().getText(),
                 view.getTxfApellidoPaterno().getText(),
@@ -50,11 +50,11 @@ public class ProfesorController implements Controller<Integer> {
             // No deben haber campos vacios para poder guardarlos en la base de datos
             if (!existEmptyFields) {
                 authDialog.setVisible(true);
-                authDialog.getBtnAuth().addActionListener(ls -> {
-                    String passwd = String.valueOf(authDialog.getPasswd().getPassword());
-                    if (new UsuarioDB().auth(LoginController.CURRENT_USER, passwd)) {
+
+                authDialog.getBtnAuth().addActionListener(evt -> {
+                    if (authDialog.isAuth(authDialog.getPasswd().getPassword())) {
                         profesorDB.insert(profesor);
-                        JOptionPane.showMessageDialog(null, "¡Profesor creado correctamente!");
+                        JOptionPane.showMessageDialog(null, "¡Profesor agregado correctamente!");
                         view.clearFields(
                             view.getTxfNoContrato(),
                             view.getTxfNombre(),
@@ -69,7 +69,7 @@ public class ProfesorController implements Controller<Integer> {
                         );
                         authDialog.dispose();
                     } else {
-                        JOptionPane.showMessageDialog(null, MensajesValidacion.ERROR_AUTORIZACION);
+                        JOptionPane.showMessageDialog(null, MensajesValidacion.ERROR_AUTORIZACION.getMensaje());
                     }
                 });
             }
@@ -89,8 +89,8 @@ public class ProfesorController implements Controller<Integer> {
                 profesor.getProfesorId(),
                 view.getTxfNoContrato().getText(),
                 view.getJdtcFechaIngreso().getDate(),
-                view.getCmbGradoEstudio().getSelectedItem().toString(),
-                view.getCmbEstatusProfesor().getSelectedItem().toString(),
+                Objects.requireNonNull(view.getCmbGradoEstudio().getSelectedItem()).toString(),
+                Objects.requireNonNull(view.getCmbEstatusProfesor().getSelectedItem()).toString(),
                 view.getTxfEspecialidad().getText(),
                 view.getTxfNombre().getText(),
                 view.getTxfApellidoPaterno().getText(),
@@ -146,4 +146,5 @@ public class ProfesorController implements Controller<Integer> {
         profesor = profesorDB.getById(id);
         profesorDB.delete(profesor);
     }
+
 }

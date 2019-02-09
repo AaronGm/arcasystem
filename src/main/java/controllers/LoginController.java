@@ -3,12 +3,9 @@ package controllers;
 
 import dao.postgres.UsuarioDB;
 import excepciones.ExcepcionGeneral;
-import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
 import models.Usuario;
-import views.LoginView;
-import views.PanelControl;
-import views.admin.Admin;
+import views.old.LoginView;
+import views.old.admin.Admin;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -47,7 +44,7 @@ public class LoginController {
                         new Admin().setVisible(true);
                     } else {
                         view.dispose();
-                        new PanelControl().setVisible(true);
+//                        new PanelController().show().setVisible(true);
                     }
                 }
             });

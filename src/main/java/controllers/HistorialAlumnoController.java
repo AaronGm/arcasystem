@@ -1,16 +1,13 @@
 package controllers;
 
-import dao.postgres.AsesorExternoDB;
 import dao.postgres.HistorialAlumnoDB;
 import models.Alumno;
 import models.AsesorExterno;
 import models.Empresa;
 import models.HistorialAlumno;
 import models.Proyecto;
-import views.ConsultarHistorialAlumno;
+import views.old.ConsultarHistorialAlumno;
 import views.View;
-
-import java.util.ArrayList;
 
 public class HistorialAlumnoController implements Controller<HistorialAlumno> {
 

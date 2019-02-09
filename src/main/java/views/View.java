@@ -3,8 +3,8 @@ package views;
 import config.Configuration;
 import enums.MensajesValidacion;
 import helpers.Helpers;
-import views.components.HeaderApp;
-import views.components.MenuApp;
+import views.old.components.HeaderApp;
+import views.old.components.MenuApp;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -34,6 +34,7 @@ public abstract class View extends JFrame {
     private void initView() {
         Helpers.minScreenSize(this);
         setJMenuBar(new MenuApp());
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         getContentPane().add(BorderLayout.NORTH, new HeaderApp(titleBar));
         initComponents();
         setComponents();

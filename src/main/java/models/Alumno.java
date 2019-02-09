@@ -20,6 +20,10 @@ public class Alumno extends Persona {
     public static final String CLAVE_CARRERA = "clave_carrera";
     public static final String PERIODO = "periodo";
 
+    public Alumno(String nombres, String apellidoPaterno, String apellidoMaterno) {
+        super(nombres, apellidoPaterno, apellidoMaterno);
+    }
+
     public Alumno(String nombres, String apellidoPaterno, String apellidoMaterno, String noControl, int semestre, String periodo, Carrera carrera) {
         super(nombres, apellidoPaterno, apellidoMaterno);
         this.noControl = noControl;

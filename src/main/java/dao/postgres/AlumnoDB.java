@@ -18,15 +18,24 @@ public class AlumnoDB implements AlumnoDAO {
     private PreparedStatement sentencia;
     private ResultSet resultados;
 
-    private final String INSERTAR = "INSERT INTO alumnos(no_control, nombres, apellido_paterno, apellido_materno, semestre, clave_carrera, periodo) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING no_control;";
+    private final String INSERTAR;
+    private final String LISTAR;
+    private final String ELIMINAR;
+    private final String ACTUALIZAR;
+    private final String OBTENER_POR_ID;
 
-    private final String LISTAR = "SELECT no_control, nombres, apellido_paterno, apellido_materno, semestre, clave_carrera, periodo FROM alumnos;";
-
-    private final String ELIMINAR = "DELETE FROM alumnos WHERE no_control = ?;";
-
-    private final String ACTUALIZAR = "UPDATE alumnos SET nombres = ?, apellido_paterno = ?, apellido_materno = ?, semestre = ?, clave_carrera = ?, periodo = ?  WHERE no_control = ?;";
-
-    private final String OBTENERPORID = "SELECT nombres, apellido_paterno, apellido_materno, semestre, clave_carrera, periodo FROM alumnos WHERE no_control = ?;";
+    public AlumnoDB() {
+        //language=POSTGRES-SQL
+        INSERTAR = "INSERT INTO alumnos(no_control, nombres, apellido_paterno, apellido_materno, semestre, clave_carrera, periodo) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING no_control;";
+        //language=POSTGRES-SQL
+        LISTAR = "SELECT no_control, nombres, apellido_paterno, apellido_materno, semestre, clave_carrera, periodo FROM alumnos;";
+        //language=POSTGRES-SQL
+        ELIMINAR = "DELETE FROM alumnos WHERE no_control = ?;";
+        //language=POSTGRES-SQL
+        ACTUALIZAR = "UPDATE alumnos SET nombres = ?, apellido_paterno = ?, apellido_materno = ?, semestre = ?, clave_carrera = ?, periodo = ?  WHERE no_control = ?;";
+        //language=POSTGRES-SQL
+        OBTENER_POR_ID = "SELECT nombres, apellido_paterno, apellido_materno, semestre, clave_carrera, periodo FROM alumnos WHERE no_control = ?;";
+    }
 
     @Override
     public void insert(Alumno alumno) {
@@ -103,7 +112,7 @@ public class AlumnoDB implements AlumnoDAO {
         conexion = new ConnectionDB().getConnection();
         Alumno alumno = null;
         try {
-            sentencia = conexion.prepareStatement(OBTENERPORID, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            sentencia = conexion.prepareStatement(OBTENER_POR_ID, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             sentencia.setString(1, noControl);
             resultados = sentencia.executeQuery();
 

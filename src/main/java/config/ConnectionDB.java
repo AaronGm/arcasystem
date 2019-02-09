@@ -23,6 +23,7 @@ public class ConnectionDB implements Configuration {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(FULL_CONNECTION, USER_DB, PASS_DB);
+            connection.setAutoCommit(false);
         } catch ( ClassNotFoundException | SQLException ex ) {
             Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
         }

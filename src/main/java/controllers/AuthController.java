@@ -1,6 +1,6 @@
 package controllers;
 
-import views.components.AuthDialog;
+import views.old.components.AuthDialog;
 
 import java.awt.Frame;
 

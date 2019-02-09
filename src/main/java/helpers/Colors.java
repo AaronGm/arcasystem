@@ -33,4 +33,20 @@ public interface Colors {
 
     Color TITLE_COLOR = new Color(0x474747);
     Color TEXT_COLOR = BLACK_MEDIUM;
+
+    Color[] sliceColors = new Color[]{
+        new Color(0x64B5F6),
+        new Color(0xFFD54F),
+        new Color(0x9575CD),
+        new Color(0xAED581),
+        new Color(0xe57373),
+        new Color(0xFFB74D),
+        new Color(0xF06292),
+        new Color(0xBA68C8),
+        new Color(0x4DD0E1),
+        new Color(0xFF8A65),
+        new Color(0x4DB6AC),
+        new Color(0xE0E0E0),
+    };
+
 }

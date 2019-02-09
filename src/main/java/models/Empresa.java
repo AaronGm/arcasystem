@@ -25,7 +25,10 @@ public class Empresa {
     private String colonia;
     private String codigoPostal;
     private String alcaldiaMunicipio;
+    private String ciudad;
     private String paginaWeb;
+    private String[] correos;
+    private String[] telefonos;
 
     public static final String EMPRESA_ID = "empresa_id";
     public static final String RFC = "rfc";
@@ -35,7 +38,21 @@ public class Empresa {
     public static final String COLONIA = "colonia";
     public static final String CODIGO_POSTAL = "codigo_postal";
     public static final String ALCALDIA_MUNICIPIO = "alcaldia_municipio";
+    public static final String CIUDAD = "ciudad";
     public static final String PAGINA_WEB = "pagina_web";
+
+    public Empresa(int empresaId, String rfc, String nombre, String encargado, String domicilio, String colonia, String codigoPostal, String alcaldiaMunicipio, String ciudad, String paginaWeb) {
+        this.empresaId = empresaId;
+        this.rfc = rfc;
+        this.nombre = nombre;
+        this.encargado = encargado;
+        this.domicilio = domicilio;
+        this.colonia = colonia;
+        this.codigoPostal = codigoPostal;
+        this.alcaldiaMunicipio = alcaldiaMunicipio;
+        this.ciudad = ciudad;
+        this.paginaWeb = paginaWeb;
+    }
 
     public Empresa(int empresaId, String rfc, String nombre, String encargado, String domicilio, String colonia, String codigoPostal, String alcaldiaMunicipio, String paginaWeb) {
         this.empresaId = empresaId;
@@ -119,6 +136,18 @@ public class Empresa {
 
     public void setPaginaWeb(String paginaWeb) {
         this.paginaWeb = paginaWeb;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getDomicilioCompleto() {
+        return this.domicilio + ", " + this.colonia + ", C.P " + this.codigoPostal  + ", " + this.alcaldiaMunicipio + ", " + ciudad;
     }
 
     @Override

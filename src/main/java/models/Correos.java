@@ -7,6 +7,9 @@ public class Correos {
     public static final String CORREO_ID ="correo_id";
     public static final String CORREO ="correo";
 
+    public Correos(String correo) {
+        this.correo = correo;
+    }
 
     public Correos(int correoId, String correo) {
         this.correoId = correoId;

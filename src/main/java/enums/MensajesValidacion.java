@@ -8,6 +8,9 @@ public enum MensajesValidacion {
     NO_HAY_ELEMENTOS_ACTUALIZAR("¡No hay registros para actualizar!"),
     NO_HAY_ELEMENTOS_ELIMINAR("¡No hay registros para eliminar!"),
     CERRAR_APLICACION("¿Realmente desea cerrar la aplicación?"),
+    NO_SE_ACTUALIZO("¡No se actualizó ningún registro!"),
+    NO_SE_ELIMINO("¡No se eliminó ningún registro!"),
+    NO_EXISTE("¡El registró que esta buscando no existe!"),
     CAMPO_SIN_SELECCIONAR("¡Haga una selección por favor!");
 
 

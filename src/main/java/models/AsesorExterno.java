@@ -11,8 +11,8 @@ public class AsesorExterno extends Persona {
     private int asesorExternoId;
     private String cargo;
     private int empresaId;
-    private ArrayList<String> telefonos;
-    private ArrayList<String> correos;
+    private String[] telefonos;
+    private String[] correos;
 
     public static final String ASESOR_EXTERNO_ID = "asesor_externo_id";
     public static final String CARGO = "cargo";
@@ -49,19 +49,19 @@ public class AsesorExterno extends Persona {
         this.empresaId = empresaId;
     }
 
-    public ArrayList<String> getTelefonos() {
+    public String[] getTelefonos() {
         return telefonos;
     }
 
-    public void setTelefonos(ArrayList<String> telefonos) {
+    public void setTelefonos(String[] telefonos) {
         this.telefonos = telefonos;
     }
 
-    public ArrayList<String> getCorreos() {
+    public String[] getCorreos() {
         return correos;
     }
 
-    public void setCorreos(ArrayList<String> correos) {
+    public void setCorreos(String[] correos) {
         this.correos = correos;
     }
 

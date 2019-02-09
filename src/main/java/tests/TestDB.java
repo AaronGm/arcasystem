@@ -5,28 +5,22 @@
  */
 package tests;
 
-import controllers.HistorialAlumnoController;
-import dao.postgres.HistorialAlumnoDB;
-import dao.postgres.UsuarioDB;
-import helpers.Helpers;
-import models.HistorialAlumno;
+import dao.postgres.AlumnoDB;
+import dao.postgres.CarreraDB;
+import dao.postgres.CorreoAlumnoDB;
+import dao.postgres.DireccionDB;
+import models.Alumno;
+import models.Carrera;
+import models.CorreoAlumno;
+import models.Direcciones;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
-import java.awt.EventQueue;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -34,43 +28,55 @@ import java.util.concurrent.TimeUnit;
  */
 public class TestDB {
     public static void main( String[] args ) throws IOException, InvalidFormatException {
-/*
-//        HistorialAlumno historialAlumno = new HistorialAlumnoDB().getById(1);
 
-//        System.out.println(historialAlumno.getAlumno());
-//        System.out.println(historialAlumno.getProyecto());
-//        System.out.println(historialAlumno.getEmpresa());
-//        System.out.println(historialAlumno.getAsesorExterno());
-        Runnable run = () -> {
-//            System.setProperty("awt.useSystemAAFontSettings","on");
-//            System.setProperty("swing.aatext", "true");
-//            new HistorialAlumnoController().show().setVisible(true);
-            System.out.println(Helpers.currentPeriodo());
+        Carrera carreraDB = new CarreraDB().getById("ISC");
+        System.out.println(carreraDB);
+        AlumnoDB al = new AlumnoDB();
+//        al.insert();
+//
+        Alumno alumno = new Alumno("Aarón","Gómez", "Mendez", "151080112", 8, "Ago - Dic 19", carreraDB);
+        al.insert(alumno);
+//        al.list().forEach(System.out::println);
+//        CorreoAlumnoDB correoAlumnoDB = new CorreoAlumnoDB();
+//        correoAlumnoDB.insert(new CorreoAlumno("l151080126@iztapalapa.tecnm.mx", "151080112"));
 
-        };
-        EventQueue.invokeLater(run);*/
+//        System.out.println(correoAlumnoDB.getById(alumno));
 
-            FileInputStream fis = new FileInputStream("C:\\Users\\aarongmx\\Desktop\\arcasystem\\gradel\\src\\main\\java\\tests\\t1.docx");
-            XWPFDocument doc = new XWPFDocument(OPCPackage.open(fis));
-            TestDB.rep(doc, "FECHA", Helpers.fechaDocumentos());
-            TestDB.rep(doc, "EPTO", "ISC");
-            TestDB.rep(doc, "NOOF", "0349");
-            TestDB.rep(doc, "YEAR", String.valueOf(Helpers.FECHA.getYear()));
+//        String cp = "20116";
+//        ArrayList<Direcciones> direcciones = (ArrayList<Direcciones>) new DireccionDB().selected(cp);
+//        direcciones.forEach(el -> {
+//
+//            System.out.println(el.getColonia());
+//            System.out.println(el.getMunicipio());
+//        });
 
-            TestDB.rep(doc, "ASESOR", "Ing. Aarón Gómez Méndez".toUpperCase());
-            TestDB.rep(doc, "REVISOR1", "Ing. Angel Gómez Méndez".toUpperCase());
-            TestDB.rep(doc, "REVISOR2", "Ing. Juan Martinez Nuñez".toUpperCase());
-            TestDB.rep(doc, "PROYECTO", "I.A. PARA EL LA CLASIFICACIÓN DE IMAGENES".toUpperCase());
-            TestDB.rep(doc, "ALUMNO", "ARTURO DÍAZ LÓPEZ".toUpperCase());
-            TestDB.rep(doc, "NOCONTROL", "151080123".toUpperCase());
 
-            try {
-                doc.write(new FileOutputStream("C:\\Users\\aarongmx\\Desktop\\arcasystem\\gradel\\src\\main\\java\\tests\\nuevoT1.docx"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
-        System.out.println(extractor.getText());
+
+
+
+
+//
+//            FileInputStream fis = new FileInputStream("C:\\Users\\aarongmx\\Desktop\\arcasystem\\gradel\\src\\main\\java\\tests\\t1.docx");
+//            XWPFDocument doc = new XWPFDocument(OPCPackage.open(fis));
+//            TestDB.rep(doc, "FECHA", Helpers.fechaDocumentos());
+//            TestDB.rep(doc, "EPTO", "ISC");
+//            TestDB.rep(doc, "NOOF", "0349");
+//            TestDB.rep(doc, "YEAR", String.valueOf(Helpers.FECHA.getYear()));
+//
+//            TestDB.rep(doc, "ASESOR", "Ing. Aarón Gómez Méndez".toUpperCase());
+//            TestDB.rep(doc, "REVISOR1", "Ing. Angel Gómez Méndez".toUpperCase());
+//            TestDB.rep(doc, "REVISOR2", "Ing. Juan Martinez Nuñez".toUpperCase());
+//            TestDB.rep(doc, "PROYECTO", "I.A. PARA EL LA CLASIFICACIÓN DE IMAGENES".toUpperCase());
+//            TestDB.rep(doc, "ALUMNO", "ARTURO DÍAZ LÓPEZ".toUpperCase());
+//            TestDB.rep(doc, "NOCONTROL", "151080123".toUpperCase());
+//
+//            try {
+//                doc.write(new FileOutputStream("C:\\Users\\aarongmx\\Desktop\\arcasystem\\gradel\\src\\main\\java\\tests\\nuevoT1.docx"));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
+//        System.out.println(extractor.getText());
 
 
 //        UsuarioDB usuarioDB = new UsuarioDB();

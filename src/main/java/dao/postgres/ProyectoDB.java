@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ProyectoDB implements ProyectoDAO {
@@ -19,7 +21,7 @@ public class ProyectoDB implements ProyectoDAO {
     private PreparedStatement sentencia;
     private ResultSet resultados;
     
-    private final String INSERTAR = "INSERT INTO proyectos(nombre, semanas_proyecto, periodo, fecha_inicio, fecha_termino, estatus) VALUES (?, ?, ?, ?, ?, ?) RETURNING proyecto_id;";
+    private final String INSERTAR = "INSERT INTO proyectos(nombre, semanas_proyecto, periodo, fecha_inicio, fecha_termino, estatus) VALUES (?, ?, ?, ?, ?, ?) RETURNING proyecto_id";
 
     private final String ACTUALIZAR = "UPDATE proyectos SET nombre = ?, semanas_proyecto = ?, periodo = ?, fecha_inicio = ?, fecha_termino = ?, estatus = ? WHERE proyecto_id = ?;";
     
@@ -28,6 +30,8 @@ public class ProyectoDB implements ProyectoDAO {
     private final String ELIMINAR = "DELETE FROM proyectos WHERE proyecto_id = ?;";
     
     private final String LISTAR = "SELECT proyecto_id, nombre, semanas_proyecto, periodo, fecha_inicio, fecha_termino, estatus FROM proyectos;";
+
+    private final String OBTENERSEMANAS = "SELECT count(proyecto_id) AS total_proyectos, SUM(CASE WHEN semanas_proyecto=? THEN 1 ELSE 0 end) AS suma_proyectos FROM proyectos WHERE periodo = ?;";
 
     @Override
     public void insert(Proyecto proyecto) {
@@ -152,5 +156,30 @@ public class ProyectoDB implements ProyectoDAO {
             ConnectionDB.closeConnection(conexion, sentencia, resultados);
         }
         return lista;
+    }
+
+    @Override
+    public int[] analisisSemanas(int semanas, String periodo) {
+        conexion = new ConnectionDB().getConnection();
+        int[] analisis = null;
+        try {
+            sentencia = conexion.prepareStatement(OBTENERSEMANAS, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            sentencia.setInt(1, semanas);
+            sentencia.setString(2, periodo);
+            resultados = sentencia.executeQuery();
+
+            if (resultados.first()) {
+                analisis = new int[2];
+                analisis[0] = resultados.getInt("total_proyectos");
+                analisis[1] = resultados.getInt("suma_proyectos");
+            }
+
+        }catch (SQLException e) {
+            throw new ExcepcionGeneral(e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(conexion, sentencia, resultados);
+        }
+
+        return analisis;
     }
 }

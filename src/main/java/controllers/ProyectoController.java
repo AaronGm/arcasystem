@@ -1,9 +1,8 @@
 package controllers;
 
-import dao.postgres.ProyectoDB;
 import enums.MensajesValidacion;
 import models.Proyecto;
-import views.RegistrarProyecto;
+import views.old.RegistrarProyecto;
 import views.View;
 
 public class ProyectoController implements Controller<Proyecto> {

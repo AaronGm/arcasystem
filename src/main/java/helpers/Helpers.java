@@ -2,9 +2,10 @@
 package helpers;
 
 import enums.SpacingPoints;
-import views.components.FlatLabel;
-import views.components.FlatPanel;
+import views.old.components.FlatLabel;
+import views.old.components.FlatPanel;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,8 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -23,8 +22,6 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
@@ -41,17 +38,6 @@ import java.util.Objects;
 public class Helpers {
     /**
      * Ruta a las fuentes tipográficas del proyecto
-     * C:\Users\aarongmx\Documents\arcasystem\gradel\src\main\resources\fonts
-     */
-
-    /**
-     * 16 Spacing Points
-     * 8
-     * 16
-     * 24
-     * 36
-     * 64
-     * 128
      */
     public static String FONTS_PATH = Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("./fonts/")).getPath();
     
@@ -147,26 +133,15 @@ public class Helpers {
     }
     
     /**
-     * Retorna un JLabel con la imagen seleccionada con un tamaño por defecto de 80x80
-     * @param image
-     * @return 
-     */
-    public static JLabel makeImage(String image) {
-        JLabel label = new JLabel();
-        label.setSize(80, 80);
-        setImage(image, label);
-        return label;
-    }
-    
-    /**
      * Retorna un JLabel con la imagen seleccionada
      * @param image
-     * @param size
-     * @return 
+     * @param width
+     * @param height
+     * @return label
      */
-    public static JLabel makeImage(String image, Dimension size) {
+    public static JLabel makeImage(String image, int width, int height) {
         JLabel label = new JLabel();
-        label.setSize(size.width, size.height);
+        label.setSize(new Dimension(width, height));
         setImage(image, label);
         return label;
     }
@@ -177,25 +152,27 @@ public class Helpers {
      * @return 
      */
     public static JLabel logoItiz(int size) {
-        return makeImage("logo-itiz.png", new Dimension(size, size));
+        return makeImage("logo-itiz.png",size, size);
     }
     
     /**
      * Logotipo SEP
-     * @param size
-     * @return 
+     * @param width
+     * @param height
+     * @return
      */
-    public static JLabel logoSep(Dimension size) {
-        return makeImage("logo-sep.png", size);
+    public static JLabel logoSep(int width, int height) {
+        return makeImage("logo-sep.png", width, height);
     }
     
     /**
      * Logotipo TECNM
-     * @param size
+     * @param width
+     * @param height
      * @return 
      */
-    public static JLabel logoTecnm(Dimension size) {
-        return makeImage("logo-tecnm.png", size);
+    public static JLabel logoTecnm(int width, int height) {
+        return makeImage("logo-tecnm.png", width, height);
     }
     
     public static void minScreenSize(JFrame frame) {
@@ -214,7 +191,7 @@ public class Helpers {
      * Este método retorna los siguientes periodos escolares, tomando como referencia el año actual
      * @return 
      */
-    public static List<String> getPeriodo() {
+    public static List<String> getPeriodos() {
         ArrayList<String> periodos = new ArrayList<>();
         LocalDate date = FECHA.minusYears(1);
         for (byte i = 0; i < 5; i++) {
@@ -230,24 +207,18 @@ public class Helpers {
         String periodoActual = null;
         byte mes = (byte) FECHA.getMonthValue();
         short year = (short) FECHA.getYear();
-        for (byte i = 0; i < getPeriodo().size(); i++) {
+        for (byte i = 0; i < getPeriodos().size(); i++) {
             if (mes <= 7) {
-                if (((i == 0) || ((i % 2) == 0)) && getPeriodo().get(i).contains(String.valueOf(year))) {
-                    periodoActual = getPeriodo().get(i);
+                if (((i == 0) || ((i % 2) == 0)) && getPeriodos().get(i).contains(String.valueOf(year))) {
+                    periodoActual = getPeriodos().get(i);
                 }
             } else {
-                if (getPeriodo().get(i).contains(String.valueOf(year))) {
-                    periodoActual = getPeriodo().get(i);
+                if (getPeriodos().get(i).contains(String.valueOf(year))) {
+                    periodoActual = getPeriodos().get(i);
                 }
             }
         }
         return periodoActual;
-    }
-
-    public static void setBgColor(Color color, JComponent... component) {
-        Arrays.asList(component).forEach(el -> {
-            el.setBackground(color);
-        });
     }
 
     public static FlatPanel groupElementsVertical(JComponent... components) {
@@ -281,13 +252,6 @@ public class Helpers {
         return panel;
     }
 
-    public static JPanel verticalElements(JComponent... components) {
-        FlatPanel panel = new FlatPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        Arrays.asList(components).forEach(panel::add);
-        return panel;
-    }
-
 
     public static FlatLabel labelIcon(Icon icon, Dimension size) {
         FlatLabel iconL = new FlatLabel(icon);
@@ -308,34 +272,9 @@ public class Helpers {
     }
 
     public static String capitalize(String word) {
-        char wordC[] = word.toCharArray();
+        char[] wordC = word.toCharArray();
         wordC[0] = word.toUpperCase().charAt(0);
         return String.valueOf(wordC);
-    }
-
-    public static void onlyNumbers(KeyEvent e) {
-        if (!Character.isDigit(e.getKeyChar()) && !(e.getKeyChar() != KeyEvent.VK_BACK_SPACE)) {
-            e.consume();
-        }
-    }
-
-    public static KeyAdapter onlyLetters() {
-        KeyAdapter keyAdapter = new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                if (!Character.isLetter(e.getKeyChar()) && !(e.getKeyChar() == KeyEvent.VK_SPACE) && !(e.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
-                    e.consume();
-                }
-            }
-        };
-        return keyAdapter;
-    }
-
-    public static GridBagConstraints ejes(int x, int y) {
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridy = y;
-        c.gridx = x;
-        return c;
     }
 
     public static FlatPanel centerAbsolute(JComponent... components) {
@@ -354,5 +293,9 @@ public class Helpers {
         horizontalPanel.add(verticalPanel);
 
         return horizontalPanel;
+    }
+
+    public static JComponent noErrLabel() {
+        return (JComponent) Box.createVerticalStrut(SpacingPoints.SP16.getSize());
     }
 }

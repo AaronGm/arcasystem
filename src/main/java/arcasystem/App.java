@@ -1,11 +1,9 @@
 
 package arcasystem;
 
-import controllers.HistorialAlumnoController;
-import controllers.LoginController;
-import views.AsignarAsesorInterno;
-import views.ConsultarHistorialAlumno;
-import views.LoginView;
+import controllers.ExpedienteController;
+import models.Alumno;
+import views.old.CrearExpediente;
 
 import java.awt.EventQueue;
 
@@ -23,7 +21,7 @@ public class App {
         run = () -> {
             System.setProperty("awt.useSystemAAFontSettings","on");
             System.setProperty("swing.aatext", "true");
-            boolean isAlive = false;
+//            boolean isAlive = false;
 //            SocketAddress address = new InetSocketAddress("localhost", 5432);
 //            Socket socket = new Socket();
 //            try {
@@ -32,8 +30,15 @@ public class App {
 //                isAlive = true;
 
 //               new AlumnoController().create().setVisible(true);
-                LoginController loginController = new LoginController();
-                loginController.login().setVisible(true);
+//                LoginController loginController = new LoginController();
+//                loginController.login().setVisible(true);
+            CrearExpediente crearExpediente = new CrearExpediente();
+            ExpedienteController expedienteController = new ExpedienteController(crearExpediente, new Alumno("Aarón", "Gómez", "Méndez"));
+            expedienteController.getView().setVisible(true);
+
+
+//            new ProfesorController().create().setVisible(true);
+//            new SplashScreen().setVisible(true);
 
 //                new AsignarAsesorInterno().setVisible(true);
 //            new AsignarAsesorInterno().setVisible(true);

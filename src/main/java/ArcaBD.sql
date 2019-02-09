@@ -5,11 +5,11 @@
 
 -- Enumerado para los grados de estudio
 DROP TYPE grado_estudios CASCADE;
-CREATE TYPE grado_estudios AS ENUM('Licenciatura', 'Ingeniería', 'Maestría', 'Doctorado');
+CREATE TYPE grado_estudios AS ENUM ('Licenciatura', 'Ingeniería', 'Maestría', 'Doctorado');
 
 --Enumerado para el estatus del proyecto
-DROP TYPE estado_proyecto CASCADE;
-CREATE TYPE estado_proyecto AS ENUM('----', 'Aceptado', 'Rechazado');
+-- DROP TYPE estado_proyecto CASCADE;
+-- CREATE TYPE estado_proyecto AS ENUM('----', 'Aceptado', 'Rechazado');
 
 DROP TYPE estado_profesor CASCADE;
 CREATE TYPE estado_profesor AS ENUM('Tiempo Completo', 'Clave 10', 'Clave 20', 'Clave 95', 'Por Horario', 'Por Asignatura');
@@ -82,7 +82,7 @@ CREATE TABLE proyectos (
     periodo VARCHAR(160) NOT NULL,
     fecha_inicio DATE NOT NULL DEFAULT CURRENT_DATE,
     fecha_termino DATE NOT NULL DEFAULT CAST(CURRENT_DATE + interval '4  month' AS DATE),
-    estatus estado_proyecto
+    estatus BOOLEAN NOT NULL DEFAULT '0'
 );
 
 DROP TABLE IF EXISTS empresas CASCADE;
@@ -95,6 +95,7 @@ CREATE TABLE empresas (
     colonia VARCHAR(200) NOT NULL,
     codigo_postal CHAR(5) NOT NULL,
     alcaldia_municipio VARCHAR(200) NOT NULL,
+    ciudad VARCHAR(255) NOT NULL,
     pagina_web VARCHAR(250) NOT NULL
 );
 
@@ -127,6 +128,16 @@ CREATE TABLE revisores (
 
 
 -- Tablas para correos y telefonos
+
+DROP TABLE IF EXISTS correos_alumno CASCADE;
+CREATE TABLE correos_alumno(
+    correo_id SERIAL,
+    correo VARCHAR(180) NOT NULL,
+    no_control VARCHAR(10) NOT NULL,
+    CONSTRAINT pk_correo_alumno PRIMARY KEY(correo_id)
+);
+
+
 DROP TABLE IF EXISTS correos_empresa CASCADE;
 CREATE TABLE correos_empresa (
     correo_id SERIAL,
@@ -175,13 +186,29 @@ CREATE TABLE telefonos_profesor (
     CONSTRAINT pk_telefono_profesor PRIMARY KEY(telefono_id)
 );
 
- DROP TABLE IF EXISTS historial_residentes cascade;
+
+DROP TABLE IF EXISTS historial_residentes cascade;
 CREATE TABLE historial_residentes (
     historial_id SERIAL,
     no_control VARCHAR(10) NOT NULL,
     empresa_id INT NOT NULL,
     proyecto_id INT NOT NULL,
-    asesor_externo_id INT NOT NULL
+    asesor_externo_id INT NOT NULL,
+    asignacion_alumno_asesor_id INT NOT NULL
+);
+
+
+DROP TABLE IF EXISTS direcciones;
+COMMENT ON TABLE direcciones IS 'Tabla para facilitar la escritura de direcciones';
+CREATE TABLE direcciones(
+	direccion_id SERIAL,
+	cp varchar(20) NOT NULL,
+	colonia varchar(250) NOT NULL,
+	asentamiento varchar(250) NOT NULL,
+	municipio varchar(250) NOT NULL,
+	estado varchar(250) NOT NULL,
+	ciudad varchar(250) NOT NULL,
+	CONSTRAINT pk_direccion PRIMARY KEY(direccion_id)
 );
 
 -- Agregando llaves primarias
@@ -247,7 +274,7 @@ ALTER TABLE telefonos_asesor_externo
 INSERT INTO usuarios(usuario, passwd) VALUES ('aarongm', crypt('aagmx', gen_salt('xdes')));
 
 -- Insertar datos de las carreras
-INSERT INTO carreras(clave_carrera, nombre, plan_estudios) 
+INSERT INTO carreras(clave_carrera, nombre, plan_estudios)
 VALUES
 ('ISC', 'Ingeniería en Sistemas Computacionales', 'ISIC-2010-224'),
 ('IME', 'Ingeniería Mecatrónica', 'IMCT-2010-229'),

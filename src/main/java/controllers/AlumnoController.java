@@ -2,14 +2,10 @@ package controllers;
 
 import dao.postgres.AlumnoDB;
 import dao.postgres.CarreraDB;
-import dao.postgres.UsuarioDB;
-import enums.MensajesValidacion;
 import models.Alumno;
-import views.RegistrarAlumno;
+import views.old.RegistrarAlumno;
 import views.View;
-import views.components.AuthDialog;
-
-import javax.swing.JOptionPane;
+import views.old.components.AuthDialog;
 
 public class AlumnoController implements Controller<Alumno> {
 

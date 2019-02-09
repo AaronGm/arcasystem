@@ -17,22 +17,44 @@ public class EmpresaDB implements EmpresaDAO {
     private Connection conexion;
     private PreparedStatement sentencia;
     private ResultSet resultados;
-    
-    private final String INSERTAR = "INSERT INTO empresas(rfc, nombre, encargado, domicilio, colonia, codigo_postal, alcaldia_municipio, pagina_web) VALUES (?, ?, ?, ?) RETURNING empresa_id;";
-    private final String ACTUALIZAR = "UPDATE empresas SET rfc = ?, nombre = ?, encargado = ?, domicilio = ?, colonia = ?, codigo_postal = ?, alcaldia_municipio = ?, pagina_web = ? WHERE empresa_id = ?;";
-    private final String OBTENERPORID = "SELECT rfc, nombre, encargado, domicilio, colonia, codigo_postal, alcaldia_municipio, pagina_web FROM empresas WHERE empresa_id = ?;";
-    private final String ELIMINAR = "DELETE FROM empresas WHERE empresa_id = ?;";
-    private final String LISTAR = "SELECT rfc, nombre, encargado, domicilio, colonia, codigo_postal, alcaldia_municipio, pagina_web FROM empresas;";
+
+    private final String INSERTAR;
+    private final String ACTUALIZAR;
+    private final String OBTENERPORID;
+    private final String ELIMINAR;
+    private final String LISTAR;
+
+    public EmpresaDB() {
+        //language=POSTGRES-SQL
+        INSERTAR = "INSERT INTO empresas(rfc, nombre, encargado, domicilio, colonia, codigo_postal, alcaldia_municipio, ciudad, pagina_web) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING empresa_id;";
+
+        //language=POSTGRES-SQL
+        ACTUALIZAR = "UPDATE empresas SET rfc = ?, nombre = ?, encargado = ?, domicilio = ?, colonia = ?, codigo_postal = ?, alcaldia_municipio = ?, ciudad = ?, pagina_web = ? WHERE empresa_id = ?;";
+
+        //language=POSTGRES-SQL
+        ELIMINAR = "DELETE FROM empresas WHERE empresa_id = ?;";
+
+        //language=POSTGRES-SQL
+        OBTENERPORID = "SELECT rfc, nombre, encargado, domicilio, colonia, codigo_postal, alcaldia_municipio, ciudad, pagina_web FROM empresas WHERE empresa_id = ?;";
+
+        //language=POSTGRES-SQL
+        LISTAR = "SELECT empresa_id, rfc, nombre, encargado, domicilio, colonia, codigo_postal, alcaldia_municipio, ciudad, pagina_web FROM empresas;";
+    }
 
     @Override
     public void insert(Empresa empresa) {
         conexion = new ConnectionDB().getConnection();
         try {
             sentencia = conexion.prepareStatement(INSERTAR);
-            sentencia.setString(1, empresa.getNombre());
-            sentencia.setString(2, empresa.getEncargado());
-            sentencia.setString(3, empresa.getDomicilio());
-            sentencia.setString(4, empresa.getPaginaWeb());
+            sentencia.setString(1, empresa.getRfc());
+            sentencia.setString(2, empresa.getNombre());
+            sentencia.setString(3, empresa.getEncargado());
+            sentencia.setString(4, empresa.getDomicilio());
+            sentencia.setString(5, empresa.getColonia());
+            sentencia.setString(6, empresa.getCodigoPostal());
+            sentencia.setString(7, empresa.getAlcaldiaMunicipio());
+            sentencia.setString(8, empresa.getCiudad());
+            sentencia.setString(9, empresa.getPaginaWeb());
 
             resultados = sentencia.executeQuery();
 
@@ -54,10 +76,15 @@ public class EmpresaDB implements EmpresaDAO {
         conexion = new ConnectionDB().getConnection();
         try {
             sentencia = conexion.prepareStatement(ACTUALIZAR);
-            sentencia.setString(1, empresa.getNombre());
-            sentencia.setString(2, empresa.getEncargado());
-            sentencia.setString(3, empresa.getDomicilio());
-            sentencia.setString(4, empresa.getPaginaWeb());
+            sentencia.setString(1, empresa.getRfc());
+            sentencia.setString(2, empresa.getNombre());
+            sentencia.setString(3, empresa.getEncargado());
+            sentencia.setString(4, empresa.getDomicilio());
+            sentencia.setString(5, empresa.getColonia());
+            sentencia.setString(6, empresa.getCodigoPostal());
+            sentencia.setString(7, empresa.getAlcaldiaMunicipio());
+            sentencia.setString(8, empresa.getCiudad());
+            sentencia.setString(9, empresa.getPaginaWeb());
 
             if (sentencia.executeUpdate() == 0) {
                 throw new ExcepcionGeneral("No se actualizó ningún registro");
@@ -107,6 +134,7 @@ public class EmpresaDB implements EmpresaDAO {
                     resultados.getString(Empresa.COLONIA),
                     resultados.getString(Empresa.CODIGO_POSTAL),
                     resultados.getString(Empresa.ALCALDIA_MUNICIPIO),
+                    resultados.getString(Empresa.CIUDAD),
                     resultados.getString(Empresa.PAGINA_WEB)
                 );
             }
@@ -138,6 +166,7 @@ public class EmpresaDB implements EmpresaDAO {
                         resultados.getString(Empresa.COLONIA),
                         resultados.getString(Empresa.CODIGO_POSTAL),
                         resultados.getString(Empresa.ALCALDIA_MUNICIPIO),
+                        resultados.getString(Empresa.CIUDAD),
                         resultados.getString(Empresa.PAGINA_WEB)
                     )
                 );
@@ -147,6 +176,6 @@ public class EmpresaDB implements EmpresaDAO {
         } finally {
             ConnectionDB.closeConnection(conexion, sentencia, resultados);
         }
-        return null;
+        return list;
     }
 }
